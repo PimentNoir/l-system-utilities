@@ -73,4 +73,22 @@ public class ParserTest {
         String expResult = "XFFFFX";
         assertEquals(expResult, result);
     }
+
+        /**
+     * Stress test of parseRule method, of class Parser.
+     */
+    @Test
+    public void stressTestParseRule() {
+        System.out.println("Recursive Rule Call");
+        String prod_ = "F";
+        Rule[] ruleT = new Rule[1];
+        ruleT[0] = new Rule('F', "FF");
+        String longest = prod_;
+        while (longest.length() < 2097152){
+        longest = instance.parseRule(longest, ruleT);
+        }
+        int result = longest.length();
+        int expResult = 2097152;
+        assertEquals(expResult, result);
+    }
 }
