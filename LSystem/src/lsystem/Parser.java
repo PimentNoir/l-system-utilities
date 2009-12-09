@@ -1,5 +1,6 @@
 package lsystem;
 
+import processing.core.PApplet;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
@@ -9,10 +10,15 @@ import java.text.StringCharacterIterator;
  */
 public class Parser {
 
-    public Parser() {
+    public final String VERSION = "0.1.0";
+    PApplet myParent;
+
+    public Parser(PApplet myParent) {
+        this.myParent = myParent;
     }
+
     /**
-     * Private parser helper funtion
+     * Private parser helper function
      * @param prod String
      * @param rule Rule
      * @return production String
@@ -48,4 +54,13 @@ public class Parser {
         }
         return production;
     }
+
+    	/**
+	 * return the version of the library.
+	 *
+	 * @return String
+	 */
+	public String version() {
+		return VERSION;
+	}
 }

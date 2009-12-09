@@ -33,4 +33,9 @@ public class TurtleStack {
     public Turtle pop() {
         return stack.pop();
     }
+
+    public void destroy(){
+        stack.clear();
+        stack = null;
+    }
 }
