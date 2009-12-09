@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package lsystem;
-
+import processing.core.PApplet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 public class ParserTest {
 
     Parser instance;
+    PApplet parent = new PApplet();
 
     public ParserTest() {
     }
@@ -32,7 +33,7 @@ public class ParserTest {
 
     @Before
     public void setUp() {
-        instance = new Parser();
+        instance = new Parser(parent);
     }
 
     @After
