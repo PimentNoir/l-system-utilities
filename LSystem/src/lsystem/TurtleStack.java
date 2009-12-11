@@ -1,5 +1,5 @@
 package lsystem;
-
+import processing.core.PApplet;
 import java.util.Deque;
 import java.util.ArrayDeque;
 
@@ -10,11 +10,13 @@ import java.util.ArrayDeque;
 public class TurtleStack {
 
     private Deque<Turtle> stack;
-
+    private PApplet parent;
     /**
      * Stack constructor
      */
-    public TurtleStack() {
+    TurtleStack(PApplet parent) {
+        this.parent = parent;
+        parent.registerDispose(this);
         stack = new ArrayDeque<Turtle>();
     }
 
@@ -23,7 +25,10 @@ public class TurtleStack {
      * @param turtle Turtle
      */
     public void push(Turtle turtle) {
-        stack.push(turtle);
+        if(turtle != null)
+        {
+            stack.push(turtle);
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
  */
 
 package lsystem;
-
+import processing.core.PApplet;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -33,7 +33,7 @@ public class TurtleStackTest {
     @Before
     public void setUp() {
       turtle = new Turtle(0.0f,0.0f,0.0f);
-      instance = new TurtleStack();
+      instance = new TurtleStack(new PApplet());
     }
 
     @After
@@ -60,7 +60,8 @@ public class TurtleStackTest {
         System.out.println("push");    
        
         
-        instance.push(turtle);
+       // instance.push(turtle);
+        instance.push(null);
         assertEquals(turtle, instance.pop());
     }
 
