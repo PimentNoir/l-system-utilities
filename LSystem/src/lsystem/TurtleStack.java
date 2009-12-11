@@ -1,7 +1,9 @@
 package lsystem;
+
 import processing.core.PApplet;
 import java.util.Deque;
 import java.util.ArrayDeque;
+
 
 /**
  * A turtle tuned stack with minimal interface
@@ -11,6 +13,7 @@ public class TurtleStack {
 
     private Deque<Turtle> stack;
     private PApplet parent;
+
     /**
      * Stack constructor
      */
@@ -19,14 +22,18 @@ public class TurtleStack {
         parent.registerDispose(this);
         stack = new ArrayDeque<Turtle>();
     }
+    // default constructor for testing
+
+    TurtleStack() {
+        stack = new ArrayDeque<Turtle>();
+    }
 
     /**
      * Turtle push
      * @param turtle Turtle
      */
     public void push(Turtle turtle) {
-        if(turtle != null)
-        {
+        if (turtle != null) {
             stack.push(turtle);
         }
     }
@@ -39,7 +46,7 @@ public class TurtleStack {
         return stack.pop();
     }
 
-    public void destroy(){
+    public void destroy() {
         stack.clear();
         stack = null;
     }

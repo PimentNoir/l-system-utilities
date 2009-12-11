@@ -13,9 +13,14 @@ public class Parser {
     public final String VERSION = "0.1.0";
     PApplet myParent;
 
+    // preferred constructor?
     public Parser(PApplet parent) {
         this.myParent = parent;
         parent.registerDispose(this);
+    }
+
+    // Default constructor for testing
+    public Parser() {
     }
 
     /**
