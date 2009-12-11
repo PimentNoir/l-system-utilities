@@ -17,14 +17,14 @@ public class TurtleStack {
     /**
      * Stack constructor
      */
-    TurtleStack(PApplet parent) {
+    public TurtleStack(PApplet parent) {
         this.parent = parent;
         parent.registerDispose(this);
         stack = new ArrayDeque<Turtle>();
     }
     // default constructor for testing
 
-    TurtleStack() {
+    public TurtleStack() {
         stack = new ArrayDeque<Turtle>();
     }
 
