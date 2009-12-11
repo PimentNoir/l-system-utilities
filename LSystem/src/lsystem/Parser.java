@@ -13,8 +13,9 @@ public class Parser {
     public final String VERSION = "0.1.0";
     PApplet myParent;
 
-    public Parser(PApplet myParent) {
-        this.myParent = myParent;
+    public Parser(PApplet parent) {
+        this.myParent = parent;
+        parent.registerDispose(this);
     }
 
     /**
@@ -55,12 +56,15 @@ public class Parser {
         return production;
     }
 
-    	/**
-	 * return the version of the library.
-	 *
-	 * @return String
-	 */
-	public String version() {
-		return VERSION;
-	}
+    public void dispose() {
+    }
+
+    /**
+     * return the version of the library.
+     *
+     * @return String
+     */
+    public String version() {
+        return VERSION;
+    }
 }
