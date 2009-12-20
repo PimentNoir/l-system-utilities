@@ -32,4 +32,10 @@ public class Rule {
     public String getRule(){
     return this.rule;
     }
+
+    @Override
+    public String toString(){
+    String ruleS = this.key + "=>" + this.rule;
+    return ruleS;
+    }
 }
