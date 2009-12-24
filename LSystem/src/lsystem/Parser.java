@@ -16,7 +16,7 @@ public class Parser {
     // preferred constructor?
     public Parser(PApplet parent) {
         this.myParent = parent;
-        parent.registerDispose(this);
+        myParent.registerDispose(this);
     }
 
     // Default constructor for testing
