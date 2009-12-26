@@ -34,12 +34,7 @@ public class Parser {
         CharacterIterator it = new StringCharacterIterator(prod);
         for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
             if (rule != null) { // ignore null array entry
-                if (ch == rule.key()) {
-                    newProduction = newProduction.append(rule.getRule());
-                }
-                if (ch != rule.key()) {
-                    newProduction = newProduction.append(ch);
-                }
+                newProduction.append((ch == rule.key()) ? rule.getRule() : ch);
             }
         }
         return newProduction.toString();
