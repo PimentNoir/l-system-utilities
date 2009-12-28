@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author tux
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({lsystem.ParserTest.class})
+@Suite.SuiteClasses({lsystem.GrammarTest.class})
 public class MonkstoneSuite {
 
     @BeforeClass
