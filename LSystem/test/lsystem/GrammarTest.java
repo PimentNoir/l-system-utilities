@@ -20,7 +20,7 @@ public class GrammarTest {
     Grammar instance;
 
     public GrammarTest() {
-        instance = new Grammar("F-F-F-F");
+        instance = new SimpleGrammar("F-F-F-F");
     }
 
     @BeforeClass
@@ -84,20 +84,7 @@ public class GrammarTest {
         //  fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of notEmpty method, of class Grammar.
-     */
-    @Test
-    public void testNotEmpty() {
-        System.out.println("notEmpty");
-        char premise = 'F';
-        String rule = "FFFF";
-        instance.addRule(premise, rule);
-        boolean expResult = true;
-        boolean result = instance.notEmpty();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+
 
     /**
      * Test of 1 rule 1 repeat createGrammar method, of class Grammar.

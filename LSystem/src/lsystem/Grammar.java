@@ -1,94 +1,36 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package lsystem;
 
-import processing.core.PApplet;
-import java.util.TreeMap;
-import java.text.CharacterIterator;
-import java.text.StringCharacterIterator;
-
 /**
- * Grammar class that provides convenience method for working with l-systems
+ *
  * @author tux
  */
-public class Grammar {
-    private String axiom;
-    private TreeMap<Character, String>rules;
-
+public interface Grammar {
     public final String VERSION = "0.2.0";
-    PApplet myParent;
 
-    // preferred constructor?
-    public Grammar(PApplet parent, String axiom) {
-        this.myParent = parent;
-        myParent.registerDispose(this);
-        this.axiom = axiom;
-        rules = new TreeMap<Character, String>();
-    }
+    void addRule(char premise, String rule);
 
-    // Default constructor for testing
-    public Grammar(String axiom) {
-        this.axiom = axiom;
-        rules = new TreeMap<Character, String>();
-    }
+    void addRule(char premise, String rule, float weight);
 
-    public void addRule(char premise, String rule){
-        rules.put(premise, rule);
-    }
+    String createGrammar(int repeats);
 
-    public String getRule(char premise){
-        return rules.get(premise);
-    }
+    String createGrammar();
 
-    public boolean hasKey(char premise){
-        return rules.containsKey(premise);
-    }
+    void dispose();
 
-    public boolean notEmpty(){
-        return !rules.isEmpty();
-    }
+    String getRule(char premise);
 
-    /**
-     * Private parseRules helper function
-     * @param prod String
-     * @param rule Rule
-     * @return production String
-     */
-    private String parseRules(String production) {
-        StringBuilder newProduction = new StringBuilder("");
-        CharacterIterator it = new StringCharacterIterator(production);
-        for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
-            if (notEmpty()) { // ignore empty Map
-                newProduction.append((hasKey(ch)) ? getRule(ch) : ch);
-            }
-        }
-        return newProduction.toString();
-    }
-    
-    public String createGrammar(int repeats) {
-      String production = axiom;
-      for (int i = 0; i < repeats; i++){
-        production = parseRules(production);
-      }      
-      return production;
-    }
-    
-    public String createGrammar() {
-      return createGrammar(0);
-    }
-
-
-
-    public void dispose() {
-        rules.clear();
-        rules = null;
-        axiom = null;
-    }
+    boolean hasKey(char premise);
 
     /**
      * return the version of the library.
      *
      * @return String
      */
-    public String version() {
-        return VERSION;
-    }
+    String version();
+
 }
