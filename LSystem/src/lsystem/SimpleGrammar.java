@@ -82,7 +82,7 @@ public class SimpleGrammar implements Grammar {
     }
 
     public void dispose() {
-        rules = null;
+        rules.clear();
         axiom = null;
     }
 
