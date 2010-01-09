@@ -1,8 +1,8 @@
 package lsystem;
 
-import processing.core.PApplet;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import processing.core.PApplet;
 
 /**
  * StochasticGrammar class that provides convenience method for working with l-systems
@@ -14,7 +14,11 @@ public class StochasticGrammar implements Grammar {
     private RuleList rules;
     PApplet myParent;
 
-    // preferred constructor?
+    /**
+     * Constructor for use with processing Applet
+     * @param parent
+     * @param axiom
+     */
     public StochasticGrammar(PApplet parent, String axiom) {
         this.myParent = parent;
         myParent.registerDispose(this);
@@ -22,24 +26,48 @@ public class StochasticGrammar implements Grammar {
         rules = new StochasticList();
     }
 
-    // Default constructor for testing
+    /**
+     * Default constructor for testing
+     * @param axiom
+     */
     public StochasticGrammar(String axiom) {
         this.axiom = axiom;
         rules = new StochasticList();
     }
 
+    /**
+     * add non weighted rule (or default weighting if more than on entry)
+     * @param premise char
+     * @param rule String
+     */
     public void addRule(char premise, String rule) {
         rules.addRule(premise, rule);
     }
 
+    /**
+     * add weighted rule
+     * @param premise char
+     * @param rule Stri 
+     * @param weight float     
+     */
     public void addRule(char premise, String rule, float weight) {
         rules.addRule(premise, rule, weight);
     }
 
+    /**
+     * get rule (NB: a weighted rule returned if multiple rules stored for a
+     * given rule ie non-deterministic behaviour, be warned)
+     * @param premise char
+     * @return rule String   
+     */
     public String getRule(char premise) {
         return rules.getRule(premise);
     }
 
+    /**
+     * @param premise char
+     * @return true when present
+     */
     public boolean hasKey(char premise) {
         return rules.hasRule(premise);
     }
@@ -59,6 +87,11 @@ public class StochasticGrammar implements Grammar {
         return newProduction.toString();
     }
 
+    /**
+     * create production String from axiom, rules (and no. generations)
+     * @param generations int
+     * @return production String
+     */
     public String createGrammar(int repeats) {
         String production = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -67,17 +100,25 @@ public class StochasticGrammar implements Grammar {
         return production;
     }
 
+    /**
+     * default create production String from axiom, rules no generations
+     * useful in testing, expect to return axiom
+     * @return production String
+     */
     public String createGrammar() {
         return createGrammar(0);
     }
 
+    /**
+     * 
+     * Empty collections on dispose
+     */
     public void dispose() {
-        rules = null;
-        axiom = null;
+        rules.clear();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder description = new StringBuilder("Axiom: ");
         description.append(axiom);
         description.append("\n");

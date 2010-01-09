@@ -1,22 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package lsystem;
-import java.util.Set;
-import java.util.Iterator;
-import java.util.TreeSet;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public class SimpleRuleList implements RuleList{
     private Set<Character>premises;
     private Map<Character, String>rules;
+    /**
+     * 
+     */
     public SimpleRuleList(){
         premises = new TreeSet<Character>();
         rules = new HashMap<Character, String>();
@@ -24,7 +22,9 @@ public class SimpleRuleList implements RuleList{
 
     public void addRule(char pre, String rule) throws RuntimeException{
         if (this.hasRule(pre))
-        {throw new RuntimeException("Use StochasticList to store multiple rules");}
+        {
+          throw new RuntimeException("Use StochasticList to store multiple rules");
+        }
         premises.add(pre);
         rules.put(pre, rule);
     }
@@ -47,6 +47,15 @@ public class SimpleRuleList implements RuleList{
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+       /**
+     *
+     * Empty collections on dispose
+     */
+    public void clear() {
+        premises.clear();
+        rules.clear();
     }
 
     public boolean hasRule(char pre){return premises.contains(pre);}

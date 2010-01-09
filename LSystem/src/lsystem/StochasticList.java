@@ -1,20 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package lsystem;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collection;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public class StochasticList implements RuleList {
 
     private Set<Character> premises;
     private Map<Character, Map<String, Float>> weightedRules;
 
+    /**
+     * Constructor
+     */
     public StochasticList() {
         premises = new HashSet<Character>();
         //   rules = new HashMap<Character, String>();
@@ -96,7 +100,11 @@ public class StochasticList implements RuleList {
         return sb.toString();
     }
 
-    public void dispose() {
+    /**
+     * 
+     * Empty collections on dispose
+     */
+    public void clear() {
         premises.clear();
         weightedRules.clear();
     }
@@ -105,5 +113,3 @@ public class StochasticList implements RuleList {
         return premises.contains(pre);
     }
 }
-
-

@@ -5,8 +5,9 @@ import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
 /**
+ * Implements Grammar interface
  * SimpleGrammar class that provides convenience method for working with l-systems
- * @author tux
+ * @author Martin Prout
  */
 public class SimpleGrammar implements Grammar {
 
@@ -16,6 +17,11 @@ public class SimpleGrammar implements Grammar {
     PApplet myParent;
 
     // preferred constructor?
+    /**
+     *
+     * @param parent
+     * @param axiom
+     */
     public SimpleGrammar(PApplet parent, String axiom) {
         this.myParent = parent;
         myParent.registerDispose(this);
@@ -23,7 +29,10 @@ public class SimpleGrammar implements Grammar {
         rules = new SimpleRuleList();
     }
 
-    // Default constructor for testing
+    /**
+     * Default constructor for testing
+     * @param axiom
+     */
     public SimpleGrammar(String axiom) {
         this.axiom = axiom;
         rules = new SimpleRuleList();

@@ -106,15 +106,15 @@ public class StochasticGrammarTest {
     @Test
     public void testCreateGrammar_0args() {
         System.out.println("createGrammar");
-        char premise = 'X';
+        char premise = 'F';
         String rule = "FX-FX";
         float weight = 1.0F;
         instance.addRule(premise, rule, weight);
         String rule1 = "FX-FX";
         float weight1 = 1.0F;
         instance.addRule(premise, rule1, weight1);
-        String result = instance.createGrammar(2);
-        String expResult = "FX-FX";
+        String result = instance.createGrammar();
+        String expResult = "F";
         assertEquals(expResult, result);
     }
 
