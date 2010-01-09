@@ -1,14 +1,15 @@
 package lsystem;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.HashSet;
-import java.util.Collection;
 
 /**
- *
+ * A storage class for weighted rules
+ * holds/implements the weighted selection logic
  * @author Martin Prout
  */
 public class StochasticList implements RuleList {

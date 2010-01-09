@@ -1,8 +1,8 @@
 package lsystem;
 
-import processing.core.PApplet;
-import java.util.Deque;
 import java.util.ArrayDeque;
+import java.util.Deque;
+import processing.core.PApplet;
 
 
 /**
@@ -16,6 +16,7 @@ public class TurtleStack {
 
     /**
      * Stack constructor
+     * allows stack instance to be registered with PApplet
      */
     public TurtleStack(PApplet parent) {
         this.parent = parent;

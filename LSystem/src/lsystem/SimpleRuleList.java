@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- *
+ * A storage class for non-stochastic rules
  * @author Martin Prout
  */
 public class SimpleRuleList implements RuleList{
