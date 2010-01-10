@@ -47,7 +47,7 @@ public class TurtleStack {
         return stack.pop();
     }
 
-    public void destroy() {
+    public void dispose() {
         stack.clear();
         stack = null;
     }
