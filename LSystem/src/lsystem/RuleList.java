@@ -5,6 +5,8 @@ package lsystem;
  * @author Martin Prout
  */
 public interface RuleList {
+
+     public final String VERSION = "0.5.0";
     /**
      * 
      * @param pre

@@ -9,7 +9,7 @@ import processing.core.PApplet;
  * A turtle tuned stack with minimal interface
  * @author Martin Prout
  */
-public class TurtleStack {
+public class TurtleStack implements StackInterface {
 
     private Deque<Turtle> stack;
     private PApplet parent;
@@ -38,6 +38,17 @@ public class TurtleStack {
             stack.push(turtle);
         }
     }
+
+    /**
+     * Turtle push
+     * @param turtle Object
+     */
+    public void push(Object turtle) {
+        if (turtle != null) {
+            stack.push((Turtle)turtle);
+        }
+    }
+
 
     /**
      * Turtle pop

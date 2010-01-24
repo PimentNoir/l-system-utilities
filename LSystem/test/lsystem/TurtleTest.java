@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  * @author tux
  */
 public class TurtleTest {
-    Turtle instance;
+    TurtleInterface instance;
     public TurtleTest() {
     }
 
@@ -71,6 +71,18 @@ public class TurtleTest {
         float expResult = 0.0F;
         float result = instance.getTheta();
         assertEquals(expResult, result, 0.0f);
+
+    }
+
+    /**
+     * Test clone method, of class Turtle.
+     */
+    @Test
+    public void testClone() {
+        System.out.println("clone");
+        TurtleInterface expResult = new Turtle(1, 1, 1);
+        Object result = expResult.clone();
+        assertEquals(expResult.getTheta(), ((TurtleInterface)result).getTheta(), 1.0f);
 
     }
 
