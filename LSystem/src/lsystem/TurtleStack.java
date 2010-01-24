@@ -17,6 +17,7 @@ public class TurtleStack implements StackInterface {
     /**
      * Stack constructor
      * allows stack instance to be registered with PApplet
+     * @param parent
      */
     public TurtleStack(PApplet parent) {
         this.parent = parent;
@@ -25,6 +26,9 @@ public class TurtleStack implements StackInterface {
     }
     // default constructor for testing
 
+    /**
+     *
+     */
     public TurtleStack() {
         stack = new ArrayDeque<Turtle>();
     }
@@ -58,8 +62,19 @@ public class TurtleStack implements StackInterface {
         return stack.pop();
     }
 
+    /**
+     *
+     */
     public void dispose() {
         stack.clear();
         stack = null;
+    }
+        /**
+     * return the version of the library.
+     *
+     * @return String
+     */
+    public String version() {
+        return VERSION;
     }
 }

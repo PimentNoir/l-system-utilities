@@ -16,6 +16,7 @@ public class PenStack implements StackInterface{
     /**
      * Stack constructor
      * allows stack instance to be registered with PApplet
+     * @param parent
      */
     public PenStack(PApplet parent) {
         this.parent = parent;
@@ -24,13 +25,16 @@ public class PenStack implements StackInterface{
     }
     // default constructor for testing
 
+    /**
+     *
+     */
     public PenStack() {
         stack = new ArrayDeque<Pen>();
     }
 
     /**
      * Pen push
-     * @param Pen Pen
+     * @param pen
      */
     public void push(Pen pen) {
         if (pen != null) {
@@ -52,6 +56,9 @@ public class PenStack implements StackInterface{
         return stack.pop();
     }
 
+    /**
+     *
+     */
     public void dispose() {
         stack.clear();
         stack = null;

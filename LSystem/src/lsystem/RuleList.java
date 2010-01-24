@@ -6,7 +6,10 @@ package lsystem;
  */
 public interface RuleList {
 
-     public final String VERSION = "0.5.0";
+    /**
+     *
+     */
+    public final String VERSION = "0.5.0";
     /**
      * 
      * @param pre
@@ -35,6 +38,9 @@ public interface RuleList {
      */
     public boolean hasRule(char pre);
 
+    /**
+     *
+     */
     public void clear();
 }
 

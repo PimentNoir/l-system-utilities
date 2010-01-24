@@ -89,7 +89,6 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * create production String from axiom, rules (and no. generations)
-     * @param generations int
      * @return production String
      */
     public String createGrammar(int repeats) {

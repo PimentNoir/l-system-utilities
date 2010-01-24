@@ -11,8 +11,15 @@ package lsystem;
  */
 public interface TurtleInterface {
 
+    /**
+     *
+     */
     public final String VERSION = "0.5.0";
 
+    /**
+     *
+     * @return
+     */
     Object clone();
 
     /**
@@ -35,7 +42,7 @@ public interface TurtleInterface {
 
     /**
      * Angle setter
-     * @param angle float
+     * @param theta
      */
     void setTheta(float theta);
 

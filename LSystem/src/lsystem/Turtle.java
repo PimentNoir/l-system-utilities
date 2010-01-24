@@ -20,6 +20,7 @@ public class Turtle implements Cloneable, TurtleInterface {
         this.angle = angle;
     }
 
+    @Override
     public Object clone() {
         try {
             return super.clone();
@@ -71,7 +72,7 @@ public class Turtle implements Cloneable, TurtleInterface {
 
     /**
      * Angle setter
-     * @param angle float
+     * @param theta
      */
     public void setTheta(float theta) {
         this.angle = theta;

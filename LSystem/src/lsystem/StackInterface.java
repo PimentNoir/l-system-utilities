@@ -7,12 +7,19 @@ package lsystem;
 
 /**
  *
+ * @param <E>
  * @author tux
  */
 public interface StackInterface <E>{
 
+    /**
+     *
+     */
     public final String VERSION = "0.5.0";
 
+    /**
+     *
+     */
     void dispose();
 
     /**

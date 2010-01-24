@@ -38,7 +38,7 @@ public interface PenInterface extends TurtleInterface{
 
     /**
      * Length setter
-     * @param length float
+     * @param len
      */
     void setLength(float len);
 
