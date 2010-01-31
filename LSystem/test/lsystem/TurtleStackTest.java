@@ -18,33 +18,56 @@ import static org.junit.Assert.*;
 public class TurtleStackTest {
     Turtle turtle;
     TurtleStack instance;
+    /**
+     *
+     */
     public TurtleStackTest() {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
       turtle = new Turtle(0.0f,0.0f,0.0f);
       instance = new TurtleStack();
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testTurtleConstructor() {
         System.out.println("turtle constructor");
         assertNotNull(turtle);
     }
 
+    /**
+     *
+     */
     @Test
     public void testStackConstructor() {
         System.out.println("stack constructor");
@@ -60,6 +83,13 @@ public class TurtleStackTest {
         instance.push(null);
         instance.push(turtle);
         assertEquals(turtle, instance.pop());
+    }
+
+    @Test
+    public void testVersion(){
+        System.out.println("version");
+        String expectedResult = "0.5.1";
+        assertEquals(expectedResult, instance.version());
     }
 
 }

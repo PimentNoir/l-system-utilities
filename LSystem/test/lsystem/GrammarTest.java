@@ -19,22 +19,39 @@ public class GrammarTest {
 
     Grammar instance;
 
+    /**
+     *
+     */
     public GrammarTest() {
         instance = new SimpleGrammar("F-F-F-F");
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }

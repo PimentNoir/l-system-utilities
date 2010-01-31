@@ -14,7 +14,7 @@ public interface TurtleInterface {
     /**
      *
      */
-    public final String VERSION = "0.5.0";
+    public final String VERSION = "0.5.1";
 
     /**
      *

@@ -27,6 +27,7 @@ public class SimpleGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new SimpleRuleList();
+        System.err.println("LSystem v" + version());
     }
 
     /**

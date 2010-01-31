@@ -18,21 +18,38 @@ import static org.junit.Assert.*;
  */
 public class SimpleGrammarTest {
 
+    /**
+     *
+     */
     public SimpleGrammarTest() {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -116,7 +133,7 @@ public class SimpleGrammarTest {
     public void testVersion() {
         System.out.println("version");
         Grammar instance = new SimpleGrammar("FF");
-        String expResult = "0.2.0";
+        String expResult = "0.5.1";
         String result = instance.version();
         assertEquals(expResult, result);
     }

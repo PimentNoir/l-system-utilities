@@ -18,22 +18,39 @@ import static org.junit.Assert.*;
  */
 public class TurtleTest {
     TurtleInterface instance;
+    /**
+     *
+     */
     public TurtleTest() {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     *
+     */
     @Before
     public void setUp() {
         instance = new Turtle(0.0f, 0.0f, 0.0f);
     }
 
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
