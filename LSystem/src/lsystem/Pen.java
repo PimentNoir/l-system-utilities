@@ -14,7 +14,18 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
     int col;
 
     /**
-     *
+     * Copy Constructor
+     * @param pen
+     */
+    public Pen(Pen pen) {
+        super(pen.getX(), pen.getY(), pen.getTheta());
+        this.len = pen.getLength();
+        this.col = pen.getColor();
+        this.width = pen.getWidth();
+    }
+
+    /**
+     * Constructor
      * @param xpos
      * @param ypos
      * @param direction

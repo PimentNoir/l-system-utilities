@@ -15,7 +15,7 @@ public interface StackInterface <E>{
     /**
      *
      */
-    public final String VERSION = "0.5.1";
+    public final String VERSION = "0.6.0";
 
     /**
      *

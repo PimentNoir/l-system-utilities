@@ -9,6 +9,17 @@ public class Turtle implements Cloneable, TurtleInterface {
     private float x, y, angle;
 
     /**
+     * Copy Constructor
+     * @param turtle
+     */
+    public Turtle(Turtle turtle) {
+        this.x = turtle.getX();
+        this.y = turtle.getY();
+        this.angle = turtle.getTheta();
+    }
+
+
+    /**
      * Constructor
      * @param x
      * @param y

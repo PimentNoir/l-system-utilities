@@ -67,6 +67,17 @@ public class TurtleTest {
         
     }
 
+        /**
+     * Test of Constructor  class Turtle.
+     */
+    @Test
+    public void testCopyConstructor() {
+        System.out.println("copy constructor");
+        TurtleInterface copy = new Turtle((Turtle)instance);
+        assertNotNull(copy);
+
+    }
+
     /**
      * Test of getY method, of class Turtle.
      */
