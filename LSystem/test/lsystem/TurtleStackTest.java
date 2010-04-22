@@ -85,10 +85,13 @@ public class TurtleStackTest {
         assertEquals(turtle, instance.pop());
     }
 
+    /**
+     * Test of version method
+     */
     @Test
     public void testVersion(){
         System.out.println("version");
-        String expectedResult = "0.5.1";
+        String expectedResult = "0.6.0";
         assertEquals(expectedResult, instance.version());
     }
 
