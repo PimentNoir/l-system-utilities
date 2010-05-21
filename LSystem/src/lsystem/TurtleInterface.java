@@ -14,11 +14,11 @@ public interface TurtleInterface {
     /**
      *
      */
-    public final String VERSION = "0.6.0";
+    public final String VERSION = "0.6.5";
 
     /**
      *
-     * @return
+     * @return copy
      */
     Object clone();
 

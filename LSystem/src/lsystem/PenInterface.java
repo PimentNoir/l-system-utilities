@@ -5,6 +5,8 @@
 
 package lsystem;
 
+
+
 /**
  *
  * @author tux
@@ -47,5 +49,12 @@ public interface PenInterface extends TurtleInterface{
      * @param width float
      */
     void setWidth(float width);
+
+    void drawLine();
+
+    void incrementGreen(int increment);
+    void turnLeft(int repeats);
+    void turnRight(int repeats);
+    void resizeLength(float adj);
 
 }

@@ -12,6 +12,7 @@ public class StochasticGrammar implements Grammar {
 
     private String axiom;
     private RuleList rules;
+    private StringCharacterIterator lIterator;
     PApplet myParent;
 
     /**
@@ -80,7 +81,7 @@ public class StochasticGrammar implements Grammar {
      */
     private String parseRules(String production) {
         StringBuilder newProduction = new StringBuilder("");
-        CharacterIterator it = new StringCharacterIterator(production);
+        CharacterIterator it = getIterator(production);
         for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
             newProduction.append((hasKey(ch)) ? getRule(ch) : ch);
         }
@@ -106,6 +107,24 @@ public class StochasticGrammar implements Grammar {
      */
     public String createGrammar() {
         return createGrammar(0);
+    }
+
+ /**
+  * Makes the CharacterIterator available internally/externally
+  * Create a new instance if none exists otherwise re-use existing instance
+  * @param production String
+  * @return lIterator the grammar CharacterIterator
+  */
+
+   public CharacterIterator getIterator(String production){
+     if (lIterator == null)
+     {
+      return new StringCharacterIterator(production);
+     }
+     else {
+      lIterator.setText(production);
+      return lIterator;
+     }
     }
 
     /**

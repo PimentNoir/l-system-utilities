@@ -1,5 +1,5 @@
 package lsystem;
-
+import java.text.CharacterIterator;
 /**
  * Grammar interface for Lindenmayer Systems
  * @author Martin Prout
@@ -9,7 +9,7 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.6.0";
+    public final String VERSION = "0.6.5";
 
     /**
      * add unweighted rule
@@ -39,6 +39,15 @@ public interface Grammar {
      * @return production String (axiom)
      */
     String createGrammar();
+
+ /**
+  * Makes the CharacterIterator available internally/externally
+  * Create a new instance if none exists otherwise re-use existing instance
+  * @param production String
+  * @return lIterator the grammar CharacterIterator
+  */
+    
+    CharacterIterator getIterator(String production);
 
     /**
      *
