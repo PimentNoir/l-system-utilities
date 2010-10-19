@@ -36,7 +36,6 @@ public class Turtle implements Cloneable, TurtleInterface {
         try {
             return super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
         }
         return null;
     }

@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lsystem;
 
 /**
  * Pen class extends Turtle to include width, length and color parameters
- * includes a drawLine funtion that calls on PApplet line(x, y, x1, y2);
+ * includes a drawLine function that calls on PApplet line(x, y, x1, y2);
  * @author tux
  */
 

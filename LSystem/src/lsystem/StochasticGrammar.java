@@ -25,6 +25,7 @@ public class StochasticGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new StochasticList();
+        System.err.println("StochasticGrammar LSystem v" + version());
     }
 
     /**
@@ -139,7 +140,7 @@ public class StochasticGrammar implements Grammar {
     public String toString() {
         StringBuilder description = new StringBuilder("Axiom: ");
         description.append(axiom);
-        description.append("\n");
+        description.append('\n');
         description.append(rules.toString());
         return description.toString();
     }
@@ -149,7 +150,7 @@ public class StochasticGrammar implements Grammar {
      *
      * @return String
      */
-    public String version() {
+    public final String version() {
         return VERSION;
     }
 }

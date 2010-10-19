@@ -94,8 +94,8 @@ public class StochasticList implements RuleList {
                 Float weight = (Float) entry.getValue();
                 sb.append(" [");
                 sb.append(weight);
-                sb.append("]");
-                sb.append("\n");
+                sb.append(']');
+                sb.append('\n');
             }
         }
         return sb.toString();

@@ -28,7 +28,7 @@ public class SimpleGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new SimpleRuleList();
-        System.err.println("LSystem v" + version());
+        System.err.println("SimpleGrammar LSystem v" + version());
     }
 
     /**
@@ -121,7 +121,7 @@ public class SimpleGrammar implements Grammar {
      *
      * @return String
      */
-    public String version() {
+    public final String version() {
         return VERSION;
     }
 }
