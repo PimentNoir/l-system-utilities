@@ -1,4 +1,5 @@
-package lsystem;
+package lsystem.collection;
+
 
 import java.util.Collection;
 import java.util.HashMap;

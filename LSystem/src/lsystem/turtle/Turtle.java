@@ -1,4 +1,6 @@
-package lsystem;
+package lsystem.turtle;
+
+
 
 /**
  * A turtle to store position and direction

@@ -1,5 +1,5 @@
 
-package lsystem;
+package lsystem.turtle;
 
 /**
  * Pen class extends Turtle to include width, length and color parameters

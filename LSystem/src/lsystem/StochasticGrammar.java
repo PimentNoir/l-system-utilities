@@ -1,5 +1,7 @@
 package lsystem;
 
+import lsystem.collection.StochasticList;
+import lsystem.collection.RuleList;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import processing.core.PApplet;

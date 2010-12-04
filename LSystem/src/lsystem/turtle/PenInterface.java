@@ -3,9 +3,7 @@
  * and open the template in the editor.
  */
 
-package lsystem;
-
-
+package lsystem.turtle;
 
 /**
  *

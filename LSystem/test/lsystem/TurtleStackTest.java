@@ -4,6 +4,8 @@
  */
 
 package lsystem;
+import lsystem.collection.TurtleStack;
+import lsystem.turtle.Turtle;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -91,7 +93,7 @@ public class TurtleStackTest {
     @Test
     public void testVersion(){
         System.out.println("version");
-        String expectedResult = "0.6.5";
+        String expectedResult = "0.6.7";
         assertEquals(expectedResult, instance.version());
     }
 

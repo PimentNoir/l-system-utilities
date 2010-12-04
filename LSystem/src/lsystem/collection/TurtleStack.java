@@ -1,5 +1,6 @@
-package lsystem;
+package lsystem.collection;
 
+import lsystem.turtle.Turtle;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import processing.core.PApplet;

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package lsystem;
+package lsystem.collection;
 
 /**
  *
@@ -15,7 +15,7 @@ public interface StackInterface <E>{
     /**
      *
      */
-    public final String VERSION = "0.6.6";
+    public final String VERSION = "0.6.7";
 
     /**
      *

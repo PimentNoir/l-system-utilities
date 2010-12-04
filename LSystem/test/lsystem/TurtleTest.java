@@ -5,6 +5,8 @@
 
 package lsystem;
 
+import lsystem.turtle.Turtle;
+import lsystem.turtle.TurtleInterface;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

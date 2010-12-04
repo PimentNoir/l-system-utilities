@@ -1,5 +1,7 @@
 package lsystem;
 
+import lsystem.collection.StackInterface;
+import lsystem.turtle.Pen;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import processing.core.PApplet;
