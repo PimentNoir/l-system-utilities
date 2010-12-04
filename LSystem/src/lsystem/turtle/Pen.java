@@ -9,6 +9,10 @@ package lsystem.turtle;
 
 import processing.core.PApplet;
 
+/**
+ *
+ * @author Martin Prout
+ */
 public class Pen extends Turtle implements Cloneable, PenInterface {
 
     float len, width;
@@ -28,6 +32,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
 
     /**
      * Constructor
+     * @param parent
      * @param xpos
      * @param ypos
      * @param direction
@@ -45,6 +50,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
 
     /**
      *
+     * @param parent
      * @param xpos
      * @param ypos
      * @param direction
@@ -61,6 +67,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
 
     /**
      *
+     * @param parent
      * @param xpos
      * @param ypos
      * @param direction
@@ -126,25 +133,45 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
         this.len = len;
     }
 
+    /**
+     * Facility to change element length
+     * @param factor
+     */
     public void resizeLength(float factor){
         this.len *= factor;
     }
 
+    /**
+     * With plants in mind using bit shift to increment green
+     * @param increment
+     */
     public void incrementGreen(int increment){
         int green = this.col  >> 8 & 0xFF;
         green += increment;
         this.col |= green << 8;
     }
 
+    /**
+     * Evaluate number of repeats and change value of theta
+     * @param repeats
+     */
     public void turnLeft(int repeats){
         setTheta(getTheta() + (float)Math.PI/180 * 34.9f * repeats);
     }
+    /**
+     *  Evaluate number of repeats and change value of theta
+     * @param repeats
+     */
     public void turnRight(int repeats){
         setTheta(getTheta() - (float)Math.PI/180 * 34.9f * repeats);
 
     }
 
 
+    /**
+     *  Object orientated way of drawing a line, side effect is to
+     *  update the current position
+     **/
     public void drawLine(){
        // parent.strokeWeight(getWidth());
         parent.stroke(this.col);
