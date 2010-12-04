@@ -7,7 +7,7 @@ package lsystem.turtle;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public interface PenInterface extends TurtleInterface{
 
@@ -48,11 +48,30 @@ public interface PenInterface extends TurtleInterface{
      */
     void setWidth(float width);
 
+    /**
+     *  terminal action of rule
+     */
     void drawLine();
 
+    /**
+     *
+     * @param increment
+     */
     void incrementGreen(int increment);
+    /**
+     *
+     * @param repeats
+     */
     void turnLeft(int repeats);
+    /**
+     *
+     * @param repeats
+     */
     void turnRight(int repeats);
+    /**
+     *
+     * @param adj
+     */
     void resizeLength(float adj);
 
 }
