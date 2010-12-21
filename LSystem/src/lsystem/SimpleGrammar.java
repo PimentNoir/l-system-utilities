@@ -114,7 +114,7 @@ public class SimpleGrammar implements Grammar {
         StringBuilder description = new StringBuilder("Axiom: ");
         description.append(axiom);
         description.append("\n");
-        description.append(rules.toString());
+        description.append(rules.toStringBuilder());
         return description.toString();
     }
 

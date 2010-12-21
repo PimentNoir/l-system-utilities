@@ -35,8 +35,8 @@ public class SimpleRuleList implements RuleList{
     public String getRule(char pre){
         return rules.get(pre);
     }
-    @Override
-    public String toString(){
+
+    public StringBuilder toStringBuilder(){
         StringBuilder sb = new StringBuilder("Rules:\n");
         Character ch = ' ';
         Iterator<Character> it = premises.iterator();
@@ -47,7 +47,7 @@ public class SimpleRuleList implements RuleList{
             sb.append(this.getRule(ch));
             sb.append("\n");
         }
-        return sb.toString();
+        return sb;
     }
 
        /**

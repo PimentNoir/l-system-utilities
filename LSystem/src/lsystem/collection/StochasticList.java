@@ -77,8 +77,8 @@ public class StochasticList implements RuleList {
         }
     }
 
-    @Override
-    public String toString() {
+
+    public StringBuilder toStringBuilder() {
         StringBuilder sb = new StringBuilder("Rules:\n");
         Character ch = ' ';
         for (Iterator it = weightedRules.entrySet().iterator(); it.hasNext();) {
@@ -99,7 +99,7 @@ public class StochasticList implements RuleList {
                 sb.append('\n');
             }
         }
-        return sb.toString();
+        return sb;
     }
 
     /**

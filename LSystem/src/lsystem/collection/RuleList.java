@@ -42,6 +42,8 @@ public interface RuleList {
      *
      */
     public void clear();
+
+    public StringBuilder toStringBuilder();
 }
 
 
