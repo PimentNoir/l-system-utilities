@@ -1,48 +1,48 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package lsystem;
 
-import lsystem.collection.SimpleRuleList;
-import lsystem.collection.RuleList;
 import processing.core.PApplet;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import lsystem.collection.CSList;
 
-/**
- * Implements Grammar interface
- * SimpleGrammar class that provides convenience method for working with l-systems
- * @author Martin Prout
- */
-public class SimpleGrammar implements Grammar {
+public class CSGrammar implements Grammar {
 
+    private PApplet parent;
     private String axiom;
-    private RuleList rules;
+    private CSList rules;
     private StringCharacterIterator lIterator;
-    
-    PApplet myParent;
 
-    // preferred constructor?
-    /**
-     *
+     /**
+     * Preferred constructor for processing
      * @param parent
      * @param axiom
      */
-    public SimpleGrammar(PApplet parent, String axiom) {
-        this.myParent = parent;
-        myParent.registerDispose(this);
+    public CSGrammar(PApplet parent, String axiom) {
+        this.parent = parent;
+        this.parent.registerDispose(this);
         this.axiom = axiom;
-        rules = new SimpleRuleList();
-        System.err.println("SimpleGrammar LSystem v" + version());
+        rules = new CSList();
+        System.err.println("CSGrammar LSystem v" + version());
     }
 
     /**
      * Default constructor for testing
      * @param axiom
      */
-    public SimpleGrammar(String axiom) {
+    public CSGrammar(String axiom) {
         this.axiom = axiom;
-        rules = new SimpleRuleList();
+        rules = new CSList();
     }
 
     public void addRule(char premise, String rule) {
+        rules.addRule(premise, rule);
+    }
+
+    public void addRule(String premise, String rule) {
         rules.addRule(premise, rule);
     }
 
@@ -50,8 +50,8 @@ public class SimpleGrammar implements Grammar {
         throw new RuntimeException("Use StochasticGrammar for weighted rules");
     }
 
-    public String getRule(char premise) {
-        return rules.getRule(premise);
+    public StringBuilder getRule(char premise, String production, int count) {
+        return rules.getCSRule(premise, production, count);
     }
 
     public boolean hasKey(char premise) {
@@ -59,15 +59,33 @@ public class SimpleGrammar implements Grammar {
     }
 
     /**
+     * Set the character ignore list
+     * @param str ignore list as a String
+     */
+    public void setIgnoreList(String str) {
+        rules.setIgnoreList(str);
+    }
+
+    /**
+     * Set the character ignore list
+     * @param str ignore list as a char[]
+     */
+    public void setIgnoreList(char[] str) {
+        rules.setIgnoreList(str);
+    }
+
+    /**
      * Private parseRules helper function
      * @param prod String
      * @return production String
      */
+
     private String parseRules(String production) {
         StringBuilder newProduction = new StringBuilder("");
+        int count = -1;
         CharacterIterator it = getIterator(production);
         for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
-            newProduction.append((hasKey(ch)) ? getRule(ch) : ch);
+            newProduction.append((hasKey(ch)) ? getRule(ch, production, ++count) : ch);
         }
         return newProduction.toString();
     }
@@ -84,23 +102,19 @@ public class SimpleGrammar implements Grammar {
         return createGrammar(0);
     }
 
-  /**
-  * Makes the CharacterIterator available internally/externally
-  * Create a new instance if none exists otherwise re-use existing instance
-  * @param production String
-  * @return lIterator the grammar CharacterIterator
-  */
-
-
-    public CharacterIterator getIterator(String production){
-     if (lIterator == null)
-     {
-      return new StringCharacterIterator(production);
-     }
-     else {
-      lIterator.setText(production);
-      return lIterator;
-     }
+    /**
+     * Makes the CharacterIterator available internally/externally
+     * Create a new instance if none exists otherwise re-use existing instance
+     * @param production String
+     * @return lIterator the grammar CharacterIterator
+     */
+    public CharacterIterator getIterator(String production) {
+        if (lIterator == null) {
+            return new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+            return lIterator;
+        }
     }
 
     public void dispose() {
@@ -109,7 +123,7 @@ public class SimpleGrammar implements Grammar {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder description = new StringBuilder("Axiom: ");
         description.append(axiom);
         description.append("\n");
@@ -124,5 +138,9 @@ public class SimpleGrammar implements Grammar {
      */
     public final String version() {
         return VERSION;
+    }
+
+    public String getRule(char premise) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
