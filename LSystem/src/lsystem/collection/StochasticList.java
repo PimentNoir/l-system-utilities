@@ -1,6 +1,5 @@
 package lsystem.collection;
 
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,7 +22,6 @@ public class StochasticList implements RuleList {
      */
     public StochasticList() {
         premises = new HashSet<Character>();
-        //   rules = new HashMap<Character, String>();
         weightedRules = new HashMap<Character, Map<String, Float>>();
     }
 
@@ -33,7 +31,7 @@ public class StochasticList implements RuleList {
 
     public void addRule(char pre, String rule, float weight) throws RuntimeException {
         Map<String, Float> temp;
-        if (premises.contains(pre)) // we store muliple rules in existing map
+        if (premises.contains(pre)) // we store multiple rules in existing map
         {
             temp = weightedRules.get(pre);
             temp.put(rule, weight);
@@ -55,8 +53,7 @@ public class StochasticList implements RuleList {
         while (it.hasNext()) {
             total += it.next();
         }
-        for (Iterator iterator = temp.entrySet().iterator(); iterator.hasNext();) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+        for (Map.Entry entry : temp.entrySet()) {
             if (p < (Float) entry.getValue() / total) {
                 result = (String) entry.getKey();
                 break;
@@ -77,22 +74,18 @@ public class StochasticList implements RuleList {
         }
     }
 
-
     public StringBuilder toStringBuilder() {
         StringBuilder sb = new StringBuilder("Rules:\n");
-        Character ch = ' ';
-        for (Iterator it = weightedRules.entrySet().iterator(); it.hasNext();) {
-            Map.Entry entrySet = (Map.Entry) it.next();
-            ch = (Character) entrySet.getKey();
+        for (Map.Entry entrySet : weightedRules.entrySet()) {
+            Character ch = (Character) entrySet.getKey();
             sb.append(ch);
             sb.append("=>\n");
             Map rules = (Map) entrySet.getValue();
-            for (Iterator iterator = rules.entrySet().iterator(); iterator.hasNext();) {
-                Map.Entry entry = (Map.Entry) iterator.next();
-                String rule = (String) entry.getKey();
+            for (Object entry : rules.entrySet()) {
+                String rule = (String) ((Map.Entry) entry).getKey();
                 sb.append("    ");
                 sb.append(rule);
-                Float weight = (Float) entry.getValue();
+                Float weight = (Float) ((Map.Entry) entry).getValue();
                 sb.append(" [");
                 sb.append(weight);
                 sb.append(']');

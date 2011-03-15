@@ -141,7 +141,7 @@ public class StochasticGrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.6.7";
+        String expResult = "0.6.8";
         String result = instance.version();
         assertEquals(expResult, result);
     }

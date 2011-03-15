@@ -93,7 +93,7 @@ public class TurtleStackTest {
     @Test
     public void testVersion(){
         System.out.println("version");
-        String expectedResult = "0.6.7";
+        String expectedResult = "0.6.8";
         assertEquals(expectedResult, instance.version());
     }
 

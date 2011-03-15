@@ -1,7 +1,6 @@
 package lsystem.collection;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -38,10 +37,7 @@ public class SimpleRuleList implements RuleList{
 
     public StringBuilder toStringBuilder(){
         StringBuilder sb = new StringBuilder("Rules:\n");
-        Character ch = ' ';
-        Iterator<Character> it = premises.iterator();
-        while (it.hasNext()){
-            ch = it.next();
+        for (char ch : premises){
             sb.append(ch);
             sb.append("=>");
             sb.append(this.getRule(ch));

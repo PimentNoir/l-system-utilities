@@ -51,7 +51,7 @@ public class StochasticGrammar implements Grammar {
     /**
      * add weighted rule
      * @param premise char
-     * @param rule Stri 
+     * @param rule String
      * @param weight float     
      */
     public void addRule(char premise, String rule, float weight) {
