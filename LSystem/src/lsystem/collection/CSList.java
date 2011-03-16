@@ -1,18 +1,16 @@
 package lsystem.collection;
 
-/**
- * CSList.java a limited context sensitive implementation
- * Valid for 3 char context where  > or <   determines
- * context direction (accepts ignore list as String or char[])
- * @author Martin Prout
- */
 import java.util.HashMap;
 import java.util.Map;
 import lsystem.collection.csrule.ContextRule;
 
 /**
- *
- * @author tux
+ * A storage class for context sensitive LSystem rules, accepts simple LSystem
+ * rules as well (however as yet stochastic rules are not accepted).
+ * The expected format for context is 'x>z' or 'x<z' where x is the context char.
+ * '<' is before and '>' is after z is the premis or character to be replaced.
+ * There is ability to ignore certain characters (eg []0-9) when determining context.
+ * @author Martin Prout
  */
 public class CSList {
 

@@ -1,7 +1,3 @@
-/*
-* To change this template, choose Tools | Templates
-* and open the template in the editor.
-*/
 package lsystem;
 
 import processing.core.PApplet;
@@ -10,8 +6,11 @@ import java.text.StringCharacterIterator;
 import lsystem.collection.CSList;
 
 /**
- *
- * @author tux
+ * Implements Grammar interface
+ * CSGrammar class that provides convenience method for working with l-systems
+ * in particular context sensitive grammars where expected input is a context string.
+ * There is ability to ignore certain characters (eg []0-9) when determining context.
+ * @author Martin Prout
  */
 public class CSGrammar implements Grammar {
   

@@ -1,6 +1,8 @@
 package lsystem.collection.csrule;
 
 /**
+ * A helper class for context sensitive LSystem rules
+ * helps to decode the context elements and extracts the premis character
  *
  * @author Martin Prout
  */
