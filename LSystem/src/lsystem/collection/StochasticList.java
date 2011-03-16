@@ -74,6 +74,10 @@ public class StochasticList implements RuleList {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public StringBuilder toStringBuilder() {
         StringBuilder sb = new StringBuilder("Rules:\n");
         for (Map.Entry entrySet : weightedRules.entrySet()) {

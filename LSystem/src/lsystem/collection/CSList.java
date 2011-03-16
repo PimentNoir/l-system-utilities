@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package lsystem.collection;
 
 /**
  * CSList.java a limited context sensitive implementation
- * Valid for 3 char context where ">" or "<" determine
+ * Valid for 3 char context where  > or <   determines
  * context direction (accepts ignore list as String or char[])
  * @author Martin Prout
  */
@@ -14,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import lsystem.collection.csrule.ContextRule;
 
+/**
+ *
+ * @author tux
+ */
 public class CSList {
 
     char[] ignore = {};
@@ -21,6 +21,9 @@ public class CSList {
     private Map<Character, String> rules;
     private Map<String, String> csrules;
 
+    /**
+     *
+     */
     public CSList() {
         cs_premises = new HashMap<Character, ContextRule>();
         rules = new HashMap<Character, String>();
@@ -61,16 +64,35 @@ public class CSList {
         return isIgnore;
     }
 
+    /**
+     *
+     * @param pre
+     * @param rule
+     * @throws RuntimeException
+     */
     public void addRule(String pre, String rule) throws RuntimeException {
         ContextRule context = new ContextRule(pre);
         cs_premises.put(context.getPremis(), context);
         csrules.put(pre, rule);
     }
 
+    /**
+     *
+     * @param pre
+     * @param rule
+     * @throws RuntimeException
+     */
     public void addRule(char pre, String rule) throws RuntimeException {
         rules.put(pre, rule);
     }
 
+    /**
+     *
+     * @param pre
+     * @param rule
+     * @param weight
+     * @throws RuntimeException
+     */
     public void addRule(char pre, String rule, float weight) throws RuntimeException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -112,24 +134,35 @@ public class CSList {
             } else {
                 rule.append(getRule(pre)); // NB: use getRule because no context
             }
-        }
-        else {
+        } else {
             rule.append(getRule(pre)); // NB: use getRule because no context rule
         }
         return rule;
     }
 
+    /**
+     *
+     * @param pre
+     * @return
+     */
     public boolean hasRule(char pre) {
         boolean has = (rules.containsKey(pre)) || (cs_premises.containsKey(pre));
         return has;
     }
 
+    /**
+     * 
+     */
     public void clear() {
         rules.clear();
         csrules.clear();
         cs_premises.clear();
     }
 
+    /**
+     *
+     * @return
+     */
     public StringBuilder toStringBuilder() {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -4,52 +4,57 @@ package lsystem.collection.csrule;
  *
  * @author Martin Prout
  */
-public class ContextRule{
+public class ContextRule {
 
-  private int idx = 0;       // direction of context -1 = before, 1 = after
-  private String keyHash;   // hash to store rules by
-  private char premis;   // character to replace by rule
-  private char context;  // character that is context
+    private int idx = 0;       // direction of context -1 = before, 1 = after
+    private String keyHash;   // hash to store rules by
+    private char premis;   // character to replace by rule
+    private char context;  // character that is context
 
-  /**
-  Constructor for ContextRule, holds all the logic so that only relevant data is
-  stored
-  */
+    /**
+    Constructor for ContextRule, holds all the logic so that only relevant data is
+    stored
+     * @param context
+     */
+    public ContextRule(String context) {
+        this.keyHash = context;
+        this.idx = ('<' == context.charAt(1)) ? -1 : ('>' == context.charAt(1)) ? 1 : 0;
+        this.premis = context.charAt(2);
+        this.context = context.charAt(0);
+    }
 
-  public ContextRule(String context) {
-    this.keyHash = context;
-    this.idx = ('<' == context.charAt(1))? -1 : ('>' == context.charAt(1))? 1 : 0;
-    this.premis = context.charAt(2);
-    this.context = context.charAt(0);
-  }
+    /**
+     * Returns the value of context char.
+     * character that determines context
+     * @return this.context char
+     */
+    public char getContextChar() {
+        return this.context;
+    }
 
-	/**
-	* Returns the value of context char.
-	*/
-	public char getContextChar() {
-		return this.context;
-	}
+    /**
+     * Returns the value of keyHash.
+     *
+     * @return string to use as key in cs rule hash table
+     */
+    public String getKeyHash() {
+        return keyHash;
+    }
 
-	/**
-	* Returns the value of keyHash.
-	*/
-	public String getKeyHash() {
-		return keyHash;
-	}
+    /**
+     * Returns the value of premis.
+     * @return premis char
+     */
+    public char getPremis() {
+        return premis;
+    }
 
-  /**
-  * Returns the value of premis.
-  */
-	public char getPremis() {
-		return premis;
-	}
-
-	/**
-	* Returns the value of context index.
-	*/
-	public int getIndex() {
-		return idx;
-	}
-
-
+    /**
+     * Returns the value of context index.
+     * determines the direction to search for context char
+     * @return idx int
+     */
+    public int getIndex() {
+        return idx;
+    }
 }

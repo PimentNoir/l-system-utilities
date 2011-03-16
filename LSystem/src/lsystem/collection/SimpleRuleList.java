@@ -35,6 +35,10 @@ public class SimpleRuleList implements RuleList{
         return rules.get(pre);
     }
 
+    /**
+     *
+     * @return sb representing LSystem axiom/rules
+     */
     public StringBuilder toStringBuilder(){
         StringBuilder sb = new StringBuilder("Rules:\n");
         for (char ch : premises){

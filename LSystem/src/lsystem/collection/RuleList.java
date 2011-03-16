@@ -43,6 +43,10 @@ public interface RuleList {
      */
     public void clear();
 
+    /**
+     *
+     * @return
+     */
     public StringBuilder toStringBuilder();
 }
 
