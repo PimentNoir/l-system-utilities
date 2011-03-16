@@ -6,7 +6,7 @@ package lsystem.collection.csrule;
  */
 public class ContextRule{
 
-  private int idx;       // direction of context -1 = before, 1 = after
+  private int idx = 0;       // direction of context -1 = before, 1 = after
   private String keyHash;   // hash to store rules by
   private char premis;   // character to replace by rule
   private char context;  // character that is context

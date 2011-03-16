@@ -57,9 +57,14 @@ public class CSGrammarTest {
     @Test
     public void testAddRule_String_String() {
         System.out.println("addRule");
-        String premise = "F<E";
-        String rule = "F[&F[3+A]][^F[3-A]]";
+        instance = new CSGrammar("baaaaa");
+        String premise = "b<a";
+        String rule = "b";
         instance.addRule(premise, rule);
+        assert(instance.hasKey('a'));
+//        String expResult = "b";
+//        StringBuilder result = instance.getRule('a', "baaaaa", 1);
+//        assertEquals(expResult, result.toString());
     }
 
 
@@ -74,9 +79,9 @@ public class CSGrammarTest {
         instance.addRule(premise, rule);
         int count = 0;
         String production = "F";
-        StringBuilder expResult = new StringBuilder("F[-EF[3&A]]E[+F[3^A]]");
+        String expResult = "F[-EF[3&A]]E[+F[3^A]]";
         StringBuilder result = instance.getRule(premise, production, count);
-        assertEquals(expResult.toString(), result.toString());
+        assertEquals(expResult, result.toString());
     }
 
     /**
@@ -119,14 +124,14 @@ public class CSGrammarTest {
     @Test
     public void testCreateGrammar_int() {
         System.out.println("createGrammar");
-        int repeats = 2;
+        int repeats = 2 ;
         char premise = 'F';
         String rule = "F[-EF[3&A]]E[+F[3^A]]";
         instance.addRule(premise, rule);
         String premise2 = "F<E";
         String rule2 = "F[&F[3+A]][^F[3-A]]";
         instance.addRule(premise2, rule2);
-         String expResult = "F[-EF[3&A]]E[+F[3^A]][-EF[-EF[3&A]]E[+F[3^A]][3&A]]E[+F[-EF[3&A]]E[+F[3^A]][3^A]]";
+        String expResult = "F[-EF[3&A]]E[+F[3^A]][-F[&F[3+A]][^F[3-A]]F[-EF[3&A]]E[+F[3^A]][3&A]]E[+F[-EF[3&A]]E[+F[3^A]][3^A]]";
         String result = instance.createGrammar(repeats);
         assertEquals(expResult, result);
     }
