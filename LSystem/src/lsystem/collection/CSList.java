@@ -116,7 +116,7 @@ public class CSList {
      */
     public StringBuilder getCSRule(char pre, String production, int index) {  
         StringBuilder rule = new StringBuilder();
-        if (((index > 0) &&  (index < production.length())) && (cs_premises.containsKey(pre))) {
+        if (((index > 0) &&  (index < production.length() - 1)) && (cs_premises.containsKey(pre))) {
             ContextRule context = cs_premises.get(pre);
             int idx = context.getIndex();
             char contextChar = context.getContextChar();
