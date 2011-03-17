@@ -113,10 +113,11 @@ public class CSGrammar implements Grammar {
   */
   private String parseRules(String production) {
     StringBuilder newProduction = new StringBuilder("");
-    int count = -1;
+    int count = 0;
     CharacterIterator it = getIterator(production);
     for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
-      newProduction.append((hasKey(ch)) ? getRule(ch, production, ++count) : ch);
+      newProduction.append((hasKey(ch)) ? getRule(ch, production, count) : ch);
+      ++count;
     }
     return newProduction.toString();
   }

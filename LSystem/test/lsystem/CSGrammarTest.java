@@ -124,14 +124,14 @@ public class CSGrammarTest {
     @Test
     public void testCreateGrammar_int() {
         System.out.println("createGrammar");
-        int repeats = 2 ;
+        int repeats = 1 ;
         char premise = 'F';
         String rule = "F[-EF[3&A]]E[+F[3^A]]";
         instance.addRule(premise, rule);
         String premise2 = "F<E";
         String rule2 = "F[&F[3+A]][^F[3-A]]";
         instance.addRule(premise2, rule2);
-        String expResult = "F[-EF[3&A]]E[+F[3^A]][-F[&F[3+A]][^F[3-A]]F[-EF[3&A]]E[+F[3^A]][3&A]]E[+F[-EF[3&A]]E[+F[3^A]][3^A]]";
+        String expResult = "F[-EF[3&A]]E[+F[3^A]]";
         String result = instance.createGrammar(repeats);
         assertEquals(expResult, result);
     }
@@ -176,7 +176,7 @@ public class CSGrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.6.8";
+        String expResult = "0.6.9";
         String result = instance.version();
         assertEquals(expResult, result);
     }

@@ -95,16 +95,16 @@ public class CSList {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private StringBuilder getRule(char pre) {
-        StringBuilder rule = new StringBuilder();
-        if (rules.containsKey(pre)) {
-            rule.append(rules.get(pre));
-        } else // this is a kind of failsafe since using
-        {
-            rule.append(pre);        // classes should use hasRule as a filter
-        }
-        return rule;
-    }
+//    private StringBuilder getRule(char pre) {
+//        StringBuilder rule = new StringBuilder();
+//        if (rules.containsKey(pre)) {
+//            rule.append(rules.get(pre));
+//        } else // this is a kind of failsafe since using
+//        {
+//            rule.append(pre);        // classes should use hasRule as a filter
+//        }
+//        return rule;
+//    }
 
     /**
      * This method controls access to the substitition rules, looks first for a context sensitive rule
@@ -114,27 +114,33 @@ public class CSList {
      * @param index int
      * @return StringBuilder rule
      */
-    public StringBuilder getCSRule(char pre, String production, int index) {
+    public StringBuilder getCSRule(char pre, String production, int index) {  
         StringBuilder rule = new StringBuilder();
-        if (cs_premises.containsKey(pre)) {
+        if (((index > 0) &&  (index < production.length())) && (cs_premises.containsKey(pre))) {
             ContextRule context = cs_premises.get(pre);
             int idx = context.getIndex();
-            int count = index + idx;
-            if ((count < 0) || count > production.length()) {
-                count = 0; // ensure character index is not out of range
-            }
             char contextChar = context.getContextChar();
-            while (isIgnored(production.charAt(count))) {
-                count += idx;
-            }
-            if (contextChar == production.charAt(count)) {
-                rule.append(csrules.get(context.getKeyHash()));
-            } else {
-                rule.append(getRule(pre)); // NB: use getRule because no context
-            }
-        } else {
-            rule.append(getRule(pre)); // NB: use getRule because no context rule
+            int count = index + idx;
+
+                while (isIgnored(production.charAt(count))) { 
+                    count += idx;
+                } 
+                if (contextChar == production.charAt(count)) { 
+                    rule.append(csrules.get(context.getKeyHash()));
+                } else if (rules.containsKey(pre)) {
+                    rule.append(rules.get(pre));
+                } else // this is a kind of failsafe since using
+                {
+                    rule.append(pre);        // classes should use hasRule as a filter
+                }        // classes should use hasRule as a filter
         }
+        
+        else if (rules.containsKey(pre)) {
+            rule.append(rules.get(pre));
+        } else // this is a kind of failsafe since using
+        {
+            rule.append(pre);        // classes should use hasRule as a filter
+        }        // classes should use hasRule as a filter
         return rule;
     }
 
