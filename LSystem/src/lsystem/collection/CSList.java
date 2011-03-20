@@ -115,10 +115,13 @@ public class CSList {
      * @return StringBuilder rule
      */
     public StringBuilder getCSRule(char pre, String production, int index) {  
-        StringBuilder rule = new StringBuilder();
-        if (((index > 0) &&  (index < production.length() - 1)) && (cs_premises.containsKey(pre))) {
-            ContextRule context = cs_premises.get(pre);
+        StringBuilder rule = new StringBuilder();       
+        if (cs_premises.containsKey(pre)) {
+            ContextRule context = cs_premises.get(pre);            
             int idx = context.getIndex();
+            // guard against index out of bounds, and scroll around context
+            if ((idx == -1)&&(index == 0)){index = production.length();}
+            if ((idx == 1)&&(index == production.length()-1)){index = -1;}
             char contextChar = context.getContextChar();
             int count = index + idx;
 
