@@ -165,6 +165,12 @@ public class CSGrammar implements Grammar {
     rules.clear();
     axiom = null;
   }
+
+ /**
+  * Return the Grammar as a formatted string
+  * Format = Axiom: / Ignored: / Rules:
+  * @return description String
+  */
   
   @Override
   public String toString() {
@@ -190,6 +196,7 @@ public class CSGrammar implements Grammar {
   * @return String
   */
   public String getRule(char premise) {
-    throw new RuntimeException("Not supported yet.");
+    throw new RuntimeException("Not supported yet. Use StringBuilder"
+            + " getRule(char premise, String production, int count)");
   }
 }

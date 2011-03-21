@@ -169,8 +169,9 @@ public class CSList {
             }
             builder.append('\n');
         }
-        builder.append("Rules:\n\t");
+        builder.append("Rules:\n");
         for (Character premis : rules.keySet()){
+            builder.append('\t');
             builder.append(premis);
             builder.append("   => ");
             builder.append(rules.get(premis));
