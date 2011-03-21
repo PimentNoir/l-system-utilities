@@ -95,16 +95,6 @@ public class CSList {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-//    private StringBuilder getRule(char pre) {
-//        StringBuilder rule = new StringBuilder();
-//        if (rules.containsKey(pre)) {
-//            rule.append(rules.get(pre));
-//        } else // this is a kind of failsafe since using
-//        {
-//            rule.append(pre);        // classes should use hasRule as a filter
-//        }
-//        return rule;
-//    }
 
     /**
      * This method controls access to the substitition rules, looks first for a context sensitive rule
@@ -124,18 +114,17 @@ public class CSList {
             if ((idx == 1)&&(index == production.length()-1)){index = -1;}
             char contextChar = context.getContextChar();
             int count = index + idx;
-
-                while (isIgnored(production.charAt(count))) { 
-                    count += idx;
+                while (isIgnored(production.charAt(count))) {
+                      count += idx;
                 } 
                 if (contextChar == production.charAt(count)) { 
                     rule.append(csrules.get(context.getKeyHash()));
                 } else if (rules.containsKey(pre)) {
                     rule.append(rules.get(pre));
                 } else // this is a kind of failsafe since using
-                {
-                    rule.append(pre);        // classes should use hasRule as a filter
-                }        // classes should use hasRule as a filter
+                {      // classes should use hasRule as a filter
+                    rule.append(pre);   
+                }   
         }
         
         else if (rules.containsKey(pre)) {
@@ -168,9 +157,32 @@ public class CSList {
 
     /**
      *
-     * @return
+     * @return formatted StringBuilder instance with cs rules
      */
     public StringBuilder toStringBuilder() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        StringBuilder builder = new StringBuilder();
+        if (ignore.length > 0){
+            
+            builder.append("Ignore:\n\t");
+            for (char ign : ignore){
+                builder.append(ign);
+            }
+            builder.append('\n');
+        }
+        builder.append("Rules:\n\t");
+        for (Character premis : rules.keySet()){
+            builder.append(premis);
+            builder.append("   => ");
+            builder.append(rules.get(premis));
+            builder.append('\n');
+        }
+        for (String premis : csrules.keySet()){
+            builder.append('\t');
+            builder.append(premis);
+            builder.append(" => ");
+            builder.append(csrules.get(premis));
+            builder.append('\n');
+        }
+        return builder;
     }
 }

@@ -169,7 +169,21 @@ public class CSGrammarTest {
     }
 
   
-
+    /**
+     * Test of dispose method, of class CSGrammar.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        char[] str = {'[',']','+','-','^','&','3'};
+        instance.setIgnoreList(str);
+        String rule = "F[-EF[3&A]]E[+F[3^A]]";
+        instance.addRule('F', rule);
+        String premise2 = "F<E";
+        String rule2 = "F[&F[3+A]][^F[3-A]]";
+        instance.addRule(premise2, rule2);
+        System.out.print(instance.toString());
+    }
     /**
      * Test of version method, of class CSGrammar.
      */

@@ -130,6 +130,19 @@ public class CSListTest {
     }
 
     /**
+     * Test of testToStringBuilder method, of class CSList.
+     */
+    @Test
+    public void testToStringBuilder() {
+        System.out.println("toStringBuilder");
+        CSList instance = new CSList();
+        instance.addRule("b<a", "b");
+        instance.addRule('b', "a");
+        instance.setIgnoreList("[]1234");
+        System.out.print(instance.toStringBuilder());
+    }
+
+    /**
      * Test of clear method, of class CSList.
      */
     @Test

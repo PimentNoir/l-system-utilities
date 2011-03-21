@@ -168,7 +168,7 @@ public class CSGrammar implements Grammar {
   
   @Override
   public String toString() {
-    StringBuilder description = new StringBuilder("Axiom: ");
+    StringBuilder description = new StringBuilder("Axiom:\n\t");
     description.append(axiom);
     description.append("\n");
     description.append(rules.toStringBuilder());
