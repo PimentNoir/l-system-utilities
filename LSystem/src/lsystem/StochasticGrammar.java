@@ -119,15 +119,13 @@ public class StochasticGrammar implements Grammar {
   * @return lIterator the grammar CharacterIterator
   */
 
-   public CharacterIterator getIterator(String production){
-     if (lIterator == null)
-     {
-      return new StringCharacterIterator(production);
-     }
-     else {
-      lIterator.setText(production);
-      return lIterator;
-     }
+    public CharacterIterator getIterator(String production) {
+        if (lIterator == null) {
+            lIterator = new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+        }
+        return lIterator;
     }
 
     /**

@@ -16,7 +16,6 @@ public class SimpleGrammar implements Grammar {
     private String axiom;
     private RuleList rules;
     private StringCharacterIterator lIterator;
-    
     PApplet myParent;
 
     // preferred constructor?
@@ -84,23 +83,19 @@ public class SimpleGrammar implements Grammar {
         return createGrammar(0);
     }
 
-  /**
-  * Makes the CharacterIterator available internally/externally
-  * Create a new instance if none exists otherwise re-use existing instance
-  * @param production String
-  * @return lIterator the grammar CharacterIterator
-  */
-
-
-    public CharacterIterator getIterator(String production){
-     if (lIterator == null)
-     {
-      return new StringCharacterIterator(production);
-     }
-     else {
-      lIterator.setText(production);
-      return lIterator;
-     }
+    /**
+     * Makes the CharacterIterator available internally/externally
+     * Create a new instance if none exists otherwise re-use existing instance
+     * @param production String
+     * @return lIterator the grammar CharacterIterator
+     */
+    public CharacterIterator getIterator(String production) {
+        if (lIterator == null) {
+            lIterator = new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+        }
+        return lIterator;
     }
 
     public void dispose() {
@@ -109,7 +104,7 @@ public class SimpleGrammar implements Grammar {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder description = new StringBuilder("Axiom: ");
         description.append(axiom);
         description.append("\n");

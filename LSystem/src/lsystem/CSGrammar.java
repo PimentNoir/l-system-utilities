@@ -149,14 +149,14 @@ public class CSGrammar implements Grammar {
   * @param production String
   * @return lIterator the grammar CharacterIterator
   */
-  public CharacterIterator getIterator(String production) {
-    if (lIterator == null) {
-      return new StringCharacterIterator(production);
-    } else {
-      lIterator.setText(production);
-      return lIterator;
+    public CharacterIterator getIterator(String production) {
+        if (lIterator == null) {
+            lIterator = new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+        }
+        return lIterator;
     }
-  }
   
   /**
   * Dispose is called on exit clear collections
