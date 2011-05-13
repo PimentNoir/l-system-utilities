@@ -63,7 +63,7 @@ public class SimpleGrammar implements Grammar {
      * @return production String
      */
     private String parseRules(String production) {
-        StringBuilder newProduction = new StringBuilder("");
+        StringBuilder newProduction = new StringBuilder(production.length() * 4);
         CharacterIterator it = getIterator(production);
         for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
             newProduction.append((hasKey(ch)) ? getRule(ch) : ch);
