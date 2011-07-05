@@ -34,9 +34,9 @@ package lsystem.util;
 public class LUT {
 
     /**
-     * LUT for sine values
+     * LUT for sine values, sava as float to save even more space
      */
-    public static double[] sinLUT = new double[91];
+    public static float[] sinLUT = new float[91];
 
 
     /**
@@ -44,7 +44,7 @@ public class LUT {
      */
     public static void initialize() {
         for (int i = 0; i <= 90; i++) {
-            sinLUT[i] = Math.sin(Math.toRadians(i));
+            sinLUT[i] = (float)Math.sin(Math.toRadians(i));
         }
     }
 
@@ -60,15 +60,17 @@ public class LUT {
         }
         int theta = thet % 360;
         int y = theta % 90;
-        float result = (theta < 90) ? (float) sinLUT[y] : (theta < 180)
-                ? (float) sinLUT[90 - y] : (theta < 270)
-                ? (float) -sinLUT[y] : (float) -sinLUT[90 - y];
+        float result = (theta < 90) ? sinLUT[y] : (theta < 180)
+                ? sinLUT[90 - y] : (theta < 270)
+                ? -sinLUT[y] : -sinLUT[90 - y];
         return result;
     }
 
     /**
      * Look up sin for the passed angle in degrees. NB lacks precision unless
      * float is round number (needed to work with pen and turtle interface)
+     * Casting to int rather than rounding is deliberate, use LUT2 instead for
+     * greater precision with a decimal float input
      * @param thet degree float
      * @return sin value for theta
      */
@@ -88,15 +90,17 @@ public class LUT {
         }
         int theta = thet % 360;
         int y = theta % 90;
-        float result = (theta < 90) ? (float) sinLUT[90 - y] : (theta < 180)
-                ? (float) -sinLUT[y] : (theta < 270)
-                ? (float) -sinLUT[90 - y] : (float) sinLUT[y];
+        float result = (theta < 90) ?  sinLUT[90 - y] : (theta < 180)
+                ?  -sinLUT[y] : (theta < 270)
+                ?  -sinLUT[90 - y] :  sinLUT[y];
         return result;
     }
     
     /**
      * Look up cos for the passed angle in degrees. NB lacks precision unless
      * float is round number (needed to work with pen and turtle interface)
+     * Casting to int rather than rounding is deliberate, use LUT2 instead for
+     * greater precision with a decimal float input
      * @param thet degree float
      * @return sine value for theta
      */
