@@ -32,6 +32,10 @@
  */
 package lsystem.util;
 
+/**
+ * Lookup table for degree cosine/sine, has a fixed precision ca. 0.25 degrees
+ * @author Martin Prout <martin_p@lineone.net>
+ */
 public class LUT2 {
 
     /**
@@ -39,6 +43,9 @@ public class LUT2 {
      */
     public static float[] sinLUT = new float[361];
     
+    /**
+     * Message to display on console processing ide
+     */
     public static final String message = "Sine/Cosine lookup tables initialized"
           + " with a fixed\nprecision of ca. 0.25 degrees. NB: degree input.\n";
 

@@ -34,10 +34,14 @@ package lsystem.util;
 public class LUT {
 
     /**
-     * LUT for sine values, sava as float to save even more space
+     * Lookup table for degree cosine/sine, has a fixed precision 1.0 degrees
+     * @author Martin Prout <martin_p@lineone.net>
      */
     public static float[] sinLUT = new float[91];
     
+    /**
+     * Message to display on console processing ide
+     */
     public static final String message = "Sine/Cosine lookup tables initialized"
          + " with a fixed\nprecision of 1.0 degrees. NB: degree input. Use\n"
             + "LUT2 for greater precision (of ca. 0.25 degrees)\n";

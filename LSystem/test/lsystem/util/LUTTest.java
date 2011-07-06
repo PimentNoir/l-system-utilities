@@ -17,23 +17,40 @@ import static org.junit.Assert.*;
  */
 public class LUTTest {
 
+    /**
+     * 
+     */
     public LUTTest() {
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
        LUT.initialize();
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
     
+    /**
+     * 
+     */
     @Before
     public void setUp() {
         
     }
     
+    /**
+     * 
+     */
     @After
     public void tearDown() {
     }

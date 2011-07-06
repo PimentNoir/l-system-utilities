@@ -13,26 +13,43 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author tux
+ * Very limited context rule tests
+ * @author Martin Prout
  */
 public class ContextRuleTest {
 
+    /**
+     * 
+     */
     public ContextRuleTest() {
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     * 
+     */
     @Before
     public void setUp() {
     }
 
+    /**
+     * 
+     */
     @After
     public void tearDown() {
     }

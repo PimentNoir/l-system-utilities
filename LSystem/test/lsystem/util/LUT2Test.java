@@ -13,23 +13,40 @@ import static org.junit.Assert.*;
  */
 public class LUT2Test {
     
+    /**
+     * 
+     */
     public LUT2Test() {
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @BeforeClass
     public static void setUpClass() throws Exception {
         LUT2.initialize();
     }
 
+    /**
+     * 
+     * @throws Exception
+     */
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
     
+    /**
+     * 
+     */
     @Before
     public void setUp() {
         
     }
     
+    /**
+     * 
+     */
     @After
     public void tearDown() {
     }
