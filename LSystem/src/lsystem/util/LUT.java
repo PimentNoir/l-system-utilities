@@ -37,15 +37,19 @@ public class LUT {
      * LUT for sine values, sava as float to save even more space
      */
     public static float[] sinLUT = new float[91];
-
+    
+    public static final String message = "Sine/Cosine lookup tables initialized"
+         + " with a fixed\nprecision of 1.0 degrees. NB: degree input. Use\n"
+            + "LUT2 for greater precision (of ca. 0.25 degrees)\n";
 
     /**
      * Initialise sin table with values (first quadrant only)
      */
     public static void initialize() {
         for (int i = 0; i <= 90; i++) {
-            sinLUT[i] = (float)Math.sin(Math.toRadians(i));
+            sinLUT[i] = (float) Math.sin(Math.toRadians(i));
         }
+        System.out.print(message);
     }
 
     /**
@@ -90,12 +94,12 @@ public class LUT {
         }
         int theta = thet % 360;
         int y = theta % 90;
-        float result = (theta < 90) ?  sinLUT[90 - y] : (theta < 180)
-                ?  -sinLUT[y] : (theta < 270)
-                ?  -sinLUT[90 - y] :  sinLUT[y];
+        float result = (theta < 90) ? sinLUT[90 - y] : (theta < 180)
+                ? -sinLUT[y] : (theta < 270)
+                ? -sinLUT[90 - y] : sinLUT[y];
         return result;
     }
-    
+
     /**
      * Look up cos for the passed angle in degrees. NB lacks precision unless
      * float is round number (needed to work with pen and turtle interface)
@@ -104,7 +108,6 @@ public class LUT {
      * @param thet degree float
      * @return sine value for theta
      */
-
     public static float cos(float thet) {
         return cos((int) thet);
     }

@@ -29,7 +29,7 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.7.1";
+    public final String VERSION = "0.7.2";
 
     /**
      * add unweighted rule

@@ -18,6 +18,7 @@ public class LUT2Test {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        LUT2.initialize();
     }
 
     @AfterClass
@@ -26,7 +27,7 @@ public class LUT2Test {
     
     @Before
     public void setUp() {
-        LUT2.initialize();
+        
     }
     
     @After
