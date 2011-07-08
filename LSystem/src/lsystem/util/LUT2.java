@@ -27,8 +27,8 @@
  * One annoyance of java is the behaviour of % wrt negative values cf python for 
  * example. A kludge is required to return the complement of 360, which would 
  * not otherwise be required.
- * Double precision will be impossible unless input values are doubles with no 
- * decimal part, so we cast to float for lookup table to save a bit of space
+ * Use LUT.sin(float deg) & LUT.cos(float deg) for degree entry and 
+ * LUT.sinLut(float rad) & LUT.cosLut(float rad) for radians input
  */
 package lsystem.util;
 
@@ -43,11 +43,14 @@ public class LUT2 {
      */
     public static float[] sinLUT = new float[361];
     
-    /**
-     * Message to display on console processing ide
-     */
-    public static final String message = "Sine/Cosine lookup tables initialized"
-          + " with a fixed\nprecision of ca. 0.25 degrees. NB: degree input.\n";
+    public static final String message = "Sine/Cosine lookup tables initialized" 
+    + " with a fixed\nprecision of ca. 0.25 degrees. NB: degree input.\nor use"+
+      " LUT.sinLut(float rad) and or LUT.cosLut(float rad) for radians input\n";
+    
+    
+    public static final float RAD = 57.29578f;
+    public static final float RAD4 = 229.18312f;
+    public static final float TAU = 6.2831853f;
 
 
     /**
@@ -95,6 +98,43 @@ public class LUT2 {
         float result = (theta < 360) ? sinLUT[360 - y] : (theta < 720)
                 ? -sinLUT[y] : (theta < 1080)
                 ? -sinLUT[360 - y] : sinLUT[y];
+        return result;
+    }
+    
+        /**
+     * Look up sine for the passed angle in radians.
+     * 
+     * @param thet radians float
+     * @return sine value for theta
+     */
+    public static float sinLut(float thet) {
+        while (thet < 0) {
+            thet += TAU; // Needed because negative modulus plays badly in java
+        }
+        int theta = Math.round(thet * RAD4) % 1440;
+        int y = theta % 360;
+        float result = (theta < 360) ?  sinLUT[y] : (theta < 720)
+                ? sinLUT[(360 - y)] : (theta < 1080)
+                ? -sinLUT[y] : -sinLUT[(360 - y)];
+        return result;
+    }
+    
+     /**
+     * Look up cos for the passed angle in radians, fixed precision, no better
+     * than 0.25 degree with some scope for errors.
+     * 
+     * @param thet radians float
+     * @return sine value for theta
+     */
+    public static float cosLut(float thet) {
+        while (thet < 0) {
+            thet += TAU; // Needed because negative modulus plays badly in java
+        }
+        int theta = Math.round(thet * RAD4) % 1440;
+        int y = theta % 360;
+        float result = (theta < 360) ? sinLUT[360 - y] : (theta < 720)
+                ? -sinLUT[y] : (theta < 1080)
+                ? -sinLUT[360 - y] :  sinLUT[y];
         return result;
     }
 }

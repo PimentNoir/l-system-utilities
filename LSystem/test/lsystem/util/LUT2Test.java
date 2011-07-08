@@ -123,4 +123,51 @@ public class LUT2Test {
         float result = LUT2.cos(thet);
         assertEquals(expResult, result, 0.01F);
     }
+      /**
+     * Test of sin method, of class LUT.
+     */
+    @Test
+    public void testLutSinMinus() {
+        System.out.println("lutSinMinus");
+        float theta = (float)Math.toRadians(-36);
+        float expResult = (float)Math.sin(theta);
+        float result = LUT2.sinLut(theta);
+        assertEquals(expResult, result, 0.01);
+    }
+
+    /**
+     * Test of sinLut method, of class LUT.
+     */
+    @Test
+    public void testLutSin() {
+        System.out.println("lutSin");
+       float theta = (float)Math.toRadians(36);
+        float expResult = (float)Math.sin(theta);
+        float result = LUT2.sinLut(theta);
+        assertEquals(expResult, result, 0.01);
+    }
+
+    /**
+     * Test of cos method, of class LUT.
+     */
+    @Test
+    public void testLutCosMinus() {
+        System.out.println("lutCosMinus");
+       float theta = (float)Math.toRadians(-36);
+        float expResult = (float)Math.cos(theta);
+        float result = LUT2.cosLut(theta);
+        assertEquals(expResult, result, 0.01);
+    }
+
+    /**
+     * Test of cosLut method, of class LUT.
+     */
+    @Test
+    public void testLutCos() {
+        System.out.println("lutCos");
+        float theta = (float)Math.toRadians(36);
+        float expResult = (float)Math.cos(theta);
+        float result = LUT2.cosLut(theta);
+        assertEquals(expResult, result, 0.01);
+    }
 }
