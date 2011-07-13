@@ -83,7 +83,7 @@ public class LUT {
      * @return sin value for theta
      */
     public static float sin(float thet) {
-        return sin((int) thet);
+        return LUT.sin((int) thet);
     }
 
     /**
@@ -113,6 +113,6 @@ public class LUT {
      * @return sine value for theta
      */
     public static float cos(float thet) {
-        return cos((int) thet);
+        return LUT.cos((int) thet);
     }
 }
