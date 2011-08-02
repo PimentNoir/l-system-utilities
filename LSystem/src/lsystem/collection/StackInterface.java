@@ -30,7 +30,7 @@ public interface StackInterface <E>{
     /**
      *
      */
-    public final String VERSION = "0.7.2";
+    public final String VERSION = "0.7.3";
 
     /**
      *

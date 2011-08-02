@@ -38,6 +38,7 @@ public class LUT {
      * @author Martin Prout <martin_p@lineone.net>
      */
     public static float[] sinLUT = new float[91];
+    public static final float TO_RADIANS = (float) Math.PI / 180;
     
     /**
      * Message to display on console processing ide
@@ -51,9 +52,9 @@ public class LUT {
      */
     public static void initialize() {
         for (int i = 0; i <= 90; i++) {
-            sinLUT[i] = (float) Math.sin(Math.toRadians(i));
+            sinLUT[i] = (float) Math.sin(TO_RADIANS * i);
         }
-        System.out.print(message);
+        //System.out.print(message);
     }
 
     /**

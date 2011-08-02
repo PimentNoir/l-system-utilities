@@ -61,7 +61,7 @@ public class LUT2 {
         for (int i = 0; i <= 360; i++) {
             sinLUT[i] = (float) Math.sin(Math.toRadians(i / 4));
         }
-        System.out.print(message);
+        //System.out.print(message);
     }
 
     /**

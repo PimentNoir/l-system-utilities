@@ -1,7 +1,7 @@
-/* 
+    /* 
  * Copyright (c) 2011 Martin Prout
  * 
- * This library is free software; you can redistribute it and/or
+ * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
@@ -17,60 +17,49 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
 package lsystem.turtle;
 
 /**
  *
- * @author tux
+ * @author Martin Prout <martin_p@lineone.net>
  */
-public interface TurtleInterface {
+public interface Turtle3D {
 
-    /**
-     *
-     */
     public final String VERSION = "0.7.3";
 
     /**
-     *
-     * @return copy
+     * Any implementing classes should move forward by distance without drawing
+     * @param distance 
      */
-    Object clone();
+    void forward(float distance);
 
     /**
-     * Angle getter
-     * @return angle float
+     * Any implementing classes should draw something eg. line rod box etc
+     * @param distance 
      */
-    float getTheta();
+    void draw(float distance);
 
     /**
-     * X position getter
-     * @return x position float
+     * Up and Down to non aeronautical
+     * @param angle degrees int/float
      */
-    float getX();
+    void pitch(int angle);
+
+    void pitch(float angle);
 
     /**
-     * Y position getter
-     * @return y position float
+     * Rotate about the axis (of the direction we are moving in)
+     * @param angle degrees int/float
      */
-    float getY();
+    void roll(int angle);
+
+    void roll(float angle);
 
     /**
-     * Angle setter
-     * @param theta
+     * Left and Right turn to non aeronautical
+     * @param angle degrees int/float
      */
-    void setTheta(float theta);
+    void yaw(int angle);
 
-    /**
-     * X position setter
-     * @param x position float
-     */
-    void setX(float x);
-
-    /**
-     * Y position setter
-     * @param y position float
-     */
-    void setY(float y);
-
+    void yaw(float angle);
 }

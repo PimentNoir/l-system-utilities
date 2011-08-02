@@ -47,7 +47,7 @@ public class StochasticGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new StochasticList();
-        System.err.println("StochasticGrammar LSystem v" + version());
+        //System.err.println("StochasticGrammar LSystem v" + version());
     }
 
     /**

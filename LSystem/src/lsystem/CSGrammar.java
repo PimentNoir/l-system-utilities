@@ -50,7 +50,7 @@ public class CSGrammar implements Grammar {
     this.parent.registerDispose(this);
     this.axiom = axiom;
     rules = new CSList();
-    System.err.println("CSGrammar LSystem v" + version());
+   // System.err.println("CSGrammar LSystem v" + version());
   }
   
   /**
