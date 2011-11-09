@@ -20,9 +20,9 @@
 
 package lsystem.collection;
 
-import lsystem.turtle.Turtle;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import lsystem.turtle.Turtle;
 import processing.core.PApplet;
 
 

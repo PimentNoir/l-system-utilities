@@ -21,9 +21,9 @@
 
 package lsystem.collection;
 
-import lsystem.turtle.Pen;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import lsystem.turtle.Pen;
 import processing.core.PApplet;
 
 /**

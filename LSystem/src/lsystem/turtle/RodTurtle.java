@@ -20,7 +20,7 @@
 
 package lsystem.turtle;
 
-import lsystem.util.*;
+import lsystem.util.LUT;
 import processing.core.PApplet;
 
 /**

@@ -21,10 +21,10 @@
 
 package lsystem;
 
-import processing.core.PApplet;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import lsystem.collection.CSList;
+import processing.core.PApplet;
 
 /**
  * Implements Grammar interface

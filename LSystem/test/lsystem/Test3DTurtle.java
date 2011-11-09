@@ -4,13 +4,12 @@
  */
 package lsystem;
 
-import java.text.CharacterIterator;
 
-import lsystem.turtle.Turtle3D;
+import java.text.CharacterIterator;
 import lsystem.turtle.RodTurtle;
+import lsystem.turtle.Turtle3D;
 import lsystem.util.LUT;
-import processing.core.*;
-import processing.opengl.PGraphicsOpenGL;
+import processing.core.PApplet;
 //import processing.core.PGraphics3D;
 
 /**
@@ -33,6 +32,9 @@ public class Test3DTurtle extends PApplet {
     
     Turtle3D turtle;
 
+    /**
+     * 
+     */
     public Test3DTurtle() {
         super();
     }
@@ -73,6 +75,9 @@ public class Test3DTurtle extends PApplet {
     int PHI = 90;
     String production = "";
 
+    /**
+     * PApplet setup
+     */
     @Override
     public void setup() {
         size(800, 600, PApplet.OPENGL);
@@ -88,6 +93,9 @@ public class Test3DTurtle extends PApplet {
         noStroke();
     }
 
+    /**
+     * Optimising opengl
+     */
     public void configureOpenGL() {
         hint(ENABLE_OPENGL_4X_SMOOTH);
         hint(DISABLE_OPENGL_ERROR_REPORT);
@@ -109,6 +117,9 @@ public class Test3DTurtle extends PApplet {
         }
     }
 
+    /**
+     * PApplet draw
+     */
     @Override
     public void draw() {
         background(20, 20, 200);
@@ -182,6 +193,9 @@ public class Test3DTurtle extends PApplet {
         }
     }
 
+    /**
+     * Control depth of hilbert fractal
+     */
     @Override
     public void keyReleased() {
         switch (key) {

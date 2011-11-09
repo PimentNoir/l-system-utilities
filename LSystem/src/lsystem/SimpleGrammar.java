@@ -20,11 +20,11 @@
 
 package lsystem;
 
-import lsystem.collection.SimpleRuleList;
-import lsystem.collection.RuleList;
-import processing.core.PApplet;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
+import lsystem.collection.RuleList;
+import lsystem.collection.SimpleRuleList;
+import processing.core.PApplet;
 
 /**
  * Implements Grammar interface

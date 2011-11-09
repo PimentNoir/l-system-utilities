@@ -41,7 +41,7 @@ public interface Turtle3D {
 
     /**
      * Up and Down to non aeronautical
-     * @param angle degrees int/float
+     * @param angle degrees/radians int/float
      */
     void pitch(int angle);
 
@@ -49,7 +49,7 @@ public interface Turtle3D {
 
     /**
      * Rotate about the axis (of the direction we are moving in)
-     * @param angle degrees int/float
+     * @param angle degrees/radians int/float
      */
     void roll(int angle);
 
@@ -57,7 +57,7 @@ public interface Turtle3D {
 
     /**
      * Left and Right turn to non aeronautical
-     * @param angle degrees int/float
+     * @param angle degrees/radians int/float
      */
     void yaw(int angle);
 
