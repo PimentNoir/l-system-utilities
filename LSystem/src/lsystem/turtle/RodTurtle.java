@@ -68,16 +68,28 @@ public class RodTurtle implements Turtle3D {
         parent.rotateX(angle * LUT.TO_RADIANS);
     }
 
+    /**
+     * 
+     * @param angle
+     */
     @Override
     public void pitch(float angle) {
         parent.rotateY(angle);
     }
 
+    /**
+     * 
+     * @param angle
+     */
     @Override
     public void roll(float angle) {
         parent.rotateZ(angle);
     }
 
+    /**
+     * 
+     * @param angle
+     */
     @Override
     public void yaw(float angle) {
         parent.rotateX(angle);
@@ -86,8 +98,7 @@ public class RodTurtle implements Turtle3D {
     /**
      * Draw a smooth cylinder capped at one end with a sphere uses
      * a look up table for sin and cos (NB: degree not radians)
-     * @param distance 
-     * @distance the length of the cylinder
+     * @param distance the length of the cylinder
      */
     public void drawRod(float distance) {
         int sides = detail[3]; // ensure 360 % sides is zero
@@ -113,13 +124,10 @@ public class RodTurtle implements Turtle3D {
     /**
      * Draws a hemisphere cap, saves drawing spheres detail is number 
      * of lat & long divisions of the sphere
-     * @param r 
-     * @param dist 
-     * @param detail 
-     * @r radius float
-     * @dist is distance to cap from 'centre origin' float
-     * @detail latitude division int
-     */
+     * @param r radius float
+     * @param dist is distance to cap from 'centre origin' float
+     * @param detail latitude division int
+      */
     public void nextCap(float r, float dist, int detail) {
         int halfLat = detail / 2;
         for (int i = 0; i <= halfLat; i++) {
@@ -144,9 +152,8 @@ public class RodTurtle implements Turtle3D {
 
     /**
      * Draws a sphere cap, as the first cap
-     * @param r 
-     * @dist is distance to cap from 'centre origin' float
-     * @detail latitude division int
+     * @param r radius float
+     * @param detail latitude division int
      */
     public void firstCap(float r, int detail) {
         parent.sphereDetail(detail);

@@ -98,8 +98,7 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * Private parseRules helper function
-     * @param prod String
-     * @param rule Rule
+     * @param production Rule
      * @return production String
      */
     private String parseRules(String production) {

@@ -129,7 +129,6 @@ public class CSGrammar implements Grammar {
   
   /**
   * Private parseRules helper function
-  * @param prod String
   * @return production String
   */
   private String parseRules(String production) {

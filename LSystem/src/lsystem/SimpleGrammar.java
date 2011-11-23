@@ -79,7 +79,6 @@ public class SimpleGrammar implements Grammar {
 
     /**
      * Private parseRules helper function
-     * @param prod String
      * @return production String
      */
     private String parseRules(String production) {
