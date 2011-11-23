@@ -25,7 +25,7 @@ package lsystem.turtle;
  */
 public interface Turtle3D {
 
-    public final String VERSION = "0.7.3";
+    public final String VERSION = "0.7.4";
 
     /**
      * Any implementing classes should move forward by distance without drawing

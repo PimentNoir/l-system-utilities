@@ -5,6 +5,7 @@
 
 package lsystem.collection.csrule;
 
+
 import static org.junit.Assert.assertEquals;
 import org.junit.*;
 

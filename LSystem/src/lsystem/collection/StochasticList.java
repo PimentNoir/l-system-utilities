@@ -1,128 +1,127 @@
-/* 
+/**
  * Copyright (c) 2011 Martin Prout
- * 
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ *
  * http://creativecommons.org/licenses/LGPL/2.1/
- * 
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 package lsystem.collection;
 
 import java.util.*;
+import lsystem.collection.wrule.WRule;
+import lsystem.collection.wrule.WeightedRule;
 
 /**
- * A storage class for weighted rules
- * holds/implements the weighted selection logic
+ * A storage class for weighted rules holds/implements the weighted selection
+ * logic
+ *
  * @author Martin Prout
  */
 public class StochasticList implements RuleList {
 
     private Set<Character> premises;
-    private Map<Character, Map<String, Float>> weightedRules;
+    private Map<Character, List<WeightedRule>> weightedRules;
+    private WeightedRuleChooser chooser;
 
     /**
      * Constructor
      */
     public StochasticList() {
         premises = new HashSet<Character>();
-        weightedRules = new HashMap<Character, Map<String, Float>>();
+        weightedRules = new HashMap<Character, List<WeightedRule>>();
+        chooser = new WeightedRuleChooser();
     }
 
-    public void addRule(char pre, String rule) throws RuntimeException {
+    @Override
+    public void addRule(char pre, String rule) {//throws RuntimeException {
         addRule(pre, rule, 1.0f);
     }
 
-    public void addRule(char pre, String rule, float weight) throws RuntimeException {
-        Map<String, Float> temp;
+    @Override
+    public void addRule(char pre, String rule, float weight) {//throws RuntimeException {
         if (premises.contains(pre)) // we store multiple rules in existing map
         {
-            temp = weightedRules.get(pre);
-            temp.put(rule, weight);
-        } else { // we need a new rule/weight map
-            Map<String, Float> temp2 = new HashMap<String, Float>();
-            temp2.put(rule, weight);
-            weightedRules.put(pre, temp2);
+            List<WeightedRule> temp = weightedRules.get(pre);
+            temp.add(new WRule(rule, weight));
+        } else { // we need a new List of weighted rules
+            List<WeightedRule> temp = new ArrayList<WeightedRule>();
+            temp.add(new WRule(rule, weight));
+            weightedRules.put(pre, temp);
         }
         premises.add(pre);
     }
 
-    private String getStochasticRule(Map<String, Float> weightedRules) {
-        String result = null;
-        Map<String, Float> temp = weightedRules;
-        Collection<Float> values = temp.values();
-        Iterator<Float> it = values.iterator();
-        float total = 0;
-        double p = Math.random();
-        while (it.hasNext()) {
-            total += it.next();
-        }
-        for (Map.Entry entry : temp.entrySet()) {
-            if (p < (Float) entry.getValue() / total) {
-                result = (String) entry.getKey();
-                break;
-            } else {
-                p -= (Float) entry.getValue() / total;
-            }
-        }
-        return result;
+    private String getStochasticRule(List<WeightedRule> weightedRules) {
+        WeightedRule rule = chooser.chooseOnWeight(weightedRules);
+        return rule.getValue();
     }
 
+    @Override
     public String getRule(char pre) {
-        Map<String, Float> temp = weightedRules.get(pre);
-        if (temp.size() == 1) {
-            Object[] result = temp.keySet().toArray();
-            return (String) result[0];
-        } else {
-            return getStochasticRule(temp);
-        }
+        List<WeightedRule> temp = weightedRules.get(pre);
+        return getStochasticRule(temp);
     }
 
-    /**
-     *
-     * @return
-     */
+    @Override
     public StringBuilder toStringBuilder() {
         StringBuilder sb = new StringBuilder("Rules:\n");
-        for (Map.Entry entrySet : weightedRules.entrySet()) {
-            Character ch = (Character) entrySet.getKey();
-            sb.append(ch);
+        for (Character premis : premises) {
+            sb.append(premis);
             sb.append("=>\n");
-            Map rules = (Map) entrySet.getValue();
-            for (Object entry : rules.entrySet()) {
-                String rule = (String) ((Map.Entry) entry).getKey();
-                sb.append("    ");
-                sb.append(rule);
-                Float weight = (Float) ((Map.Entry) entry).getValue();
-                sb.append(" [");
-                sb.append(weight);
-                sb.append(']');
+            for (WeightedRule rule : weightedRules.get(premis)) {
+                sb.append(rule.toString());
                 sb.append('\n');
             }
         }
         return sb;
+    }
+    
+    /**
+     * Helper class
+     */
+
+    class WeightedRuleChooser {
+
+        public WeightedRule chooseOnWeight(List<WeightedRule> rules) {
+            float total = 0.0f;
+            for (WeightedRule wr : rules) {
+                total += wr.getWeight();
+            }
+            double r = Math.random() * total;
+            float cumulative = 0.0f;
+            for (WeightedRule wr : rules) {
+                cumulative += wr.getWeight();
+                if (cumulative >= r) {
+                    return wr;
+                }
+            }
+            throw new RuntimeException("Should never be shown.");
+        }
     }
 
     /**
      * 
      * Empty collections on dispose
      */
+    @Override
     public void clear() {
         premises.clear();
         weightedRules.clear();
     }
 
+    @Override
     public boolean hasRule(char pre) {
         return premises.contains(pre);
     }

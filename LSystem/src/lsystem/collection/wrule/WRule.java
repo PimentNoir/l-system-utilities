@@ -1,7 +1,9 @@
+package lsystem.collection.wrule;
+
 /* 
  * Copyright (c) 2011 Martin Prout
  * 
- * This library is free software; you can redistribute it and/or
+ * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
@@ -17,57 +19,50 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+public class WRule implements WeightedRule {
 
-package lsystem.collection;
-
-/**
- * RuleList interface to a Collection of L-System rules
- * @author Martin Prout
- */
-public interface RuleList {
+    private float weight;
+    private String rule;
 
     /**
-     *
-     */
-    public final String VERSION = "0.7.4";
-    /**
-     * 
-     * @param pre
-     * @param rule
-     * @throws RuntimeException
-     */
-    public void addRule(char pre, String rule) throws RuntimeException;
-    /**
-     *
-     * @param pre
+     * Two parameter constructor, explicitly set weighting
      * @param rule
      * @param weight
-     * @throws RuntimeException
      */
-    public void addRule(char pre, String rule, float weight) throws RuntimeException;
-    /**
-     *
-     * @param pre
-     * @return rule
-     */
-    public String getRule(char pre);
-    /**
-     *
-     * @param pre
-     * @return true
-     */
-    public boolean hasRule(char pre);
+    public WRule(String rule, float weight) {
+        this.rule = rule;
+        this.weight = (weight > 0) ? weight : 1.0f;
+    }
 
     /**
-     *
+     * One parameter constructor, default weighting is 1.0f
+     * @param rule
      */
-    public void clear();
+    public WRule(String rule) {
+        this(rule, 1.0f);
+    }
 
     /**
-     *
+     * 
      * @return
      */
-    public StringBuilder toStringBuilder();
-}
+    @Override
+    public float getWeight() {
+        return weight;
+    }
 
+    /**
+     * 
+     * @return
+     */
+    @Override
+    public String getValue() {
+        return rule;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("     %s\tWeight [%f]", rule, weight);
+    }
+}
 
