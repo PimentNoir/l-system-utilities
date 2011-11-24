@@ -25,7 +25,7 @@ import lsystem.collection.wrule.WeightedRule;
 
 /**
  * A storage class for weighted rules holds/implements the weighted selection
- * logic
+ * logic (now as inner class since version 0.74 [24 November 2011])
  *
  * @author Martin Prout
  */
@@ -36,7 +36,8 @@ public class StochasticList implements RuleList {
     private WeightedRuleChooser chooser;
 
     /**
-     * Constructor
+     * Default Constructor, initialises collections and instance of 
+     * stochastic rule chooser
      */
     public StochasticList() {
         premises = new HashSet<Character>();
@@ -45,24 +46,29 @@ public class StochasticList implements RuleList {
     }
 
     @Override
-    public void addRule(char pre, String rule) {//throws RuntimeException {
+    public void addRule(char pre, String rule) {
         addRule(pre, rule, 1.0f);
     }
 
     @Override
-    public void addRule(char pre, String rule, float weight) {//throws RuntimeException {
-        if (premises.contains(pre)) // we store multiple rules in existing map
+    public void addRule(char pre, String rule, float weight) {
+        if (premises.contains(pre)) // we store multiple rules in existing List
         {
             List<WeightedRule> temp = weightedRules.get(pre);
             temp.add(new WRule(rule, weight));
-        } else { // we need a new List of weighted rules
+        } else { // we create a new List of weighted rules
             List<WeightedRule> temp = new ArrayList<WeightedRule>();
             temp.add(new WRule(rule, weight));
             weightedRules.put(pre, temp);
         }
         premises.add(pre);
     }
-
+    
+    /**
+     * Uses inner class chooser instance to handle random choice logic
+     * @param weightedRules List of WeightedRule
+     * @return rule String
+     */
     private String getStochasticRule(List<WeightedRule> weightedRules) {
         WeightedRule rule = chooser.chooseOnWeight(weightedRules);
         return rule.getValue();
@@ -89,7 +95,7 @@ public class StochasticList implements RuleList {
     }
     
     /**
-     * Helper class
+     * Inner class, to handle chooser logic
      */
 
     class WeightedRuleChooser {
@@ -107,21 +113,26 @@ public class StochasticList implements RuleList {
                     return wr;
                 }
             }
-            throw new RuntimeException("Should never be shown.");
+            throw new RuntimeException("Random rule chooser failure");
         }
     }
 
     /**
-     * 
-     * Empty collections on dispose
+     * Dereference chooser and empty the
+     * collections, is called by dispose
      */
     @Override
     public void clear() {
+        chooser = null;
         premises.clear();
         weightedRules.clear();
     }
 
     @Override
+    /**
+     * @param pre key character
+     * @return boolean
+     */
     public boolean hasRule(char pre) {
         return premises.contains(pre);
     }
