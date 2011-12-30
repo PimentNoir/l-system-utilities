@@ -47,7 +47,7 @@ public class LUT2 {
     + " with a fixed\nprecision of ca. 0.25 degrees. NB: degree input.\nor use"+
       " LUT.sinLut(float rad) and or LUT.cosLut(float rad) for radians input\n";
     
-    
+    public static boolean initialized = false;
     public static final float RAD = 57.29578f;
     public static final float RAD4 = 229.18312f;
     public static final float TAU = 6.2831853f;
@@ -58,8 +58,11 @@ public class LUT2 {
      * Save a bit of space by storing as float
      */
     public static void initialize() {
+        if (initialized == false){
         for (int i = 0; i <= 360; i++) {
             sinLUT[i] = (float) Math.sin(Math.toRadians(i / 4));
+        }
+        initialized = true;
         }
         //System.out.print(message);
     }
