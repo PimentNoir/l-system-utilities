@@ -112,7 +112,7 @@ public class RodTurtle implements Turtle3D {
      * @param distance the length of the cylinder
      */
     public void drawRod(float distance) {
-        drawRod(3);
+        drawRod(distance, 3); // arbitrary level of 3 for detail
     }
 
     /**
