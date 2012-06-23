@@ -17,14 +17,13 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
 package lsystem.turtle;
 
 import lsystem.util.LUT;
 import processing.core.PApplet;
 
 /**
- * 
+ *
  * @author Martin Prout <martin_p@lineone.net>
  */
 public class RodTurtle implements Turtle3D {
@@ -36,6 +35,7 @@ public class RodTurtle implements Turtle3D {
 
     /**
      * initialise and instance of RodTurtle
+     *
      * @param parent
      */
     public RodTurtle(PApplet parent) {
@@ -46,6 +46,16 @@ public class RodTurtle implements Turtle3D {
     @Override
     public void draw(float distance) {
         drawRod(distance);
+    }
+    
+
+    /**
+     * 
+     * @param distance
+     * @param depth
+     */
+    public void draw(float distance, int depth) {
+        drawRod(distance, depth);
     }
 
     @Override
@@ -69,7 +79,7 @@ public class RodTurtle implements Turtle3D {
     }
 
     /**
-     * 
+     *
      * @param angle
      */
     @Override
@@ -78,7 +88,7 @@ public class RodTurtle implements Turtle3D {
     }
 
     /**
-     * 
+     *
      * @param angle
      */
     @Override
@@ -87,7 +97,7 @@ public class RodTurtle implements Turtle3D {
     }
 
     /**
-     * 
+     *
      * @param angle
      */
     @Override
@@ -96,16 +106,28 @@ public class RodTurtle implements Turtle3D {
     }
 
     /**
-     * Draw a smooth cylinder capped at one end with a sphere uses
-     * a look up table for sin and cos (NB: degree not radians)
+     * Draw a smooth cylinder capped at one end with a sphere uses a look up
+     * table for sin and cos (NB: degree not radians)
+     *
      * @param distance the length of the cylinder
      */
     public void drawRod(float distance) {
-        int sides = detail[3]; // ensure 360 % sides is zero
+        drawRod(3);
+    }
+
+    /**
+     * Draw a smooth cylinder capped at one end with a sphere uses a look up
+     * table for sin and cos (NB: degree not radians)
+     *
+     * @param distance the length of the cylinder
+     * @param level detail ie inverse of level 
+     */
+    public void drawRod(float distance, int level) {
+        int sides = detail[level]; // ensure 360 % sides is zero
         float r = distance / 7;
         int angle = 0;
         int angleIncrement = 360 / sides;
-        firstCap(distance / 7, sides);
+        endCap(distance / 7, sides);
         parent.translate(0, 0, distance / 2);
         parent.beginShape(PApplet.QUAD_STRIP);
         for (int i = 0; i <= sides; i++) {
@@ -114,50 +136,19 @@ public class RodTurtle implements Turtle3D {
             parent.vertex(r * LUT.cos(angle), r * LUT.sin(angle), -distance / 2);
             angle += angleIncrement;
         }
-        // add hemisphere cap to cylinder
-        nextCap(distance / 7, distance / 2, sides);
         parent.endShape();
         parent.translate(0, 0, distance / 2);
 
     }
 
     /**
-     * Draws a hemisphere cap, saves drawing spheres detail is number 
-     * of lat & long divisions of the sphere
-     * @param r radius float
-     * @param dist is distance to cap from 'centre origin' float
-     * @param detail latitude division int
-      */
-    public void nextCap(float r, float dist, int detail) {
-        int halfLat = detail / 2;
-        for (int i = 0; i <= halfLat; i++) {
-            float lat0 = -90 + 180 * i / detail;
-            float z0 = LUT.sin(lat0) * r;
-            float zr0 = -LUT.cos(lat0) * r;
-
-            float lat1 = -90 + 180 * i / detail;
-            float z1 = LUT.sin(lat1) * r;
-            float zr1 = -LUT.cos(lat1) * r;
-            for (int j = 0; j <= detail; j++) {
-                float lng = 360 * j / detail;
-                float x = LUT.cos(lng);
-                float y = -LUT.sin(lng);
-                parent.normal(x * zr0, y * zr0, -z0);
-                parent.vertex(x * zr0, y * zr0, -z0 + dist);
-                parent.normal(x * zr1, y * zr1, -z1);
-                parent.vertex(x * zr1, y * zr1, -z1 + dist);
-            }
-        }
-    }
-
-    /**
-     * Draws a sphere cap, as the first cap
+     * Draws a sphere cap
+     *
      * @param r radius float
      * @param detail latitude division int
      */
-    public void firstCap(float r, int detail) {
+    public void endCap(float r, int detail) {
         parent.sphereDetail(detail);
         parent.sphere(r);
     }
 }
-
