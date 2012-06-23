@@ -35,6 +35,13 @@ public interface Turtle3D {
      * @param distance 
      */
     void forward(float distance);
+    
+    /**
+     * Any implementing classes should draw something eg. line rod box etc
+     * @param distance 
+     * @param level int level of detail for cone/cylinder sphere
+     */
+    void draw(float distance, int level);
 
     /**
      * Any implementing classes should draw something eg. line rod box etc
