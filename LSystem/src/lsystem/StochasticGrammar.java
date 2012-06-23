@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -64,6 +64,7 @@ public class StochasticGrammar implements Grammar {
      * @param premise char
      * @param rule String
      */
+    @Override
     public void addRule(char premise, String rule) {
         rules.addRule(premise, rule);
     }
@@ -74,6 +75,7 @@ public class StochasticGrammar implements Grammar {
      * @param rule String
      * @param weight float     
      */
+    @Override
     public void addRule(char premise, String rule, float weight) {
         rules.addRule(premise, rule, weight);
     }
@@ -84,6 +86,7 @@ public class StochasticGrammar implements Grammar {
      * @param premise char
      * @return rule String   
      */
+    @Override
     public String getRule(char premise) {
         return rules.getRule(premise);
     }
@@ -92,6 +95,7 @@ public class StochasticGrammar implements Grammar {
      * @param premise char
      * @return true when present
      */
+    @Override
     public boolean hasKey(char premise) {
         return rules.hasRule(premise);
     }
@@ -114,6 +118,7 @@ public class StochasticGrammar implements Grammar {
      * create production String from axiom, rules (and no. generations)
      * @return production String
      */
+    @Override
     public String createGrammar(int repeats) {
         String production = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -127,6 +132,7 @@ public class StochasticGrammar implements Grammar {
      * useful in testing, expect to return axiom
      * @return production String
      */
+    @Override
     public String createGrammar() {
         return createGrammar(0);
     }
@@ -138,6 +144,7 @@ public class StochasticGrammar implements Grammar {
   * @return lIterator the grammar CharacterIterator
   */
 
+    @Override
     public CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
@@ -151,6 +158,7 @@ public class StochasticGrammar implements Grammar {
      * 
      * Empty collections on dispose
      */
+    @Override
     public void dispose() {
         rules.clear();
     }
@@ -169,6 +177,7 @@ public class StochasticGrammar implements Grammar {
      *
      * @return String
      */
+    @Override
     public final String version() {
         return VERSION;
     }

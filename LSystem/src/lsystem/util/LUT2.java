@@ -1,5 +1,5 @@
 /** 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -43,13 +43,28 @@ public class LUT2 {
      */
     public static float[] sinLUT = new float[361];
     
+    /**
+     * 
+     */
     public static final String message = "Sine/Cosine lookup tables initialized" 
     + " with a fixed\nprecision of ca. 0.25 degrees. NB: degree input.\nor use"+
       " LUT.sinLut(float rad) and or LUT.cosLut(float rad) for radians input\n";
     
+    /**
+     * 
+     */
     public static boolean initialized = false;
+    /**
+     * 
+     */
     public static final float RAD = 57.29578f;
+    /**
+     * 
+     */
     public static final float RAD4 = 229.18312f;
+    /**
+     * 
+     */
     public static final float TAU = 6.2831853f;
 
 

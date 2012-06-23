@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -64,6 +64,7 @@ public class PenStack implements StackInterface{
         }
     }
 
+    @Override
     public void push(Object pen) {
         if (pen != null) {
             stack.push((Pen) pen);
@@ -74,6 +75,7 @@ public class PenStack implements StackInterface{
      * Pen pop
      * @return Pen Pen
      */
+    @Override
     public Pen pop() {
         return stack.pop();
     }
@@ -81,6 +83,7 @@ public class PenStack implements StackInterface{
     /**
      *
      */
+    @Override
     public void dispose() {
         stack.clear();
         stack = null;

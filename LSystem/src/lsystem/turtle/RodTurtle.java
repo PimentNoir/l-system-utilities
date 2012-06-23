@@ -1,5 +1,5 @@
     /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -108,7 +108,7 @@ public class RodTurtle implements Turtle3D {
         firstCap(distance / 7, sides);
         parent.translate(0, 0, distance / 2);
         parent.beginShape(PApplet.QUAD_STRIP);
-        for (int i = 0; i <= (sides + 1); i++) {
+        for (int i = 0; i <= sides; i++) {
             parent.normal(LUT.cos(angle), LUT.sin(angle), 0);
             parent.vertex(r * LUT.cos(angle), r * LUT.sin(angle), distance / 2);
             parent.vertex(r * LUT.cos(angle), r * LUT.sin(angle), -distance / 2);
@@ -131,15 +131,15 @@ public class RodTurtle implements Turtle3D {
     public void nextCap(float r, float dist, int detail) {
         int halfLat = detail / 2;
         for (int i = 0; i <= halfLat; i++) {
-            float lat0 = -85 + 180 * (i - 1) / detail;
+            float lat0 = -90 + 180 * i / detail;
             float z0 = LUT.sin(lat0) * r;
             float zr0 = -LUT.cos(lat0) * r;
 
-            float lat1 = -85 + 180 * i / detail;
+            float lat1 = -90 + 180 * i / detail;
             float z1 = LUT.sin(lat1) * r;
             float zr1 = -LUT.cos(lat1) * r;
             for (int j = 0; j <= detail; j++) {
-                float lng = 360 * (j - 1) / detail;
+                float lng = 360 * j / detail;
                 float x = LUT.cos(lng);
                 float y = -LUT.sin(lng);
                 parent.normal(x * zr0, y * zr0, -z0);

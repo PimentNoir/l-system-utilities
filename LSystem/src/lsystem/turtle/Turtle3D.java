@@ -1,5 +1,5 @@
     /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -25,7 +25,10 @@ package lsystem.turtle;
  */
 public interface Turtle3D {
 
-    public final String VERSION = "0.7.4";
+    /**
+     * 
+     */
+    public final String VERSION = "0.8.0";
 
     /**
      * Any implementing classes should move forward by distance without drawing
@@ -45,6 +48,10 @@ public interface Turtle3D {
      */
     void pitch(int angle);
 
+    /**
+     * 
+     * @param angle
+     */
     void pitch(float angle);
 
     /**
@@ -53,6 +60,10 @@ public interface Turtle3D {
      */
     void roll(int angle);
 
+    /**
+     * 
+     * @param angle
+     */
     void roll(float angle);
 
     /**
@@ -61,5 +72,9 @@ public interface Turtle3D {
      */
     void yaw(int angle);
 
+    /**
+     * 
+     * @param angle
+     */
     void yaw(float angle);
 }

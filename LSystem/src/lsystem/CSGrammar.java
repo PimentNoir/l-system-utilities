@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -67,6 +67,7 @@ public class CSGrammar implements Grammar {
   * @param premise char
   * @param rule String
   */
+    @Override
   public void addRule(char premise, String rule) {
     rules.addRule(premise, rule);
   }
@@ -86,6 +87,7 @@ public class CSGrammar implements Grammar {
   * @param rule String
   * @param weight float
   */
+    @Override
   public void addRule(char premise, String rule, float weight) {
     throw new RuntimeException("Use StochasticGrammar for weighted rules");
   }
@@ -107,6 +109,7 @@ public class CSGrammar implements Grammar {
    * @param premise char
    * @return boolean true if premise is associated with a rule
    */
+    @Override
   public boolean hasKey(char premise) {
     return rules.hasRule(premise);
   }
@@ -147,6 +150,7 @@ public class CSGrammar implements Grammar {
   * @param repeats int no of generations
   * @return production String
   */
+    @Override
   public String createGrammar(int repeats) {
     String production = axiom;
     for (int i = 0; i < repeats; i++) {
@@ -159,6 +163,7 @@ public class CSGrammar implements Grammar {
   * Creates production string with zero repeats
   * @return production String 
   */
+    @Override
   public String createGrammar() {
     return createGrammar(0);
   }
@@ -169,6 +174,7 @@ public class CSGrammar implements Grammar {
   * @param production String
   * @return lIterator the grammar CharacterIterator
   */
+    @Override
     public CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
@@ -181,6 +187,7 @@ public class CSGrammar implements Grammar {
   /**
   * Dispose is called on exit clear collections
   */
+    @Override
   public void dispose() {
     rules.clear();
     axiom = null;
@@ -206,6 +213,7 @@ public class CSGrammar implements Grammar {
   *
   * @return String
   */
+    @Override
   public final String version() {
     return VERSION;
   }
@@ -215,6 +223,7 @@ public class CSGrammar implements Grammar {
   * @param premise char
   * @return String
   */
+    @Override
   public String getRule(char premise) {
     throw new RuntimeException("Not supported yet. Use StringBuilder"
             + " getRule(char premise, String production, int count)");

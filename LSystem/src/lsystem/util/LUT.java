@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -38,7 +38,13 @@ public class LUT {
      * @author Martin Prout <martin_p@lineone.net>
      */
     public static float[] sinLUT = new float[91];
+    /**
+     * 
+     */
     public static final float TO_RADIANS = (float) Math.PI / 180;
+    /**
+     * 
+     */
     public static boolean initialized = false;
     /**
      * Message to display on console processing ide

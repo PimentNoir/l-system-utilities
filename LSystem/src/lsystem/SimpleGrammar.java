@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -61,18 +61,22 @@ public class SimpleGrammar implements Grammar {
         rules = new SimpleRuleList();
     }
 
+    @Override
     public void addRule(char premise, String rule) {
         rules.addRule(premise, rule);
     }
 
+    @Override
     public void addRule(char premise, String rule, float weight) {
         throw new RuntimeException("Use StochasticGrammar for weighted rules");
     }
 
+    @Override
     public String getRule(char premise) {
         return rules.getRule(premise);
     }
 
+    @Override
     public boolean hasKey(char premise) {
         return rules.hasRule(premise);
     }
@@ -90,6 +94,7 @@ public class SimpleGrammar implements Grammar {
         return newProduction.toString();
     }
 
+    @Override
     public String createGrammar(int repeats) {
         String production = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -98,6 +103,7 @@ public class SimpleGrammar implements Grammar {
         return production;
     }
 
+    @Override
     public String createGrammar() {
         return createGrammar(0);
     }
@@ -108,6 +114,7 @@ public class SimpleGrammar implements Grammar {
      * @param production String
      * @return lIterator the grammar CharacterIterator
      */
+    @Override
     public CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
@@ -117,6 +124,7 @@ public class SimpleGrammar implements Grammar {
         return lIterator;
     }
 
+    @Override
     public void dispose() {
         rules.clear();
         axiom = null;
@@ -136,6 +144,7 @@ public class SimpleGrammar implements Grammar {
      *
      * @return String
      */
+    @Override
     public final String version() {
         return VERSION;
     }

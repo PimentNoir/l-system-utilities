@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -40,6 +40,7 @@ public class SimpleRuleList implements RuleList{
         rules = new HashMap<Character, String>();
     }
 
+    @Override
     public void addRule(char pre, String rule) throws RuntimeException{
         if (this.hasRule(pre))
         {
@@ -48,9 +49,11 @@ public class SimpleRuleList implements RuleList{
         premises.add(pre);
         rules.put(pre, rule);
     }
+    @Override
     public void addRule(char pre, String rule, float weight) throws RuntimeException{
         throw new RuntimeException("Use StochasticList to store weighted rules");
     }
+    @Override
     public String getRule(char pre){
         return rules.get(pre);
     }
@@ -59,6 +62,7 @@ public class SimpleRuleList implements RuleList{
      *
      * @return sb representing LSystem axiom/rules
      */
+    @Override
     public StringBuilder toStringBuilder(){
         StringBuilder sb = new StringBuilder("Rules:\n");
         for (char ch : premises){
@@ -74,6 +78,7 @@ public class SimpleRuleList implements RuleList{
      *
      * Empty collections on dispose
      */
+    @Override
     public void clear() {
         premises.clear();
         rules.clear();

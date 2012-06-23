@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011 Martin Prout
+ * Copyright (c) 2011/12 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,7 +29,7 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.7.4";
+    public final String VERSION = "0.8.0";
 
     /**
      * add unweighted rule
