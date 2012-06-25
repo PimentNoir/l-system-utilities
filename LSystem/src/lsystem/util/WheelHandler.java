@@ -9,5 +9,9 @@ package lsystem.util;
  * @author tux
  */
 public interface WheelHandler { 
+    /**
+     * 
+     * @param delta
+     */
     public void handleWheel(final int delta);
 }

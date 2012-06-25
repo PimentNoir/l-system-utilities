@@ -17,7 +17,8 @@ import processing.core.PApplet;
 import processing.core.PVector;
 
 /**
- * Supports the ArcBall manipulation of objects in processing
+ * Supports the ArcBall and MouseWheel zoom
+ * manipulation of objects in processing
  *
  * @author Martin Prout
  */
@@ -42,14 +43,14 @@ public class ArcBall {
             zoom += delta * 0.05f;
         }
     };
-    private ArcballMousewheelListener wheelHandler = new ArcballMousewheelListener();
+    private final ArcballMousewheelListener wheelHandler = new ArcballMousewheelListener();
 
     /**
      *
-     * @param parent
-     * @param center_x
-     * @param center_y
-     * @param radius
+     * @param parent PApplet
+     * @param center_x float x coordinate of arcball center
+     * @param center_y float y coordinate of arcball center
+     * @param radius   float radius of arcball
      */
     public ArcBall(final PApplet parent, float center_x, float center_y, float radius) {
         this.parent = parent;
@@ -122,6 +123,10 @@ public class ArcBall {
         }
     }
 
+    /**
+     * It might be necessary for Applets to 'know' ahead of time that there is
+     * an instance of MouseWheelListener instead of an anonymous class?
+     */
     protected class ArcballMousewheelListener implements MouseWheelListener {
 
         public void mouseWheelMoved(final MouseWheelEvent e) {
@@ -131,6 +136,10 @@ public class ArcBall {
         }
     }
 
+    /**
+     * May or may not be required for use in Web Applet it works so why worry
+     * @param active
+     */
     public final void setActive(boolean active) {
         if (active != isActive) {
             isActive = active;
@@ -204,8 +213,10 @@ public class ArcBall {
         parent.rotate(aa[0], aa[1], aa[2], aa[3]);
     }
 
+    /**
+     * A recommended inclusion for a processing library
+     */
     public void dispose() {
         setActive(false);
-
     }
 }
