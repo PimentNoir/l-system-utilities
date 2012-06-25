@@ -1,10 +1,9 @@
 /**
- * The purpose of this library is to allow users to explore lystems using 
- * processing sketches Copyright (C) 2012 Martin Prout This library is free 
- * software; you can redistribute it and/or modify it under the terms of the 
- * GNU Lesser General Public License as published by the Free Software 
- * Foundation; either version 2.1 of the License, or (at your option) any 
- * later version.
+ * The purpose of this library is to allow users to explore lystems using
+ * processing sketches Copyright (C) 2012 Martin Prout This library is free
+ * software; you can redistribute it and/or modify it under the terms of the GNU
+ * Lesser General Public License as published by the Free Software Foundation;
+ * either version 2.1 of the License, or (at your option) any later version.
  *
  * Obtain a copy of the license at http://www.gnu.org/licenses/lgpl-2.1.html
  */
@@ -34,8 +33,16 @@ public class ArcBall {
     private Quaternion q_drag;
     private PVector[] axisSet;
     private Constrain axis;
+    private boolean isActive = false;
     private final PApplet parent;
     private float zoom = 1.0f;
+    private final WheelHandler zoomWheelHandler = new WheelHandler() {
+        @Override
+        public void handleWheel(final int delta) {
+            zoom += delta * 0.05f;
+        }
+    };
+    private ArcballMousewheelListener wheelHandler = new ArcballMousewheelListener();
 
     /**
      *
@@ -46,17 +53,7 @@ public class ArcBall {
      */
     public ArcBall(final PApplet parent, float center_x, float center_y, float radius) {
         this.parent = parent;
-        this.parent.registerMouseEvent(this);
-        this.parent.registerKeyEvent(this);
-        this.parent.frame.addMouseWheelListener(
-                new MouseWheelListener() {
-
-                    @Override
-                    public void mouseWheelMoved(MouseWheelEvent e) {
-                        zoom += e.getWheelRotation() * 0.05f;
-                    }
-                }); //an abstract mouse wheel listener class instance argument
-
+        this.parent.registerDispose(this);
         this.center_x = center_x;
         this.center_y = center_y;
         this.radius = radius;
@@ -67,6 +64,7 @@ public class ArcBall {
         this.q_drag = new Quaternion();
         this.axisSet = new PVector[]{new PVector(1.0F, 0.0F, 0.0F), new PVector(0.0F, 1.0F, 0.0F), new PVector(0.0F, 0.0F, 1.0F)};
         axis = Constrain.FREE; // no constraints...
+        setActive(true);
     }
 
     /**
@@ -75,27 +73,7 @@ public class ArcBall {
      * @param parent
      */
     public ArcBall(final PApplet parent) {
-        this.parent = parent;
-        this.parent.registerMouseEvent(this);
-        this.parent.registerKeyEvent(this);
-        this.parent.frame.addMouseWheelListener(
-                new MouseWheelListener() {
-
-                    @Override
-                    public void mouseWheelMoved(MouseWheelEvent e) {
-                        zoom += e.getWheelRotation() * 0.05f;
-                    }
-                }); //an abstract mouse wheel listener class instance argument  
-        this.center_x = parent.width * 0.5F;
-        this.center_y = parent.height * 0.5F;
-        this.radius = parent.width * 0.5F;
-        this.v_down = new PVector();
-        this.v_drag = new PVector();
-        this.q_now = new Quaternion();
-        this.q_down = new Quaternion();
-        this.q_drag = new Quaternion();
-        this.axisSet = new PVector[]{new PVector(1.0F, 0.0F, 0.0F), new PVector(0.0F, 1.0F, 0.0F), new PVector(0.0F, 0.0F, 1.0F)};
-        axis = Constrain.FREE;
+        this(parent, parent.width * 0.5F, parent.height * 0.5F, parent.width * 0.5F);
     }
 
     /**
@@ -141,6 +119,30 @@ public class ArcBall {
         }
         if (e.getID() == KeyEvent.KEY_RELEASED) {
             constrain(Constrain.FREE);
+        }
+    }
+
+    protected class ArcballMousewheelListener implements MouseWheelListener {
+
+        public void mouseWheelMoved(final MouseWheelEvent e) {
+            if (zoomWheelHandler != null) {
+                zoomWheelHandler.handleWheel(e.getWheelRotation());
+            }
+        }
+    }
+
+    public final void setActive(boolean active) {
+        if (active != isActive) {
+            isActive = active;
+            if (active) {
+                this.parent.registerMouseEvent(this);
+                this.parent.registerKeyEvent(this);
+                this.parent.addMouseWheelListener(wheelHandler);
+            } else {
+                this.parent.unregisterMouseEvent(this);
+                this.parent.unregisterKeyEvent(this);
+                this.parent.frame.removeMouseWheelListener(wheelHandler);
+            }
         }
     }
 
@@ -201,5 +203,9 @@ public class ArcBall {
         float[] aa = q.getValue();
         parent.rotate(aa[0], aa[1], aa[2], aa[3]);
     }
-}
 
+    public void dispose() {
+        setActive(false);
+
+    }
+}
