@@ -87,7 +87,7 @@ public class rodHilbert2 extends PApplet {
         grammar.addRule('B', "A+F-CFB-F-D1->F>D-1>F-B1>FC-F-A1^");
         grammar.addRule('C', "1>D-1>F-B>F<C-F-A1+FA+F-C<F<B-F-D1^");
         grammar.addRule('D', "1>CFB>F<B1>FA+F-A1+FB>F<B1>FC1^");
-        production = grammar.createGrammar(depth);
+        grammar.generateGrammar(depth);
         if (depth > 0) {
             distance *= 1 / (pow(2, depth) - 1);
         }
@@ -120,7 +120,7 @@ public class rodHilbert2 extends PApplet {
         specular(122, 122, 122);
         shininess(0.7f);
         translate(-distance * adjust[depth], distance  * adjust[depth], -distance * adjust[depth]);
-        CharacterIterator it = grammar.getIterator(production);
+        CharacterIterator it = grammar.getIterator();
         for (char ch = it.first(); ch != CharacterIterator.DONE; ch = it.next()) {
             switch (ch) {
                 case 'F':

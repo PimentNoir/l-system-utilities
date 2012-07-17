@@ -79,4 +79,12 @@ public class ContextRule {
     public int getIndex() {
         return idx;
     }
+    
+   /**
+    * @return contextRule as String
+    */
+    @Override
+    public String toString(){
+        return keyHash;
+    }
 }

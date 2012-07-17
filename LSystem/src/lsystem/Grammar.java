@@ -29,7 +29,7 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.8.0";
+    public final String VERSION = "0.8.1";
 
     /**
      * add unweighted rule
@@ -45,29 +45,53 @@ public interface Grammar {
      * @param weight
      */
     void addRule(char premise, String rule, float weight);
+    
+    /**
+     * Creates production from axiom, rules and no of
+     * generations
+     * @param repeats
+     */
+    void generateGrammar(int repeats);
 
     /**
+     * Useful for testing no generations
+     */
+    void generateGrammar();
+    
+ /**
+  * 
+  * Makes the CharacterIterator available internally/externally
+  * Create a new instance if none exists otherwise re-use existing instance
+  * @return lIterator the grammar CharacterIterator
+  */
+    
+    CharacterIterator getIterator();
+
+    /**
+     * @deprecated 
      * Creates production from axiom, rules and no of
      * generations
      * @param repeats
      * @return production String
      */
-    String createGrammar(int repeats);
+    @Deprecated String createGrammar(int repeats);
 
     /**
+     * @deprecated 
      * Useful for testing no generations
      * @return production String (axiom)
      */
-    String createGrammar();
+    @Deprecated String createGrammar();
 
  /**
+  * @deprecated
   * Makes the CharacterIterator available internally/externally
   * Create a new instance if none exists otherwise re-use existing instance
   * @param production String
   * @return lIterator the grammar CharacterIterator
   */
     
-    CharacterIterator getIterator(String production);
+    @Deprecated CharacterIterator getIterator(String production);
 
     /**
      *

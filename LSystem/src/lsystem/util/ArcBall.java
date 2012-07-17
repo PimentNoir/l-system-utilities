@@ -138,6 +138,7 @@ public class ArcBall {
 
     /**
      * May or may not be required for use in Web Applet it works so why worry
+     * as used by Jonathan Feinberg peasycam, and that works OK
      * @param active
      */
     public final void setActive(boolean active) {
@@ -196,7 +197,7 @@ public class ArcBall {
     }
 
     /**
-     *
+     * Constrain rotation to this axis
      * @param axis
      */
     public void constrain(Constrain axis) {
@@ -204,7 +205,7 @@ public class ArcBall {
     }
 
     /**
-     *
+     * Rotate the parent sketch according to the quaternion
      * @param q
      */
     public void applyQuaternion2Matrix(Quaternion q) {

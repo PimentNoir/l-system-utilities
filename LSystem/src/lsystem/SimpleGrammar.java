@@ -17,7 +17,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
 package lsystem;
 
 import java.text.CharacterIterator;
@@ -27,13 +26,15 @@ import lsystem.collection.SimpleRuleList;
 import processing.core.PApplet;
 
 /**
- * Implements Grammar interface
- * SimpleGrammar class that provides convenience method for working with l-systems
+ * Implements Grammar interface SimpleGrammar class that provides convenience
+ * method for working with l-systems
+ *
  * @author Martin Prout
  */
 public class SimpleGrammar implements Grammar {
 
     private String axiom;
+    private String production;
     private RuleList rules;
     private StringCharacterIterator lIterator;
     PApplet myParent;
@@ -54,6 +55,7 @@ public class SimpleGrammar implements Grammar {
 
     /**
      * Default constructor for testing
+     *
      * @param axiom
      */
     public SimpleGrammar(String axiom) {
@@ -83,6 +85,7 @@ public class SimpleGrammar implements Grammar {
 
     /**
      * Private parseRules helper function
+     *
      * @return production String
      */
     private String parseRules(String production) {
@@ -94,23 +97,45 @@ public class SimpleGrammar implements Grammar {
         return newProduction.toString();
     }
 
-    @Override
-    public String createGrammar(int repeats) {
-        String production = axiom;
+    public void generateGrammar(int repeats) {
+        String prod = axiom;
         for (int i = 0; i < repeats; i++) {
-            production = parseRules(production);
+            prod = parseRules(prod);
         }
-        return production;
+        this.production = prod;
+    }
+
+    public void generateGrammar() {
+        generateGrammar(0);
+    }
+
+    public CharacterIterator getIterator() {
+        if (lIterator == null) {
+            lIterator = new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+        }
+        return lIterator;
     }
 
     @Override
-    public String createGrammar() {
+    @Deprecated public String createGrammar(int repeats) {
+        String prod = axiom;
+        for (int i = 0; i < repeats; i++) {
+            prod = parseRules(prod);
+        }
+        return prod;
+    }
+
+    @Override
+    @Deprecated public String createGrammar() {
         return createGrammar(0);
     }
 
     /**
-     * Makes the CharacterIterator available internally/externally
-     * Create a new instance if none exists otherwise re-use existing instance
+     * Makes the CharacterIterator available internally/externally Create a new
+     * instance if none exists otherwise re-use existing instance
+     *
      * @param production String
      * @return lIterator the grammar CharacterIterator
      */

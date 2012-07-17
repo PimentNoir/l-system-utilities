@@ -17,7 +17,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
 package lsystem;
 
 import java.text.CharacterIterator;
@@ -27,18 +26,22 @@ import lsystem.collection.StochasticList;
 import processing.core.PApplet;
 
 /**
- * StochasticGrammar class that provides convenience method for working with l-systems
+ * StochasticGrammar class that provides convenience method for working with
+ * l-systems
+ *
  * @author tux
  */
 public class StochasticGrammar implements Grammar {
 
     private String axiom;
+    private String production;
     private RuleList rules;
     private StringCharacterIterator lIterator;
     PApplet myParent;
 
     /**
      * Constructor for use with processing Applet
+     *
      * @param parent
      * @param axiom
      */
@@ -52,6 +55,7 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * Default constructor for testing
+     *
      * @param axiom
      */
     public StochasticGrammar(String axiom) {
@@ -61,6 +65,7 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * add non weighted rule (or default weighting if more than on entry)
+     *
      * @param premise char
      * @param rule String
      */
@@ -71,9 +76,10 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * add weighted rule
+     *
      * @param premise char
      * @param rule String
-     * @param weight float     
+     * @param weight float
      */
     @Override
     public void addRule(char premise, String rule, float weight) {
@@ -83,8 +89,9 @@ public class StochasticGrammar implements Grammar {
     /**
      * get rule (NB: a weighted rule returned if multiple rules stored for a
      * given rule ie non-deterministic behaviour, be warned)
+     *
      * @param premise char
-     * @return rule String   
+     * @return rule String
      */
     @Override
     public String getRule(char premise) {
@@ -102,6 +109,7 @@ public class StochasticGrammar implements Grammar {
 
     /**
      * Private parseRules helper function
+     *
      * @param production Rule
      * @return production String
      */
@@ -114,36 +122,49 @@ public class StochasticGrammar implements Grammar {
         return newProduction.toString();
     }
 
-    /**
-     * create production String from axiom, rules (and no. generations)
-     * @return production String
-     */
-    @Override
-    public String createGrammar(int repeats) {
-        String production = axiom;
+    public void generateGrammar(int repeats) {
+        String prod = axiom;
         for (int i = 0; i < repeats; i++) {
-            production = parseRules(production);
+            prod = parseRules(prod);
         }
-        return production;
+        this.production = prod;
     }
 
-    /**
-     * default create production String from axiom, rules no generations
-     * useful in testing, expect to return axiom
-     * @return production String
-     */
+    public void generateGrammar() {
+        generateGrammar(0);
+    }
+
+    public CharacterIterator getIterator() {
+        if (lIterator == null) {
+            lIterator = new StringCharacterIterator(production);
+        } else {
+            lIterator.setText(production);
+        }
+        return lIterator;
+    }
+
+
     @Override
-    public String createGrammar() {
+    @Deprecated public String createGrammar(int repeats) {
+        String prod = axiom;
+        for (int i = 0; i < repeats; i++) {
+            prod = parseRules(prod);
+        }
+        return prod;
+    }
+
+    @Override
+    @Deprecated public String createGrammar() {
         return createGrammar(0);
     }
 
- /**
-  * Makes the CharacterIterator available internally/externally
-  * Create a new instance if none exists otherwise re-use existing instance
-  * @param production String
-  * @return lIterator the grammar CharacterIterator
-  */
-
+    /**
+     * Makes the CharacterIterator available internally/externally Create a new
+     * instance if none exists otherwise re-use existing instance
+     *
+     * @param production String
+     * @return lIterator the grammar CharacterIterator
+     */
     @Override
     public CharacterIterator getIterator(String production) {
         if (lIterator == null) {
@@ -155,7 +176,7 @@ public class StochasticGrammar implements Grammar {
     }
 
     /**
-     * 
+     *
      * Empty collections on dispose
      */
     @Override
