@@ -19,7 +19,7 @@
             </test-roots>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
-            <definitions>./lib/nblibraries.properties</definitions>
+            <definitions>lib/ProcessingOpenGL/processing-1.5.1/nblibraries.properties</definitions>
         </libraries>
     </configuration>
 </project>
