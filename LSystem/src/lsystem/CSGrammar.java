@@ -39,6 +39,7 @@ public class CSGrammar implements Grammar {
     private String production;
     private CSList rules;
     private StringCharacterIterator lIterator;
+    static boolean init = false;
 
     /**
      * Preferred constructor for processing
@@ -51,7 +52,11 @@ public class CSGrammar implements Grammar {
         this.parent.registerDispose(this);
         this.axiom = axiom;
         rules = new CSList();
-        // System.err.println("CSGrammar LSystem v" + version());
+        if (init == false) {
+            System.err.println("Info: CSGrammar LSystem v" + version());
+            System.err.println("Info: Target " + target());
+            SimpleGrammar.init = true;
+        }
     }
 
     /**
@@ -174,9 +179,10 @@ public class CSGrammar implements Grammar {
         }
         return lIterator;
     }
-    
+
     @Override
-    @Deprecated public String createGrammar(int repeats) {
+    @Deprecated
+    public String createGrammar(int repeats) {
         String prod = axiom;
         for (int i = 0; i < repeats; i++) {
             prod = parseRules(prod);
@@ -185,12 +191,14 @@ public class CSGrammar implements Grammar {
     }
 
     @Override
-    @Deprecated public String createGrammar() {
+    @Deprecated
+    public String createGrammar() {
         return createGrammar(0);
     }
 
     @Override
-    @Deprecated public CharacterIterator getIterator(String production) {
+    @Deprecated
+    public CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
         } else {
@@ -243,5 +251,15 @@ public class CSGrammar implements Grammar {
     public String getRule(char premise) {
         throw new RuntimeException("Not supported yet. Use StringBuilder"
                 + " getRule(char premise, String production, int count)");
+    }
+
+    /**
+     * Return the target processing version of the library.
+     *
+     * @return String
+     */
+    @Override
+    public final String target() {
+        return TARGET;
     }
 }

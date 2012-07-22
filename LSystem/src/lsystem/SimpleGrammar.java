@@ -38,6 +38,7 @@ public class SimpleGrammar implements Grammar {
     private RuleList rules;
     private StringCharacterIterator lIterator;
     PApplet myParent;
+    static boolean init = false;
 
     // preferred constructor?
     /**
@@ -50,7 +51,11 @@ public class SimpleGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new SimpleRuleList();
-        //System.err.println("SimpleGrammar LSystem v" + version());
+        if (init == false){
+        System.err.println("Info: SimpleGrammar LSystem v" + version());
+        System.err.println("Info: Target " + target());
+        SimpleGrammar.init = true;
+        }
     }
 
     /**
@@ -172,5 +177,16 @@ public class SimpleGrammar implements Grammar {
     @Override
     public final String version() {
         return VERSION;
+    }
+    
+        /**
+     * Return the target processing version of the library.
+     *
+     * @return String
+     */
+    @Override
+
+    public final String target() {
+        return TARGET;
     }
 }

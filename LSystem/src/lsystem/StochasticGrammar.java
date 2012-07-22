@@ -38,6 +38,7 @@ public class StochasticGrammar implements Grammar {
     private RuleList rules;
     private StringCharacterIterator lIterator;
     PApplet myParent;
+    static boolean init = false;
 
     /**
      * Constructor for use with processing Applet
@@ -50,7 +51,11 @@ public class StochasticGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new StochasticList();
-        //System.err.println("StochasticGrammar LSystem v" + version());
+                if (init == false){
+        System.err.println("Info: StochasticGrammar LSystem v" + version());
+        System.err.println("Info: Target " + target());
+        SimpleGrammar.init = true;
+        }
     }
 
     /**
@@ -201,5 +206,16 @@ public class StochasticGrammar implements Grammar {
     @Override
     public final String version() {
         return VERSION;
+    }
+    
+    /**
+     * Return the target processing version of the library.
+     *
+     * @return String
+     */
+    @Override
+
+    public final String target() {
+        return TARGET;
     }
 }

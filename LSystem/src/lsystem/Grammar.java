@@ -25,12 +25,17 @@ import java.text.CharacterIterator;
  * @author Martin Prout
  */
 public interface Grammar {
-
+    
     /**
      * 
      */
     public final String VERSION = "0.8.1";
-
+    
+    
+    /**
+     *
+     */
+    public final String TARGET = "processing-1.5.1";
     /**
      * add unweighted rule
      * @param premise
@@ -118,4 +123,11 @@ public interface Grammar {
      * @return String
      */
     String version();
+    
+     /**
+     * return the version of the library.
+     *
+     * @return String
+     */
+    String target();
 }
