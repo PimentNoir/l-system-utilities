@@ -29,13 +29,15 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.8.1";
+    public final String VERSION = "0.9.0";
     
-    
-    /**
-     *
+        /**
+     * 
      */
-    public final String TARGET = "processing-1.5.1";
+    public final String TARGET = "processing-2.0";
+    
+    
+
     /**
      * add unweighted rule
      * @param premise
@@ -73,32 +75,6 @@ public interface Grammar {
     CharacterIterator getIterator();
 
     /**
-     * @deprecated 
-     * Creates production from axiom, rules and no of
-     * generations
-     * @param repeats
-     * @return production String
-     */
-    @Deprecated String createGrammar(int repeats);
-
-    /**
-     * @deprecated 
-     * Useful for testing no generations
-     * @return production String (axiom)
-     */
-    @Deprecated String createGrammar();
-
- /**
-  * @deprecated
-  * Makes the CharacterIterator available internally/externally
-  * Create a new instance if none exists otherwise re-use existing instance
-  * @param production String
-  * @return lIterator the grammar CharacterIterator
-  */
-    
-    @Deprecated CharacterIterator getIterator(String production);
-
-    /**
      *
      */
     void dispose();
@@ -124,8 +100,8 @@ public interface Grammar {
      */
     String version();
     
-     /**
-     * return the version of the library.
+    /**
+     * return the target processing version of the library.
      *
      * @return String
      */

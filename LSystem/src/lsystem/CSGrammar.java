@@ -40,6 +40,7 @@ public class CSGrammar implements Grammar {
     private CSList rules;
     private StringCharacterIterator lIterator;
     static boolean init = false;
+    
 
     /**
      * Preferred constructor for processing
@@ -53,9 +54,9 @@ public class CSGrammar implements Grammar {
         this.axiom = axiom;
         rules = new CSList();
         if (init == false) {
-            System.err.println("Info: CSGrammar LSystem v" + version());
-            System.err.println("Info: Target " + target());
-            SimpleGrammar.init = true;
+            System.err.println("info: CSGrammar LSystem v" + version());
+            System.err.println("info: Target " + target());
+            init = true;
         }
     }
 
@@ -159,6 +160,7 @@ public class CSGrammar implements Grammar {
         return newProduction.toString();
     }
 
+    @Override
     public void generateGrammar(int repeats) {
         String prod = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -167,10 +169,12 @@ public class CSGrammar implements Grammar {
         this.production = prod;
     }
 
+    @Override
     public void generateGrammar() {
         generateGrammar(0);
     }
 
+    @Override
     public CharacterIterator getIterator() {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
@@ -180,25 +184,8 @@ public class CSGrammar implements Grammar {
         return lIterator;
     }
 
-    @Override
-    @Deprecated
-    public String createGrammar(int repeats) {
-        String prod = axiom;
-        for (int i = 0; i < repeats; i++) {
-            prod = parseRules(prod);
-        }
-        return prod;
-    }
-
-    @Override
-    @Deprecated
-    public String createGrammar() {
-        return createGrammar(0);
-    }
-
-    @Override
-    @Deprecated
-    public CharacterIterator getIterator(String production) {
+ 
+    private CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
         } else {
@@ -254,7 +241,7 @@ public class CSGrammar implements Grammar {
     }
 
     /**
-     * Return the target processing version of the library.
+     * return the target processing version of the library.
      *
      * @return String
      */

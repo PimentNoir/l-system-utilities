@@ -7,6 +7,21 @@
  *
  * Obtain a copy of the license at http://www.gnu.org/licenses/lgpl-2.1.html
  */
+
+/*
+ * CREDITS...Initially I found this arcball in a sketch by Ariel Malka, 
+ * only later did I find the Tom Carden processing tutorial example, so take your pick 
+ * 
+ * 1) Ariel Malka - June 23, 2003 http://www.chronotext.org
+ * 
+ * 2) Simon Greenwold? 2003 (as reported 2006 by Tom Carden http://wiki.processing.org/w/Arcball)
+ *
+ * 3) ArcBall concept invented by Ken Shoemake, published in his 1985 SIGGRAPH paper "Animating rotations with quaternion curves". 
+ * 
+ * 4) Modified to use PVector & enum (Constrain) instead of Vec3D & int by Martin Prout
+ **/
+
+
 package lsystem.util;
 
 import java.awt.event.KeyEvent;

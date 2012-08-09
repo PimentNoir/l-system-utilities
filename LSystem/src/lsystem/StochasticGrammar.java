@@ -37,8 +37,9 @@ public class StochasticGrammar implements Grammar {
     private String production;
     private RuleList rules;
     private StringCharacterIterator lIterator;
-    PApplet myParent;
     static boolean init = false;
+    PApplet myParent;
+
 
     /**
      * Constructor for use with processing Applet
@@ -51,10 +52,10 @@ public class StochasticGrammar implements Grammar {
         myParent.registerDispose(this);
         this.axiom = axiom;
         rules = new StochasticList();
-                if (init == false){
-        System.err.println("Info: StochasticGrammar LSystem v" + version());
-        System.err.println("Info: Target " + target());
-        SimpleGrammar.init = true;
+        if (init == false) {
+            System.err.println("info: StochasticGrammar LSystem v" + version());
+            System.err.println("info: Target " + target());
+            init = true;
         }
     }
 
@@ -127,6 +128,7 @@ public class StochasticGrammar implements Grammar {
         return newProduction.toString();
     }
 
+    @Override
     public void generateGrammar(int repeats) {
         String prod = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -135,10 +137,12 @@ public class StochasticGrammar implements Grammar {
         this.production = prod;
     }
 
+    @Override
     public void generateGrammar() {
         generateGrammar(0);
     }
 
+    @Override
     public CharacterIterator getIterator() {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
@@ -148,21 +152,6 @@ public class StochasticGrammar implements Grammar {
         return lIterator;
     }
 
-
-    @Override
-    @Deprecated public String createGrammar(int repeats) {
-        String prod = axiom;
-        for (int i = 0; i < repeats; i++) {
-            prod = parseRules(prod);
-        }
-        return prod;
-    }
-
-    @Override
-    @Deprecated public String createGrammar() {
-        return createGrammar(0);
-    }
-
     /**
      * Makes the CharacterIterator available internally/externally Create a new
      * instance if none exists otherwise re-use existing instance
@@ -170,8 +159,7 @@ public class StochasticGrammar implements Grammar {
      * @param production String
      * @return lIterator the grammar CharacterIterator
      */
-    @Override
-    public CharacterIterator getIterator(String production) {
+    private CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
         } else {
@@ -207,14 +195,13 @@ public class StochasticGrammar implements Grammar {
     public final String version() {
         return VERSION;
     }
-    
+
     /**
-     * Return the target processing version of the library.
+     * return the target processing version of the library.
      *
      * @return String
      */
     @Override
-
     public final String target() {
         return TARGET;
     }

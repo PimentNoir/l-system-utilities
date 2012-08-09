@@ -52,8 +52,8 @@ public class SimpleGrammar implements Grammar {
         this.axiom = axiom;
         rules = new SimpleRuleList();
         if (init == false){
-        System.err.println("Info: SimpleGrammar LSystem v" + version());
-        System.err.println("Info: Target " + target());
+        System.err.println("info: SimpleGrammar LSystem v" + version());
+        System.err.println("info: Target " + target());
         SimpleGrammar.init = true;
         }
     }
@@ -102,6 +102,7 @@ public class SimpleGrammar implements Grammar {
         return newProduction.toString();
     }
 
+    @Override
     public void generateGrammar(int repeats) {
         String prod = axiom;
         for (int i = 0; i < repeats; i++) {
@@ -110,6 +111,7 @@ public class SimpleGrammar implements Grammar {
         this.production = prod;
     }
 
+    @Override
     public void generateGrammar() {
         generateGrammar(0);
     }
@@ -123,19 +125,7 @@ public class SimpleGrammar implements Grammar {
         return lIterator;
     }
 
-    @Override
-    @Deprecated public String createGrammar(int repeats) {
-        String prod = axiom;
-        for (int i = 0; i < repeats; i++) {
-            prod = parseRules(prod);
-        }
-        return prod;
-    }
 
-    @Override
-    @Deprecated public String createGrammar() {
-        return createGrammar(0);
-    }
 
     /**
      * Makes the CharacterIterator available internally/externally Create a new
@@ -144,8 +134,8 @@ public class SimpleGrammar implements Grammar {
      * @param production String
      * @return lIterator the grammar CharacterIterator
      */
-    @Override
-    public CharacterIterator getIterator(String production) {
+   
+    private CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);
         } else {
@@ -179,13 +169,12 @@ public class SimpleGrammar implements Grammar {
         return VERSION;
     }
     
-        /**
-     * Return the target processing version of the library.
+    /**
+     * return the target processing version of the library.
      *
      * @return String
      */
     @Override
-
     public final String target() {
         return TARGET;
     }

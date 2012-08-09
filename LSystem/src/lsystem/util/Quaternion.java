@@ -1,10 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (c) 2011/12 Martin Prout
+ * 
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * http://creativecommons.org/licenses/LGPL/2.1/
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+
 package lsystem.util;
 
-import processing.core.PConstants;
+
 import processing.core.PVector;
 /**
  * 
@@ -92,7 +108,7 @@ public class Quaternion {
     public float[] getValue() {        
 
         float sa = (float) Math.sqrt(1.0 - w * w);
-        if (sa < PConstants.EPSILON) {
+        if (sa < processing.core.PConstants.EPSILON) {
             sa = 1.0f;
         }
         return new float[]{(float)Math.acos(w) * 2.0f, x / sa, y / sa, z / sa};
