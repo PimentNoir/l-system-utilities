@@ -33,7 +33,6 @@ import processing.core.PApplet;
 public class PenStack implements StackInterface{
 
     private Deque<Pen> stack;
-    private PApplet parent;
 
     /**
      * Stack constructor
@@ -41,7 +40,6 @@ public class PenStack implements StackInterface{
      * @param parent
      */
     public PenStack(PApplet parent) {
-        this.parent = parent;
         parent.registerDispose(this);
         stack = new ArrayDeque<Pen>();
     }

@@ -116,6 +116,7 @@ public class SimpleGrammar implements Grammar {
         generateGrammar(0);
     }
 
+    @Override
     public CharacterIterator getIterator() {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);

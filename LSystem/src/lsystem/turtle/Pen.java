@@ -109,6 +109,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Line color getter
      * @return length float
      */
+    @Override
     public float getLength() {
         return len;
     }
@@ -117,6 +118,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * line color getter
      * @return length int
      */
+    @Override
     public int getColor() {
         return col;
     }
@@ -125,6 +127,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Line width getter
      * @return width float
      */
+    @Override
     public float getWidth() {
         return width;
     }
@@ -133,6 +136,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Line width setter
      * @param width float
      */
+    @Override
     public void setWidth(float width) {
         this.width = width;
     }
@@ -141,6 +145,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * line color setter
      * @param col int
      */
+    @Override
     public void setColor(int col) {
         this.col = col;
     }
@@ -149,6 +154,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Length setter
      * @param len
      */
+    @Override
     public void setLength(float len) {
         this.len = len;
     }
@@ -157,6 +163,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Facility to change element length
      * @param factor
      */
+    @Override
     public void resizeLength(float factor){
         this.len *= factor;
     }
@@ -165,6 +172,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * With plants in mind using bit shift to increment green
      * @param increment
      */
+    @Override
     public void incrementGreen(int increment){
         int green = this.col  >> 8 & 0xFF;
         green += increment;
@@ -175,6 +183,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      * Evaluate number of repeats and change value of theta
      * @param repeats
      */
+    @Override
     public void turnLeft(int repeats){
         setTheta(getTheta() + (float)Math.PI/180 * 34.9f * repeats);
     }
@@ -182,6 +191,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      *  Evaluate number of repeats and change value of theta
      * @param repeats
      */
+    @Override
     public void turnRight(int repeats){
         setTheta(getTheta() - (float)Math.PI/180 * 34.9f * repeats);
 
@@ -192,6 +202,7 @@ public class Pen extends Turtle implements Cloneable, PenInterface {
      *  Object orientated way of drawing a line, side effect is to
      *  update the current position
      **/
+    @Override
     public void drawLine(){
        // parent.strokeWeight(getWidth());
         parent.stroke(this.col);

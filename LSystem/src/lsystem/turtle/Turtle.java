@@ -66,6 +66,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * X position getter
      * @return x position float
      */
+    @Override
     public float getX() {
         return x;
     }
@@ -74,6 +75,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * Y position getter
      * @return y position float
      */
+    @Override
     public float getY() {
         return y;
     }
@@ -82,6 +84,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * Angle getter
      * @return angle float
      */
+    @Override
     public float getTheta() {
         return angle;
     }
@@ -90,6 +93,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * X position setter
      * @param x position float
      */
+    @Override
     public void setX(float x) {
         this.x = x;
     }
@@ -98,6 +102,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * Y position setter
      * @param y position float
      */
+    @Override
     public void setY(float y) {
         this.y = y;
     }
@@ -106,6 +111,7 @@ public class Turtle implements Cloneable, TurtleInterface {
      * Angle setter
      * @param theta
      */
+    @Override
     public void setTheta(float theta) {
         this.angle = theta;
     }

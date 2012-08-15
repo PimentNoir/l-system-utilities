@@ -33,7 +33,6 @@ import processing.core.PApplet;
 public class TurtleStack implements StackInterface {
 
     private Deque<Turtle> stack;
-    private PApplet parent;
 
     /**
      * Stack constructor
@@ -41,7 +40,6 @@ public class TurtleStack implements StackInterface {
      * @param parent
      */
     public TurtleStack(PApplet parent) {
-        this.parent = parent;
         parent.registerDispose(this);
         stack = new ArrayDeque<Turtle>();
     }
@@ -68,6 +66,7 @@ public class TurtleStack implements StackInterface {
      * Turtle push
      * @param turtle Object
      */
+    @Override
     public void push(Object turtle) {
         if (turtle != null) {
             stack.push((Turtle)turtle);
@@ -79,6 +78,7 @@ public class TurtleStack implements StackInterface {
      * Turtle pop
      * @return turtle Turtle
      */
+    @Override
     public Turtle pop() {
         return stack.pop();
     }
@@ -86,6 +86,7 @@ public class TurtleStack implements StackInterface {
     /**
      *
      */
+    @Override
     public void dispose() {
         stack.clear();
         stack = null;

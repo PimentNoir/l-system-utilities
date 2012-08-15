@@ -34,7 +34,7 @@ import lsystem.collection.csrule.ContextRule;
  */
 public class CSList {
 
-    char[] ignore = {};
+    private char[] ignore;
     private Map<Character, ContextRule> cs_premises;
     private Map<Character, String> rules;
     private Map<String, String> csrules;
@@ -46,6 +46,7 @@ public class CSList {
         cs_premises = new HashMap<Character, ContextRule>();
         rules = new HashMap<Character, String>();
         csrules = new HashMap<String, String>();
+        ignore = new char[0]; 
     }
 
     /**

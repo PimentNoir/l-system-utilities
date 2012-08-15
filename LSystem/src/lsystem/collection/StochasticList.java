@@ -98,7 +98,7 @@ public class StochasticList implements RuleList {
      * Inner class, to handle chooser logic
      */
 
-    class WeightedRuleChooser {
+    static class WeightedRuleChooser {
 
         public WeightedRule chooseOnWeight(List<WeightedRule> rules) {
             float total = 0.0f;

@@ -84,5 +84,6 @@ public class SimpleRuleList implements RuleList{
         rules.clear();
     }
 
+    @Override
     public boolean hasRule(char pre){return premises.contains(pre);}
 }

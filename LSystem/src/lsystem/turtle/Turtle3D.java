@@ -28,7 +28,7 @@ public interface Turtle3D {
     /**
      * 
      */
-    public final String VERSION = "0.8.0";
+    public final String VERSION = "0.9.0";
 
     /**
      * Any implementing classes should move forward by distance without drawing
@@ -36,6 +36,15 @@ public interface Turtle3D {
      */
     void forward(float distance);
     
+    
+    /**
+     *
+     * @param distance
+     * @param r1
+     * @param r2
+     * @param level
+     */
+    void drawRod(float distance, float r1, float r2, int level);
     /**
      * Any implementing classes should draw something eg. line rod box etc
      * @param distance 

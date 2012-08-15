@@ -40,7 +40,6 @@ public class CSGrammar implements Grammar {
     private CSList rules;
     private StringCharacterIterator lIterator;
     static boolean init = false;
-    
 
     /**
      * Preferred constructor for processing
@@ -184,7 +183,6 @@ public class CSGrammar implements Grammar {
         return lIterator;
     }
 
- 
     private CharacterIterator getIterator(String production) {
         if (lIterator == null) {
             lIterator = new StringCharacterIterator(production);

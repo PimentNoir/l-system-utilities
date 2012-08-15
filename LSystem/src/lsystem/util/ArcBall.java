@@ -142,8 +142,9 @@ public class ArcBall {
      * It might be necessary for Applets to 'know' ahead of time that there is
      * an instance of MouseWheelListener instead of an anonymous class?
      */
-    protected class ArcballMousewheelListener implements MouseWheelListener {
+    protected class ArcballMousewheelListener implements MouseWheelListener{
 
+        @Override
         public void mouseWheelMoved(final MouseWheelEvent e) {
             if (zoomWheelHandler != null) {
                 zoomWheelHandler.handleWheel(e.getWheelRotation());

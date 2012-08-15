@@ -26,7 +26,7 @@ import processing.core.PVector;
  * 
  * @author Martin Prout
  */
-public class Quaternion {
+public final class Quaternion {
 
     private float w, x, y, z;
 

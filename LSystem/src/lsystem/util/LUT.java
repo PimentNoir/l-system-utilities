@@ -31,13 +31,13 @@ package lsystem.util;
  * example. A kludge is required to return the complement of 360, which would 
  * not otherwise be required.
  */
-public class LUT {
+public final class LUT {
 
     /**
      * Lookup table for degree cosine/sine, has a fixed precision 1.0 degrees
      * @author Martin Prout <martin_p@lineone.net>
      */
-    public static float[] sinLUT = new float[91];
+    static final float[] sinLUT = new float[91];
     /**
      * 
      */
@@ -45,7 +45,7 @@ public class LUT {
     /**
      * 
      */
-    public static boolean initialized = false;
+    private static boolean initialized = false;
     /**
      * Message to display on console processing ide
      */

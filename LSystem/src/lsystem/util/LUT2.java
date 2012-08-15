@@ -36,12 +36,12 @@ package lsystem.util;
  * Lookup table for degree cosine/sine, has a fixed precision ca. 0.25 degrees
  * @author Martin Prout <martin_p@lineone.net>
  */
-public class LUT2 {
+public final class LUT2 {
 
     /**
      * LUT for sine values 0.25 degree increments of first quadrant
      */
-    public static float[] sinLUT = new float[361];
+    static final float[] sinLUT = new float[361];
     
     /**
      * 
@@ -53,7 +53,7 @@ public class LUT2 {
     /**
      * 
      */
-    public static boolean initialized = false;
+    private static boolean initialized = false;
     /**
      * 
      */
@@ -75,7 +75,7 @@ public class LUT2 {
     public static void initialize() {
         if (initialized == false){
         for (int i = 0; i <= 360; i++) {
-            sinLUT[i] = (float) Math.sin(Math.toRadians(i / 4));
+            sinLUT[i] = (float) Math.sin(Math.toRadians(i / 4.0));
         }
         initialized = true;
         }
