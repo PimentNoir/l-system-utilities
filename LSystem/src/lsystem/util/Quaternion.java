@@ -23,7 +23,7 @@ package lsystem.util;
 
 import processing.core.PVector;
 /**
- * 
+ * Based on ArcBall code by Ariel Malka - June 23, 2003 http://www.chronotext.org
  * @author Martin Prout
  */
 public final class Quaternion {
@@ -105,7 +105,7 @@ public final class Quaternion {
      * @return a new float[] where a0 = angle and a1 .. a3 are axis vector
      */
 
-    public float[] getValue() {        
+    public final float[] getValue() {        
 
         float sa = (float) Math.sqrt(1.0 - w * w);
         if (sa < processing.core.PConstants.EPSILON) {

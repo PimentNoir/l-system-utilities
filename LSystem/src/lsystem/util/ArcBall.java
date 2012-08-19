@@ -37,7 +37,7 @@ import processing.core.PVector;
  *
  * @author Martin Prout
  */
-public class ArcBall {
+public final class ArcBall {
 
     private float center_x;
     private float center_y;

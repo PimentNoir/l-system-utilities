@@ -29,7 +29,7 @@ public interface TurtleInterface {
     /**
      *
      */
-    public final String VERSION = "0.9.0";
+    public final String VERSION = "0.9.1";
 
     /**
      *

@@ -133,9 +133,9 @@ public class RodTurtle implements Turtle3D {
     * Real Method
     * Draw a smooth cone section with radii r1, r2, perpendicular distance 
     * level is inverse of detail, capped with a sphere
-    * @param distance
-    * @param r1
-    * @param r2
+    * @param distance length of rod/truncated cone
+    * @param r1  radius1
+    * @param r2  radius2 (r1 = r2 rod) (r1 not equal r2 truncated cone/or cone?)
     * @param level 
     */
 
@@ -145,7 +145,7 @@ public class RodTurtle implements Turtle3D {
         int sides = detail[level]; // ensure 360 % sides is zero
         int angle = 0;
         int angleIncrement = 360 / sides;
-       // endCap(r1, sides);
+        
         parent.translate(0, 0, distance / 2);
         parent.beginShape(PApplet.QUAD_STRIP);
         for (int i = 0; i <= sides; i++) {
@@ -160,13 +160,15 @@ public class RodTurtle implements Turtle3D {
     }
 
     /**
-     * Draws a sphere cap
+     * Draws a sphere cap unless radius very small
      *
      * @param r radius float
      * @param detail latitude division int
      */
     public void endCap(float r, int detail) {
+        if (r > processing.core.PConstants.EPSILON){
         parent.sphereDetail(detail);
         parent.sphere(r);
+        }
     }
 }
