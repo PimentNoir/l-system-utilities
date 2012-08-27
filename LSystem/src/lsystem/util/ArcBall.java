@@ -182,7 +182,7 @@ public final class ArcBall {
     }
 
     /**
-     *
+     * Returns the PVector of the constrain PVector if constrained
      * @param x
      * @param y
      * @return
@@ -197,7 +197,8 @@ public final class ArcBall {
         } else {
             v.z = (float) Math.sqrt(1.0 - mag);
         }
-        return (axis == Constrain.FREE) ? v : constrainVector(v, axisSet[axis.index()]);
+        if (axis != Constrain.FREE){v = constrainVector(v, axisSet[axis.index()]);}
+        return v; 
     }
 
     /**

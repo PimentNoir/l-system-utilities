@@ -90,13 +90,12 @@ public final class Quaternion {
      * @param q2
      * @return
      */
-    public static Quaternion mult(Quaternion q1, Quaternion q2) {
-        Quaternion res = new Quaternion();
-        res.w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
-        res.x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
-        res.y = q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z;
-        res.z = q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x;
-        return res;
+    public static Quaternion mult(Quaternion q1, Quaternion q2) {        
+        float w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+        float x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
+        float y = q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z;
+        float z = q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x;
+        return new Quaternion(w, x, y, z);
     }
     
     /**
