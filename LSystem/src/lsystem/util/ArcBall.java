@@ -29,7 +29,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import processing.core.PApplet;
-import processing.core.PVector;
 
 /**
  * Supports the ArcBall and MouseWheel zoom
@@ -37,17 +36,17 @@ import processing.core.PVector;
  *
  * @author Martin Prout
  */
-public final class ArcBall {
+public class ArcBall {
 
     private float center_x;
     private float center_y;
     private float radius;
-    private PVector v_down;
-    private PVector v_drag;
+    private AVector v_down;
+    private AVector v_drag;
     private Quaternion q_now;
     private Quaternion q_down;
     private Quaternion q_drag;
-    private PVector[] axisSet;
+    private AVector[] axisSet;
     private Constrain axis;
     private boolean isActive = false;
     private final PApplet parent;
@@ -73,12 +72,12 @@ public final class ArcBall {
         this.center_x = center_x;
         this.center_y = center_y;
         this.radius = radius;
-        this.v_down = new PVector();
-        this.v_drag = new PVector();
+        this.v_down = new AVector();
+        this.v_drag = new AVector();
         this.q_now = new Quaternion();
         this.q_down = new Quaternion();
         this.q_drag = new Quaternion();
-        this.axisSet = new PVector[]{new PVector(1.0F, 0.0F, 0.0F), new PVector(0.0F, 1.0F, 0.0F), new PVector(0.0F, 0.0F, 1.0F)};
+        this.axisSet = new AVector[]{new AVector(1.0F, 0.0F, 0.0F), new AVector(0.0F, 1.0F, 0.0F), new AVector(0.0F, 0.0F, 1.0F)};
         axis = Constrain.FREE; // no constraints...
         setActive(true);
     }
@@ -108,7 +107,7 @@ public final class ArcBall {
                 break;
             case (MouseEvent.MOUSE_DRAGGED):
                 v_drag = mouse2sphere(x, y);
-                q_drag.set(PVector.dot(v_down, v_drag), v_down.cross(v_drag));
+                q_drag.set(AVector.dot(v_down, v_drag), v_down.cross(v_drag));
                 break;
             default:
         }
@@ -142,7 +141,7 @@ public final class ArcBall {
      * It might be necessary for Applets to 'know' ahead of time that there is
      * an instance of MouseWheelListener instead of an anonymous class?
      */
-    protected class ArcballMousewheelListener implements MouseWheelListener{
+    protected class ArcballMousewheelListener implements MouseWheelListener {
 
         @Override
         public void mouseWheelMoved(final MouseWheelEvent e) {
@@ -187,8 +186,8 @@ public final class ArcBall {
      * @param y
      * @return
      */
-    public PVector mouse2sphere(float x, float y) {
-        PVector v = new PVector();
+    public AVector mouse2sphere(float x, float y) {
+        AVector v = new AVector();
         v.x = (x - center_x) / radius;
         v.y = (y - center_y) / radius;
         float mag = v.x * v.x + v.y * v.y;
@@ -202,13 +201,13 @@ public final class ArcBall {
     }
 
     /**
-     *
+     * Returns the PVector if the axis is constrained
      * @param vector
      * @param axis
      * @return
      */
-    public PVector constrainVector(PVector vector, PVector axis) {
-        PVector res = PVector.sub(vector, PVector.mult(axis, PVector.dot(axis, vector)));
+    public AVector constrainVector(AVector vector, AVector axis) {
+        AVector res = AVector.sub(vector, AVector.mult(axis, AVector.dot(axis, vector)));
         res.normalize();
         return res;
     }

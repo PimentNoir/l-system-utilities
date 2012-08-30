@@ -33,7 +33,7 @@ import processing.core.PApplet;
  *
  * @author Martin Prout
  */
-public class Pen extends Turtle implements Cloneable, PenInterface {
+public class Pen extends Turtle implements PenInterface {
 
     float len, width;
     int col;

@@ -20,10 +20,8 @@
 
 package lsystem.util;
 
-
-import processing.core.PVector;
 /**
- * Based on ArcBall code by Ariel Malka - June 23, 2003 http://www.chronotext.org
+ * 
  * @author Martin Prout
  */
 public final class Quaternion {
@@ -63,10 +61,10 @@ public final class Quaternion {
 
     /**
      * 
-     * @param w
-     * @param v
+     * @param w scalar 
+     * @param v custom Vector class
      */
-    public void set(float w, PVector v) {
+    public void set(float w, AVector v) {
         this.w = w;
         x = v.x;
         y = v.y;
@@ -90,7 +88,7 @@ public final class Quaternion {
      * @param q2
      * @return
      */
-    public static Quaternion mult(Quaternion q1, Quaternion q2) {        
+    public static Quaternion mult(Quaternion q1, Quaternion q2) {
         float w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
         float x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
         float y = q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z;
@@ -104,8 +102,7 @@ public final class Quaternion {
      * @return a new float[] where a0 = angle and a1 .. a3 are axis vector
      */
 
-    public final float[] getValue() {        
-
+    public float[] getValue() {
         float sa = (float) Math.sqrt(1.0 - w * w);
         if (sa < processing.core.PConstants.EPSILON) {
             sa = 1.0f;

@@ -24,7 +24,7 @@ package lsystem.turtle;
  *
  * @author tux
  */
-public interface TurtleInterface {
+public interface TurtleInterface{
 
     /**
      *

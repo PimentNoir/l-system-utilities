@@ -62,7 +62,7 @@ public class CSList {
      * @param ignore list as char[]
      */
     public void setIgnoreList(char[] ignore) {
-        this.ignore = ignore;
+        System.arraycopy(ignore, 0, this.ignore, 0, ignore.length);
     }
 
     /**
