@@ -21,17 +21,21 @@
 package lsystem.util;
 
 /**
- * 
+ * Based on a original sketch by Ariel Malka
+ * Arcball quaternion idea by Ken Shoemake
+ * http://dl.acm.org/citation.cfm?id=325242
+ * A google of the quaternions term will find a 
+ * freely down-loadable article by Ken Shoemake.
  * @author Martin Prout
  */
-public final class Quaternion {
+public final class AQuat {
 
     private float w, x, y, z;
 
     /**
      * 
      */
-    public Quaternion() {
+    public AQuat() {
         reset();
     }
 
@@ -42,7 +46,7 @@ public final class Quaternion {
      * @param y
      * @param z
      */
-    public Quaternion(float w, float x, float y, float z) {
+    public AQuat(float w, float x, float y, float z) {
         this.w = w;
         this.x = x;
         this.y = y;
@@ -75,7 +79,7 @@ public final class Quaternion {
      * 
      * @param q
      */
-    public void set(Quaternion q) {
+    public void set(AQuat q) {
         w = q.w;
         x = q.x;
         y = q.y;
@@ -88,12 +92,12 @@ public final class Quaternion {
      * @param q2
      * @return
      */
-    public static Quaternion mult(Quaternion q1, Quaternion q2) {
+    public static AQuat mult(AQuat q1, AQuat q2) {
         float w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
         float x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
         float y = q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z;
         float z = q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x;
-        return new Quaternion(w, x, y, z);
+        return new AQuat(w, x, y, z);
     }
     
     /**

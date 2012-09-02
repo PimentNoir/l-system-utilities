@@ -18,7 +18,7 @@
  *
  * 3) ArcBall concept invented by Ken Shoemake, published in his 1985 SIGGRAPH paper "Animating rotations with quaternion curves". 
  * 
- * 4) Modified to use PVector & enum (Constrain) instead of Vec3D & int by Martin Prout
+ * 4) Somewhat modified by Martin Prout to support callbacks from processing sketch
  **/
 
 
@@ -43,9 +43,9 @@ public class ArcBall {
     private float radius;
     private AVector v_down;
     private AVector v_drag;
-    private Quaternion q_now;
-    private Quaternion q_down;
-    private Quaternion q_drag;
+    private AQuat q_now;
+    private AQuat q_down;
+    private AQuat q_drag;
     private AVector[] axisSet;
     private Constrain axis;
     private boolean isActive = false;
@@ -74,9 +74,9 @@ public class ArcBall {
         this.radius = radius;
         this.v_down = new AVector();
         this.v_drag = new AVector();
-        this.q_now = new Quaternion();
-        this.q_down = new Quaternion();
-        this.q_drag = new Quaternion();
+        this.q_now = new AQuat();
+        this.q_down = new AQuat();
+        this.q_drag = new AQuat();
         this.axisSet = new AVector[]{new AVector(1.0F, 0.0F, 0.0F), new AVector(0.0F, 1.0F, 0.0F), new AVector(0.0F, 0.0F, 1.0F)};
         axis = Constrain.FREE; // no constraints...
         setActive(true);
@@ -175,7 +175,7 @@ public class ArcBall {
      * Needed to call this in sketch
      */
     public void update() {
-        q_now = Quaternion.mult(q_drag, q_down);
+        q_now = AQuat.mult(q_drag, q_down);
         applyQuaternion2Matrix(q_now);
         parent.scale(zoom);
     }
@@ -224,7 +224,7 @@ public class ArcBall {
      * Rotate the parent sketch according to the quaternion
      * @param q
      */
-    public void applyQuaternion2Matrix(Quaternion q) {
+    public void applyQuaternion2Matrix(AQuat q) {
         // instead of transforming q into a matrix and applying it...
         float[] aa = q.getValue();
         parent.rotate(aa[0], aa[1], aa[2], aa[3]);
