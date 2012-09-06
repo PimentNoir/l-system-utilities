@@ -24,11 +24,11 @@
 
 package lsystem.util;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
+import processing.event.MouseEvent;
 
 /**
  * Supports the ArcBall and MouseWheel zoom
@@ -68,7 +68,7 @@ public class ArcBall {
      */
     public ArcBall(final PApplet parent, float center_x, float center_y, float radius) {
         this.parent = parent;
-        this.parent.registerDispose(this);
+        this.parent.registerMethod("dispose", this);
         this.center_x = center_x;
         this.center_y = center_y;
         this.radius = radius;
@@ -99,13 +99,13 @@ public class ArcBall {
     public void mouseEvent(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        switch (e.getID()) {
-            case (MouseEvent.MOUSE_PRESSED):
+        switch (e.getAction()) {
+            case (MouseEvent.PRESSED):
                 v_down = mouse2sphere(x, y);
                 q_down.set(q_now);
                 q_drag.reset();
                 break;
-            case (MouseEvent.MOUSE_DRAGGED):
+            case (MouseEvent.DRAGGED):
                 v_drag = mouse2sphere(x, y);
                 q_drag.set(AVector.dot(v_down, v_drag), v_down.cross(v_drag));
                 break;
@@ -118,9 +118,9 @@ public class ArcBall {
      *
      * @param e
      */
-    public void keyEvent(KeyEvent e) {
-        if (e.getID() == KeyEvent.KEY_PRESSED) {
-            switch (e.getKeyChar()) {
+    public void keyEvent(processing.event.KeyEvent e) {
+        if (e.getAction() == KeyEvent.PRESSED) {
+            switch (e.getKey()) {
                 case 'x':
                     constrain(Constrain.XAXIS);
                     break;
@@ -132,7 +132,7 @@ public class ArcBall {
                     break;
             }
         }
-        if (e.getID() == KeyEvent.KEY_RELEASED) {
+        if (e.getAction() == KeyEvent.RELEASED) {
             constrain(Constrain.FREE);
         }
     }
@@ -160,12 +160,12 @@ public class ArcBall {
         if (active != isActive) {
             isActive = active;
             if (active) {
-                this.parent.registerMouseEvent(this);
-                this.parent.registerKeyEvent(this);
+                this.parent.registerMethod("mouseEvent", this);
+                this.parent.registerMethod("keyEvent", this);
                 this.parent.addMouseWheelListener(wheelHandler);
             } else {
-                this.parent.unregisterMouseEvent(this);
-                this.parent.unregisterKeyEvent(this);
+                this.parent.unregisterMethod("mouseEvent", this);
+                this.parent.unregisterMethod("keyEvent", this);
                 this.parent.frame.removeMouseWheelListener(wheelHandler);
             }
         }
@@ -235,5 +235,6 @@ public class ArcBall {
      */
     public void dispose() {
         setActive(false);
+        
     }
 }
