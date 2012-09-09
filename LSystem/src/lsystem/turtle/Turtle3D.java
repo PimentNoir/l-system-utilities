@@ -28,7 +28,7 @@ public interface Turtle3D {
     /**
      * 
      */
-    public final String VERSION = "0.9.1";
+    public final String VERSION = "0.9.2";
 
     /**
      * Any implementing classes should move forward by distance without drawing

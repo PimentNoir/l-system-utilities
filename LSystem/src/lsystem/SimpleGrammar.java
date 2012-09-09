@@ -48,7 +48,7 @@ public class SimpleGrammar implements Grammar {
      */
     public SimpleGrammar(PApplet parent, String axiom) {
         this.myParent = parent;
-        myParent.registerDispose(this);
+        myParent.registerMethod("dispose", this);
         this.axiom = axiom;
         rules = new SimpleRuleList();
         if (init == false){

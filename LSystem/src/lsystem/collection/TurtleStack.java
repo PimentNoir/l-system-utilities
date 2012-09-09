@@ -40,7 +40,7 @@ public class TurtleStack implements StackInterface {
      * @param parent
      */
     public TurtleStack(PApplet parent) {
-        parent.registerDispose(this);
+        parent.registerMethod("dispose", this);
         stack = new ArrayDeque<Turtle>();
     }
     // default constructor for testing

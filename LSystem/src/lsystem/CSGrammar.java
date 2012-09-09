@@ -49,7 +49,7 @@ public class CSGrammar implements Grammar {
      */
     public CSGrammar(PApplet parent, String axiom) {
         this.parent = parent;
-        this.parent.registerDispose(this);
+        this.parent.registerMethod("dispose", this);
         this.axiom = axiom;
         rules = new CSList();
         if (init == false) {

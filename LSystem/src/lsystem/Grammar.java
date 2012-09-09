@@ -29,7 +29,7 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.9.1";
+    public final String VERSION = "0.9.2";
     
     /**
      * 

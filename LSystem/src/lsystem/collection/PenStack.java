@@ -40,7 +40,7 @@ public class PenStack implements StackInterface{
      * @param parent
      */
     public PenStack(PApplet parent) {
-        parent.registerDispose(this);
+        parent.registerMethod("dispose", this);
         stack = new ArrayDeque<Pen>();
     }
     // default constructor for testing

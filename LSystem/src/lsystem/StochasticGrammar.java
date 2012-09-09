@@ -49,7 +49,7 @@ public class StochasticGrammar implements Grammar {
      */
     public StochasticGrammar(PApplet parent, String axiom) {
         this.myParent = parent;
-        myParent.registerDispose(this);
+        myParent.registerMethod("dispose", this);
         this.axiom = axiom;
         rules = new StochasticList();
         if (init == false) {
