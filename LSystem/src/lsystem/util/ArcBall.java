@@ -20,8 +20,6 @@
  * 
  * 4) Somewhat modified by Martin Prout to support callbacks from processing sketch
  **/
-
-
 package lsystem.util;
 
 import java.awt.event.MouseWheelEvent;
@@ -31,8 +29,8 @@ import processing.event.KeyEvent;
 import processing.event.MouseEvent;
 
 /**
- * Supports the ArcBall and MouseWheel zoom
- * manipulation of objects in processing
+ * Supports the ArcBall and MouseWheel zoom manipulation of objects in
+ * processing
  *
  * @author Martin Prout
  */
@@ -64,7 +62,7 @@ public class ArcBall {
      * @param parent PApplet
      * @param center_x float x coordinate of arcball center
      * @param center_y float y coordinate of arcball center
-     * @param radius   float radius of arcball
+     * @param radius float radius of arcball
      */
     public ArcBall(final PApplet parent, float center_x, float center_y, float radius) {
         this.parent = parent;
@@ -83,12 +81,12 @@ public class ArcBall {
     }
 
     /**
-     * Default centered arcball and half width
+     * Default centered arcball and half width or half height whichever smaller
      *
      * @param parent
      */
     public ArcBall(final PApplet parent) {
-        this(parent, parent.width * 0.5F, parent.height * 0.5F, parent.width * 0.5F);
+        this(parent, parent.width/2.0f, parent.height/2.0f, Math.min(parent.width, parent.height) * 0.5F);
     }
 
     /**
@@ -151,19 +149,27 @@ public class ArcBall {
         }
     }
 
+    public void pre() {
+        parent.translate(center_x, center_y);
+        update();
+    }
+
     /**
-     * May or may not be required for use in Web Applet it works so why worry
-     * as used by Jonathan Feinberg peasycam, and that works OK
+     * May or may not be required for use in Web Applet it works so why worry as
+     * used by Jonathan Feinberg peasycam, and that works OK
+     *
      * @param active
      */
     public final void setActive(boolean active) {
         if (active != isActive) {
             isActive = active;
             if (active) {
+                this.parent.registerMethod("pre", this);
                 this.parent.registerMethod("mouseEvent", this);
                 this.parent.registerMethod("keyEvent", this);
                 this.parent.addMouseWheelListener(wheelHandler);
             } else {
+                this.parent.unregisterMethod("pre", this);
                 this.parent.unregisterMethod("mouseEvent", this);
                 this.parent.unregisterMethod("keyEvent", this);
                 this.parent.frame.removeMouseWheelListener(wheelHandler);
@@ -174,7 +180,7 @@ public class ArcBall {
     /**
      * Needed to call this in sketch
      */
-    public void update() {
+    private void update() {
         q_now = AQuat.mult(q_drag, q_down);
         applyQuaternion2Matrix(q_now);
         parent.scale(zoom);
@@ -182,6 +188,7 @@ public class ArcBall {
 
     /**
      * Returns the PVector of the constrain PVector if constrained
+     *
      * @param x
      * @param y
      * @return
@@ -196,12 +203,15 @@ public class ArcBall {
         } else {
             v.z = (float) Math.sqrt(1.0 - mag);
         }
-        if (axis != Constrain.FREE){v = constrainVector(v, axisSet[axis.index()]);}
-        return v; 
+        if (axis != Constrain.FREE) {
+            v = constrainVector(v, axisSet[axis.index()]);
+        }
+        return v;
     }
 
     /**
      * Returns the PVector if the axis is constrained
+     *
      * @param vector
      * @param axis
      * @return
@@ -214,6 +224,7 @@ public class ArcBall {
 
     /**
      * Constrain rotation to this axis
+     *
      * @param axis
      */
     public void constrain(Constrain axis) {
@@ -222,6 +233,7 @@ public class ArcBall {
 
     /**
      * Rotate the parent sketch according to the quaternion
+     *
      * @param q
      */
     public void applyQuaternion2Matrix(AQuat q) {
@@ -235,6 +247,5 @@ public class ArcBall {
      */
     public void dispose() {
         setActive(false);
-        
     }
 }
