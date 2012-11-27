@@ -95,41 +95,7 @@ public class StochasticGrammarTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of createGrammar method, of class StochasticGrammar.
-     */
-    @Test
-    public void testCreateGrammar_int() {
-        System.out.println("createGrammar");
-        String expResult = "FX-FX";
-        char premise = 'F';
-        String rule = "FX-FX";
-        float weight = 1.0F;
-        instance.addRule(premise, rule, weight);
-        String rule1 = "XF-FX";
-        float weight1 = 1.0F;
-        instance.addRule(premise, rule1, weight1);
-        String result = instance.createGrammar(2);
-        assertEquals(expResult, result);
-    }
 
-    /**
-     * Test of createGrammar method, of class StochasticGrammar.
-     */
-    @Test
-    public void testCreateGrammar_0args() {
-        System.out.println("createGrammar");
-        char premise = 'F';
-        String rule = "FX-FX";
-        float weight = 1.0F;
-        instance.addRule(premise, rule, weight);
-        String rule1 = "FX-FX";
-        float weight1 = 1.0F;
-        instance.addRule(premise, rule1, weight1);
-        String result = instance.createGrammar();
-        String expResult = "F";
-        assertEquals(expResult, result);
-    }
 
     /**
      * Test of version method, of class StochasticGrammar.
@@ -137,7 +103,7 @@ public class StochasticGrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.8.0";
+        String expResult = "0.9.4";
         String result = instance.version();
         assertEquals(expResult, result);
     }

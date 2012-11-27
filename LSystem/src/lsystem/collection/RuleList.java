@@ -29,7 +29,7 @@ public interface RuleList {
     /**
      *
      */
-    public final String VERSION = "0.9.3";
+    public final String VERSION = "0.9.4";
     /**
      * 
      * @param pre

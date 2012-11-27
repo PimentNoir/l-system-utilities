@@ -4,8 +4,8 @@
  */
 package lsystem;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -99,36 +99,9 @@ public class GrammarTest {
 
 
 
-    /**
-     * Test of 1 rule 1 repeat createGrammar method, of class Grammar.
-     */
-    @Test
-    public void testCreateGrammar() {
-        System.out.println("createGrammar 1 rule 1repeat");
-        char premise = 'F';
-        String rule = "FFXX";
-        instance.addRule(premise, rule);
-        String expResult = "FFXX-FFXX-FFXX-FFXX";
-        String result = instance.createGrammar(1);
-        assertEquals(expResult, result);
-    }
 
-     /**
-     * Test 2 rule 2 repeat createGrammar method, of class Grammar.
-     */
-    @Test
-    public void testCreateGrammar2() {
-        System.out.println("createGrammar 2 rule 2 repeat");
-        char premise = 'F';
-        String rule = "FFXX";
-        instance.addRule(premise, rule);
-        char premise1 = 'X';
-        String rule1 = "ZZ";
-        instance.addRule(premise1, rule1);
-        String expResult = "FFXXFFXXZZZZ-FFXXFFXXZZZZ-FFXXFFXXZZZZ-FFXXFFXXZZZZ";
-        String result = instance.createGrammar(2);
-        assertEquals(expResult, result);
-    }
+
+
 
 
     /**
@@ -137,7 +110,7 @@ public class GrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.8.1";
+        String expResult = "0.9.4";
         String result = instance.version();
         assertEquals(expResult, result);
     }

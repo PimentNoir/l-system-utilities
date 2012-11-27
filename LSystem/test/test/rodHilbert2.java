@@ -99,9 +99,7 @@ public class rodHilbert2 extends PApplet {
     @Override
     public void draw() {
         background(20, 20, 200);
-        lights();
-        translate(width/2, height/2);
-        arcball.update();       
+        lights();   
         render();
     }
 

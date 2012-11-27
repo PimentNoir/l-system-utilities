@@ -131,34 +131,7 @@ public class CSGrammarTest {
         instance.setIgnoreList(str);
     }
 
-    /**
-     * Test of createGrammar method, of class CSGrammar.
-     */
-    @Test
-    public void testCreateGrammar_int() {
-        System.out.println("createGrammar");
-        int repeats = 1 ;
-        char premise = 'F';
-        String rule = "F[-EF[3&A]]E[+F[3^A]]";
-        instance.addRule(premise, rule);
-        String premise2 = "F<E";
-        String rule2 = "F[&F[3+A]][^F[3-A]]";
-        instance.addRule(premise2, rule2);
-        String expResult = "F[-EF[3&A]]E[+F[3^A]]";
-        String result = instance.createGrammar(repeats);
-        assertEquals(expResult, result);
-    }
 
-    /**
-     * Test of createGrammar method, of class CSGrammar.
-     */
-    @Test
-    public void testCreateGrammar_0args() {
-        System.out.println("createGrammar");
-        String expResult = "F";
-        String result = instance.createGrammar();
-        assertEquals(expResult, result);
-    }
 
     /**
      * Test of getIterator method, of class CSGrammar.
@@ -166,9 +139,8 @@ public class CSGrammarTest {
     @Test
     public void testGetIterator() {
         System.out.println("getIterator");
-        String production = "FFF";
         CharacterIterator expResult = new StringCharacterIterator("FFF") ;
-        CharacterIterator result = instance.getIterator(production);
+        CharacterIterator result = instance.getIterator();
         assertEquals(expResult, result);
     }
 

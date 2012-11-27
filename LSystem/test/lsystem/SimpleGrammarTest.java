@@ -91,34 +91,7 @@ public class SimpleGrammarTest {
     }
 
 
-    /**
-     * Test of createGrammar method, of class SimpleGrammar.
-     */
-    @Test
-    public void testCreateGrammar() {
-        System.out.println("createGrammar no args");
-        Grammar instance = new SimpleGrammar("F");
-        String rule = "F-F-F-F";
-        instance.addRule('F', rule);
-        String expResult = "F";
-         String result = instance.createGrammar();
-        assertEquals(expResult, result);
-    }
 
-    /**
-     * Test of createGrammar method, of class SimpleGrammar.
-     */
-    @Test
-    public void testCreateGrammar_args() {
-        System.out.println("createGrammar 2 repeats");
-        int repeats = 2;
-        Grammar instance = new SimpleGrammar("F");
-        String rule = "F-F-F-F";
-        instance.addRule('F', rule);
-        String expResult = "F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F";
-         String result = instance.createGrammar(repeats);
-        assertEquals(expResult, result);
-    }
 
 
 
