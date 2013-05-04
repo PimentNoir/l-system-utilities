@@ -1,7 +1,7 @@
 package lsystem.collection.wrule;
 
 /* 
- * Copyright (c) 2011/12 Martin Prout
+ * Copyright (c) 2011/13 Martin Prout
  * 
  * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

@@ -22,8 +22,6 @@
  **/
 package lsystem.util;
 
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
@@ -49,13 +47,7 @@ public class ArcBall {
     private boolean isActive = false;
     private final PApplet parent;
     private float zoom = 1.0f;
-    private final WheelHandler zoomWheelHandler = new WheelHandler() {
-        @Override
-        public void handleWheel(final int delta) {
-            zoom += delta * 0.05f;
-        }
-    };
-    private final ArcballMousewheelListener wheelHandler = new ArcballMousewheelListener();
+    private final WheelHandler zoomWheelHandler;
 
     /**
      *
@@ -65,6 +57,16 @@ public class ArcBall {
      * @param radius float radius of arcball
      */
     public ArcBall(final PApplet parent, float center_x, float center_y, float radius) {
+        this.zoomWheelHandler = new WheelHandler() {
+         //   @Override
+//            public void handleWheel(final int delta) {
+//                zoom += delta * 0.05f;
+//            }
+
+            public void handleWheel(final float delta) {
+                zoom += delta * 0.05f;
+            }
+        };
         this.parent = parent;
         this.parent.registerMethod("dispose", this);
         this.center_x = center_x;
@@ -86,7 +88,8 @@ public class ArcBall {
      * @param parent
      */
     public ArcBall(final PApplet parent) {
-        this(parent, parent.width/2.0f, parent.height/2.0f, Math.min(parent.width, parent.height) * 0.5F);
+        this(parent, parent.width / 2.0f, parent.height / 2.0f, Math.min(parent.width, parent.height) * 0.5F);
+
     }
 
     /**
@@ -107,6 +110,12 @@ public class ArcBall {
                 v_drag = mouse2sphere(x, y);
                 q_drag.set(AVector.dot(v_down, v_drag), v_down.cross(v_drag));
                 break;
+            case (MouseEvent.WHEEL):
+                if (zoomWheelHandler != null) {
+                    zoomWheelHandler.handleWheel(e.getAmount());
+                    //zoomWheelHandler.handleWheel(e.getCount());
+                }
+                break;
             default:
         }
     }
@@ -117,7 +126,8 @@ public class ArcBall {
      * @param e
      */
     public void keyEvent(processing.event.KeyEvent e) {
-        if (e.getAction() == KeyEvent.PRESS) {
+        if (e.getAction() != KeyEvent.PRESS) {
+        } else {
             switch (e.getKey()) {
                 case 'x':
                     constrain(Constrain.XAXIS);
@@ -136,19 +146,8 @@ public class ArcBall {
     }
 
     /**
-     * It might be necessary for Applets to 'know' ahead of time that there is
-     * an instance of MouseWheelListener instead of an anonymous class?
+     *
      */
-    protected class ArcballMousewheelListener implements MouseWheelListener {
-
-        @Override
-        public void mouseWheelMoved(final MouseWheelEvent e) {
-            if (zoomWheelHandler != null) {
-                zoomWheelHandler.handleWheel(e.getWheelRotation());
-            }
-        }
-    }
-
     public void pre() {
         parent.translate(center_x, center_y);
         update();
@@ -167,12 +166,11 @@ public class ArcBall {
                 this.parent.registerMethod("pre", this);
                 this.parent.registerMethod("mouseEvent", this);
                 this.parent.registerMethod("keyEvent", this);
-                this.parent.addMouseWheelListener(wheelHandler);
+
             } else {
                 this.parent.unregisterMethod("pre", this);
                 this.parent.unregisterMethod("mouseEvent", this);
                 this.parent.unregisterMethod("keyEvent", this);
-                this.parent.frame.removeMouseWheelListener(wheelHandler);
             }
         }
     }

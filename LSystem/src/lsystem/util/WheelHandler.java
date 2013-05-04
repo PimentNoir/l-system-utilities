@@ -13,12 +13,14 @@ package lsystem.util;
  * @author Martin Prout 
  * from a borrowed pattern seen in Jonathan Feibergs Peasycam
  * when I was struggling with non functioning browser applet, 
- * probably superfluous here.
+ * probably superfluous here. Change to int count after processing-2.0b8
  */
 public interface WheelHandler { 
     /**
      * 
-     * @param delta
+     * @param amount 
      */
-    public void handleWheel(final int delta);
+   // public void handleWheel(final int delta);
+
+    public void handleWheel(float amount);
 }

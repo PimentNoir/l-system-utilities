@@ -1,5 +1,5 @@
     /* 
- * Copyright (c) 2011/12 Martin Prout
+ * Copyright (c) 2011/13 Martin Prout
  * 
  * This demo & library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,7 +28,7 @@ public interface Turtle3D {
     /**
      * 
      */
-    public final String VERSION = "0.9.4";
+    public final String VERSION = "0.9.5";
 
     /**
      * Any implementing classes should move forward by distance without drawing

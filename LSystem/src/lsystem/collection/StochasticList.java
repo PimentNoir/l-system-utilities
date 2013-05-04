@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011/12 Martin Prout
+ * Copyright (c) 2011/13 Martin Prout
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -25,7 +25,7 @@ import lsystem.collection.wrule.WeightedRule;
 
 /**
  * A storage class for weighted rules holds/implements the weighted selection
- * logic (now as inner class since version 0.74 [24 November 2011/12])
+ * logic (now as inner class since version 0.74 [24 November 2011/13])
  *
  * @author Martin Prout
  */
