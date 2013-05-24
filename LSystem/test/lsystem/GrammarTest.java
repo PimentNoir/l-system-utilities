@@ -110,7 +110,7 @@ public class GrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.9.5";
+        String expResult = "0.9.6";
         String result = instance.version();
         assertEquals(expResult, result);
     }

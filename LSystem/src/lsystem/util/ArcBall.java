@@ -63,6 +63,7 @@ public class ArcBall {
 //                zoom += delta * 0.05f;
 //            }
 
+            @Override
             public void handleWheel(final float delta) {
                 zoom += delta * 0.05f;
             }
@@ -112,8 +113,7 @@ public class ArcBall {
                 break;
             case (MouseEvent.WHEEL):
                 if (zoomWheelHandler != null) {
-                    zoomWheelHandler.handleWheel(e.getAmount());
-                    //zoomWheelHandler.handleWheel(e.getCount());
+                    zoomWheelHandler.handleWheel(e.getCount());
                 }
                 break;
             default:
