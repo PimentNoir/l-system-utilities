@@ -38,7 +38,7 @@ public class StochasticGrammar implements Grammar {
     private final RuleList rules;
     private StringCharacterIterator lIterator;
     static boolean init = false;
-    PApplet myParent;
+    PApplet parent;
 
 
     /**
@@ -48,8 +48,8 @@ public class StochasticGrammar implements Grammar {
      * @param axiom
      */
     public StochasticGrammar(PApplet parent, String axiom) {
-        this.myParent = parent;
-        myParent.registerMethod("dispose", this);
+        this.parent = parent;
+        setActive();
         this.axiom = axiom;
         rules = new StochasticList();
         if (init == false) {
@@ -205,4 +205,10 @@ public class StochasticGrammar implements Grammar {
     public final String target() {
         return TARGET;
     }
+    
+    private void setActive() {
+        parent.registerMethod("dispose", this);
+    }
+
+
 }

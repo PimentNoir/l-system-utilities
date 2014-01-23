@@ -49,7 +49,7 @@ public class CSGrammar implements Grammar {
      */
     public CSGrammar(PApplet parent, String axiom) {
         this.parent = parent;
-        this.parent.registerMethod("dispose", this);
+        setActive();
         this.axiom = axiom;
         rules = new CSList();
         if (init == false) {
@@ -246,5 +246,9 @@ public class CSGrammar implements Grammar {
     @Override
     public final String target() {
         return TARGET;
+    }
+    
+    private void setActive() {
+        parent.registerMethod("dispose", this);
     }
 }

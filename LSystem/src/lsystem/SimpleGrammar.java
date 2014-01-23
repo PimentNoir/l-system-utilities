@@ -37,7 +37,7 @@ public class SimpleGrammar implements Grammar {
     private String production;
     private final RuleList rules;
     private StringCharacterIterator lIterator;
-    PApplet myParent;
+    PApplet parent;
     static boolean init = false;
 
     // preferred constructor?
@@ -47,8 +47,8 @@ public class SimpleGrammar implements Grammar {
      * @param axiom
      */
     public SimpleGrammar(PApplet parent, String axiom) {
-        this.myParent = parent;
-        myParent.registerMethod("dispose", this);
+        this.parent = parent;
+        setActive();
         this.axiom = axiom;
         rules = new SimpleRuleList();
         if (init == false){
@@ -178,5 +178,9 @@ public class SimpleGrammar implements Grammar {
     @Override
     public final String target() {
         return TARGET;
+    }
+    
+    private void setActive() {
+        parent.registerMethod("dispose", this);
     }
 }
