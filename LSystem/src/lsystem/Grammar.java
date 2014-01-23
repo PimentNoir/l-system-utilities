@@ -29,12 +29,12 @@ public interface Grammar {
     /**
      * 
      */
-    public final String VERSION = "0.9.6";
+    public final String VERSION = "1.0.0";
     
     /**
      * 
      */
-    public final String TARGET = "processing-2.0";
+    public final String TARGET = "processing-2.1";
     
     
 

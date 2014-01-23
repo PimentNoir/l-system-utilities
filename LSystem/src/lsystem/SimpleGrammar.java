@@ -35,7 +35,7 @@ public class SimpleGrammar implements Grammar {
 
     private String axiom;
     private String production;
-    private RuleList rules;
+    private final RuleList rules;
     private StringCharacterIterator lIterator;
     PApplet myParent;
     static boolean init = false;

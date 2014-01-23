@@ -30,14 +30,14 @@ import java.util.TreeSet;
  * @author Martin Prout
  */
 public class SimpleRuleList implements RuleList{
-    private Set<Character>premises;
-    private Map<Character, String>rules;
+    private final Set<Character>premises;
+    private final Map<Character, String>rules;
     /**
      * 
      */
     public SimpleRuleList(){
-        premises = new TreeSet<Character>();
-        rules = new HashMap<Character, String>();
+        premises = new TreeSet<>();
+        rules = new HashMap<>();
     }
 
     @Override

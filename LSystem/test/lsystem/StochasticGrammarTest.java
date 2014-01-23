@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public class StochasticGrammarTest {
 

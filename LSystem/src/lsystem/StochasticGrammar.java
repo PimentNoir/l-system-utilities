@@ -29,13 +29,13 @@ import processing.core.PApplet;
  * StochasticGrammar class that provides convenience method for working with
  * l-systems
  *
- * @author tux
+ * @author Martin Prout
  */
 public class StochasticGrammar implements Grammar {
 
-    private String axiom;
+    private final String axiom;
     private String production;
-    private RuleList rules;
+    private final RuleList rules;
     private StringCharacterIterator lIterator;
     static boolean init = false;
     PApplet myParent;

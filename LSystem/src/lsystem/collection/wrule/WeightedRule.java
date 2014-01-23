@@ -21,7 +21,7 @@ package lsystem.collection.wrule;
  */
 /**
  * 
- * @author tux
+ * @author Martin Prout
  */
 public interface WeightedRule {
 

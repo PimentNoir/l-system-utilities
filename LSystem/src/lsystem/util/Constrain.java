@@ -22,7 +22,7 @@ public enum Constrain {
      * 
      */
     FREE(-1);
-    private int index;
+    private final int index;
 
     Constrain(int idx) {
         this.index = idx;

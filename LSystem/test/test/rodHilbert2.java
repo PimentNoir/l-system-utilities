@@ -10,7 +10,7 @@ import processing.core.PApplet;
 
 /**
  * 
- * @author tux
+ * @author Martin Prout
  */
 public class rodHilbert2 extends PApplet {
 

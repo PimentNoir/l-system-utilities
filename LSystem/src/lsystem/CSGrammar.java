@@ -37,7 +37,7 @@ public class CSGrammar implements Grammar {
     private PApplet parent;
     private String axiom;
     private String production;
-    private CSList rules;
+    private final CSList rules;
     private StringCharacterIterator lIterator;
     static boolean init = false;
 

@@ -41,7 +41,7 @@ public class PenStack implements StackInterface{
      */
     public PenStack(PApplet parent) {
         parent.registerMethod("dispose", this);
-        stack = new ArrayDeque<Pen>();
+        stack = new ArrayDeque<>();
     }
     // default constructor for testing
 
@@ -49,7 +49,7 @@ public class PenStack implements StackInterface{
      *
      */
     public PenStack() {
-        stack = new ArrayDeque<Pen>();
+        stack = new ArrayDeque<>();
     }
 
     /**

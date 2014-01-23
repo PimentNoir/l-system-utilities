@@ -13,7 +13,7 @@ import org.junit.*;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public class TurtleTest {
     TurtleInterface instance;

@@ -12,7 +12,7 @@ import org.junit.*;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public class TurtleStackTest {
     Turtle turtle;

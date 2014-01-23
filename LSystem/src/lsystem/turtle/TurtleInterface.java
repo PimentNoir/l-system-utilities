@@ -22,14 +22,14 @@ package lsystem.turtle;
 
 /**
  *
- * @author tux
+ * @author Martin Prout
  */
 public interface TurtleInterface{
 
     /**
      *
      */
-    public final String VERSION = "0.9.6";
+    public final String VERSION = "1.0.0";
 
     /**
      *
