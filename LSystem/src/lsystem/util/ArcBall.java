@@ -69,7 +69,6 @@ public class ArcBall {
             }
         };
         this.parent = parent;
-        this.parent.registerMethod("dispose", this);
         this.center_x = center_x;
         this.center_y = center_y;
         this.radius = radius;
@@ -163,6 +162,7 @@ public class ArcBall {
         if (active != isActive) {
             isActive = active;
             if (active) {
+                this.parent.registerMethod("dispose", this);
                 this.parent.registerMethod("pre", this);
                 this.parent.registerMethod("mouseEvent", this);
                 this.parent.registerMethod("keyEvent", this);
