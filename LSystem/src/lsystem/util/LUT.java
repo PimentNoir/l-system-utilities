@@ -1,6 +1,6 @@
 /* 
- * Copyright (c) 2011/13 Martin Prout
- * 
+ * Copyright (c) 2011-14 Martin Prout
+ *  
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -35,7 +35,7 @@ public final class LUT {
 
     /**
      * Lookup table for degree cosine/sine, has a fixed precision 1.0 degrees
-     * @author Martin Prout <martin_p@lineone.net>
+     * 
      */
     static final float[] sinLUT = new float[91];
     /**

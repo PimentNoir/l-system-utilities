@@ -1,5 +1,5 @@
 /* 
- * Copyright (c) 2011/13 Martin Prout
+ * Copyright (c) 2011-14 Martin Prout
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -90,7 +90,7 @@ public final class AQuat {
      * 
      * @param q1
      * @param q2
-     * @return
+     * @return product of q1 and q2 AQuat
      */
     public static AQuat mult(AQuat q1, AQuat q2) {
         float w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;

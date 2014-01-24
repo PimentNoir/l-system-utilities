@@ -189,7 +189,7 @@ public class ArcBall {
      *
      * @param x
      * @param y
-     * @return
+     * @return movement vector (subject to any constrain)
      */
     public AVector mouse2sphere(float x, float y) {
         AVector v = new AVector();
@@ -212,7 +212,7 @@ public class ArcBall {
      *
      * @param vector
      * @param axis
-     * @return
+     * @return need not be constrained to any axis, could be a vector
      */
     public AVector constrainVector(AVector vector, AVector axis) {
         AVector res = AVector.sub(vector, AVector.mult(axis, AVector.dot(axis, vector)));
