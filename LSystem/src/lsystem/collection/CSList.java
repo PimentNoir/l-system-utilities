@@ -34,18 +34,18 @@ import lsystem.collection.csrule.ContextRule;
  */
 public class CSList {
 
-    private char[] ignore;
-    private Map<Character, ContextRule> cs_premises;
-    private Map<Character, String> rules;
-    private Map<String, String> csrules;
+    char[] ignore;
+    private final Map<Character, ContextRule> cs_premises;
+    private final Map<Character, String> rules;
+    private final Map<String, String> csrules;
 
     /**
      *
      */
     public CSList() {
-        cs_premises = new HashMap<Character, ContextRule>();
-        rules = new HashMap<Character, String>();
-        csrules = new HashMap<String, String>();
+        cs_premises = new HashMap<>();
+        rules = new HashMap<>();
+        csrules = new HashMap<>();
         ignore = new char[0]; 
     }
 
@@ -57,13 +57,13 @@ public class CSList {
         this.ignore = str.toCharArray();
     }
 
-    /**
-     * Set the character ignore list
-     * @param ignore list as char[]
-     */
-    public void setIgnoreList(char[] ignore) {
-        System.arraycopy(ignore, 0, this.ignore, 0, ignore.length);
-    }
+//    /**
+//     * Set the character ignore list
+//     * @param ignore list as char[]
+//     */
+//    public void setIgnoreList(char[] ignore) {
+//        System.arraycopy(ignore, 0, this.ignore, 0, ignore.length);
+//    }
 
     /**
      * Check the character ignore list
@@ -74,9 +74,10 @@ public class CSList {
         boolean isIgnore = false;
         if (ignore.length > 0) {
             for (char c : ignore) {
-                if (c == prod) {
+                if (prod != c) {
+                } else {
                     isIgnore = true;
-                    break; // then don't check any more
+                    break;
                 }
             }
         }
