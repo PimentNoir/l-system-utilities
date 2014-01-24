@@ -43,7 +43,8 @@ public class CSGrammarTest {
      */
     @Before
     public void setUp() {
-        instance = new CSGrammar("F");
+        instance = new CSGrammar("FFF");
+        instance.setIgnoreList("[]");
     }
 
     /**
@@ -124,12 +125,13 @@ public class CSGrammarTest {
     /**
      * Test of setIgnoreList method, of class CSGrammar.
      */
-    @Test
-    public void testSetIgnoreList_charArr() {
-        System.out.println("setIgnoreList");
-        char[] str = {'[',']','+','-','^','&','3'};
-        instance.setIgnoreList(str);
-    }
+//    @Test
+//    @SuppressWarnings("empty-statement")
+//    public void testSetIgnoreList_charArr() {
+//        System.out.println("setIgnoreList");
+//        char[] str = {'[',']','+','-','^','&','3'};
+//        instance.setIgnoreList(str.clone());
+//    }
 
 
 
@@ -139,7 +141,7 @@ public class CSGrammarTest {
     @Test
     public void testGetIterator() {
         System.out.println("getIterator");
-        CharacterIterator expResult = new StringCharacterIterator("FFF") ;
+        CharacterIterator expResult = new StringCharacterIterator( "FFF") ;
         CharacterIterator result = instance.getIterator();
         assertEquals(expResult, result);
     }
@@ -160,7 +162,7 @@ public class CSGrammarTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        char[] str = {'[',']','+','-','^','&','3'};
+        String str = "[]+-^&3";
         instance.setIgnoreList(str);
         String rule = "F[-EF[3&A]]E[+F[3^A]]";
         instance.addRule('F', rule);
@@ -175,7 +177,7 @@ public class CSGrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "0.8.1";
+        String expResult = "1.0.0";
         String result = instance.version();
         assertEquals(expResult, result);
     }

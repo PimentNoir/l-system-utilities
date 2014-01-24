@@ -102,7 +102,7 @@ public class SimpleGrammarTest {
     public void testVersion() {
         System.out.println("version");
         Grammar instance = new SimpleGrammar("FF");
-        String expResult = "0.8.1";
+        String expResult = "1.0.0";
         String result = instance.version();
         assertEquals(expResult, result);
     }

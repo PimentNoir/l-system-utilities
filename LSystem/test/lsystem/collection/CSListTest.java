@@ -64,13 +64,13 @@ public class CSListTest {
     /**
      * Test of setIgnoreList method, of class CSList.
      */
-    @Test
-    public void testSetIgnoreList_charArr() {
-        System.out.println("setIgnoreList");
-        char[] ignore = {']','['};
-        CSList instance = new CSList();
-        instance.setIgnoreList(ignore);
-    }
+//    @Test
+//    public void testSetIgnoreList_charArr() {
+//        System.out.println("setIgnoreList");
+//        char[] ignore = {']','['};
+//        CSList instance = new CSList();
+//        instance.setIgnoreList(ignore);
+//    }
 
     /**
      * Test of isIgnored method, of class CSList.
