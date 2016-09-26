@@ -140,7 +140,7 @@ public class CSGrammar implements Grammar {
      * @param str ignore list as a char[]
      */
     public void setIgnoreList(char[] str) {
-        rules.setIgnoreList(str);
+        rules.setIgnoreList(String.valueOf(str));
     }
 
     /**
