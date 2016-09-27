@@ -83,8 +83,8 @@ public class StochasticGrammarTest {
      */
     @Test
     public void testGetRule() {
-        //String expResult = "FX-FX";
-        String expResult = "FF-FF";
+        String expResult = "FX-FX";
+        //String expResult = "FF-FF";
         char premise = 'X';
         String rule = "FX-FX";
         float weight = 1.0F;
