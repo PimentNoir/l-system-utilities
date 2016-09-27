@@ -27,8 +27,8 @@ import lsystem.collection.csrule.ContextRule;
 /**
  * A storage class for context sensitive LSystem rules, accepts simple LSystem
  * rules as well (however as yet stochastic rules are not accepted).
- * The expected format for context is 'x>z' or 'x<z' where x is the context char.
- * '<' is before and '>' is after z is the premis or character to be replaced.
+ * The expected format for context is 'x{@literal >}z' or 'x{@literal <}z' where x is the context char.
+ * '{@literal <}' is before and '{@literal >}' is after z is the premis or character to be replaced.
  * There is ability to ignore certain characters (eg []0-9) when determining context.
  * @author Martin Prout
  */

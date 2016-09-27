@@ -102,7 +102,7 @@ public final class AQuat {
     
     /**
      * Transform this Quaternion into an angle (radians) and an axis vector, about 
-     * which to rotate (avoids NaN by setting sa to 1.0F when sa < epsilon)
+     * which to rotate (avoids NaN by setting sa to 1.0F when sa {@literal <} epsilon)
      * @return a new float[] where a0 = angle and a1 .. a3 are axis vector
      */
 

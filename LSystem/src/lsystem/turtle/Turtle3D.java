@@ -21,7 +21,7 @@ package lsystem.turtle;
 
 /**
  *
- * @author Martin Prout <martin_p@lineone.net>
+ * @author Martin Prout {@literal <}martin_p@lineone.net{@literal >}
  */
 public interface Turtle3D {
 

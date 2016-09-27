@@ -20,7 +20,7 @@
 package lsystem.util;
 
 /**
- * A very restricted lookup table for fast sine & cosine computations. The table 
+ * A very restricted lookup table for fast sine &amp; cosine computations. The table 
  * currently has a fixed precision of 1.0 degrees. Thus should be as accurate as 
  * Math.sin when using integer input. However with a float input, values are 
  * cast to integer, and there will be errors. Note the reduced lookup up table, 

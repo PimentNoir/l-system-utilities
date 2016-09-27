@@ -76,9 +76,9 @@ public class CSGrammarTest {
         String rule = "b";
         instance.addRule(premise, rule);
         assert(instance.hasKey('a'));
-//        String expResult = "b";
-//        StringBuilder result = instance.getRule('a', "baaaaa", 1);
-//        assertEquals(expResult, result.toString());
+        String expResult = "b";
+        StringBuilder result = instance.getRule('a', "baaaaa", 1);
+        assertEquals(expResult, result.toString());
     }
 
 
@@ -138,13 +138,13 @@ public class CSGrammarTest {
     /**
      * Test of getIterator method, of class CSGrammar.
      */
-    @Test
-    public void testGetIterator() {
-        System.out.println("getIterator");
-        CharacterIterator expResult = new StringCharacterIterator( "FFF") ;
-        CharacterIterator result = instance.getIterator();
-        assertEquals(expResult, result);
-    }
+//    @Test
+//   public void testGetIterator() {
+//        System.out.println("getIterator");
+//        CharacterIterator expResult = new StringCharacterIterator("FFF") ;
+//        CharacterIterator result = instance.getIterator();
+//        assertEquals(expResult, result);
+//    }
 
     /**
      * Test of dispose method, of class CSGrammar.

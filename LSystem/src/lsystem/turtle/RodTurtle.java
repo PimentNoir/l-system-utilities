@@ -24,7 +24,7 @@ import processing.core.PApplet;
 
 /**
  *
- * @author Martin Prout <martin_p@lineone.net>
+ * @author Martin Prout {@literal <}martin_p@lineone.net{@literal >}
  */
 public class RodTurtle implements Turtle3D {
 
@@ -109,7 +109,7 @@ public class RodTurtle implements Turtle3D {
      * Wrapper method
      * Draw a smooth cylinder capped at one end with a sphere uses a look up
      * table for sin and cos (NB: degree not radians), arbitrary set ratio of
-     * distance & cylinder radius & detail/level
+     * distance &amp; cylinder radius &amp; detail/level
      * @param distance the length of the cylinder
      */
     public void drawRod(float distance) {

@@ -34,7 +34,7 @@ package lsystem.util;
 
 /**
  * Lookup table for degree cosine/sine, has a fixed precision ca. 0.25 degrees
- * @author Martin Prout <martin_p@lineone.net>
+ * @author Martin Prout {@literal <}martin_p@lineone.net{@literal >}
  */
 public final class LUT2 {
 
