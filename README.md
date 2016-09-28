@@ -20,8 +20,8 @@ using jdk1.8.0_101, making it incompatible with earlier versions of processing.
 
 ##Download
 The l-systems binary distribution for processing 3.2.X is available 
-[here](http://people.piment-noir.org/~fraggle/lsystem/): 
-[http://people.piment-noir.org/~fraggle/lsystem/](http://people.piment-noir.org/~fraggle/lsystem/). 
+[here](https://github.com/PimentNoir/l-system-utilities/releases): 
+[https://github.com/PimentNoir/l-system-utilities/releases](https://github.com/PimentNoir/l-system-utilities/releases). 
 
 ##Installation
-Just unzip the archive inside your processing libraries directory.
+Just unzip the zip archive inside your processing libraries directory.
