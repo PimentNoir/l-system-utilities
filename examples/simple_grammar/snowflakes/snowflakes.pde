@@ -65,6 +65,7 @@ void createLSystem(int generations) {
 
 PShape generateShape(color st) {
   PShape pshape = createShape();
+  pshape.beginShape();
   pshape.stroke(st);
   pshape.strokeWeight(2);
   pshape.noFill();
@@ -103,9 +104,6 @@ PShape generateShape(color st) {
     }
   }
   pshape.vertex(turtle.getX(), turtle.getY()); 
-  pshape.end();
+  pshape.endShape();
   return pshape;
 }
-
-
-

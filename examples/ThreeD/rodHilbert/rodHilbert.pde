@@ -190,7 +190,7 @@ void nextCap(float r, int lats, int longs) {
     beginShape(QUAD_STRIP);
     for (int j = 0; j <= longs; j++)
     {
-      int direct = -1;
+      /* int direct = -1; */
       float lng = 360 * (j - 1) / longs;
       float x = LUT.cos(lng);
       float y = -LUT.sin(lng);
@@ -221,4 +221,3 @@ void keyPressed() {
     break;
   }
 }
-
