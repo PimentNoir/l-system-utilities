@@ -177,7 +177,7 @@ public class CSGrammarTest {
     @Test
     public void testVersion() {
         System.out.println("version");
-        String expResult = "1.0.0";
+        String expResult = "1.0.1";
         String result = instance.version();
         assertEquals(expResult, result);
     }

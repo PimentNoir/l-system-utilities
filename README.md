@@ -1,5 +1,4 @@
 # l-system-utilities
-
 This project grew out of my exploration of the Lindenmayer-Systems that can be
 used to describe plant-like structures using text Strings. What it does, is 
 provide a library that can be used with processing to explore LSystems. The main
@@ -15,3 +14,14 @@ to work with current version.
  
 Since version 1.0.0 the library has been recompiled for processing-2.1.0, 
 using jdk1.7.0_51, making it incompatible with earlier versions of processing.
+
+Since version 1.0.1 the library has been recompiled for processing-3.2.1, 
+using jdk1.8.0_101, making it incompatible with earlier versions of processing.
+
+##Download
+The l-systems binary distribution for processing 3.2.X is available 
+[here](http://people.piment-noir.org/~fraggle/lsystem/): 
+[http://people.piment-noir.org/~fraggle/lsystem/](http://people.piment-noir.org/~fraggle/lsystem/). 
+
+##Installation
+Just unzip the archive inside your processing libraries directory.
