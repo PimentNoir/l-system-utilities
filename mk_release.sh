@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 build() {
 ant clean && ant default
@@ -24,6 +24,6 @@ cp -a src release/${base_rel_dir}/
 cp lgpl-2.1.txt release/${base_rel_dir}/
 mv src/lsystem/library.properties release/${base_rel_dir}/
 cd release
-zip -r ${base_rel_dir} ${base_rel_dir}
-scp ${base_rel_dir}.zip ${up_user}@${up_host}:$up_path/ 
+zip -r ${base_rel_dir}-${PRETTYVERSION}.zip ${base_rel_dir}
+scp ${base_rel_dir}-${PRETTYVERSION}.zip ${up_user}@${up_host}:$up_path/ 
 
