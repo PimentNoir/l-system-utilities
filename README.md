@@ -18,10 +18,10 @@ using jdk1.7.0_51, making it incompatible with earlier versions of processing.
 Since version 1.0.1 the library has been recompiled for processing-3.2.1, 
 using jdk1.8.0_101, making it incompatible with earlier versions of processing.
 
-##Download
+## Download
 The l-systems binary distribution for processing 3.2.X is available 
 [here](https://github.com/PimentNoir/l-system-utilities/releases): 
 [https://github.com/PimentNoir/l-system-utilities/releases](https://github.com/PimentNoir/l-system-utilities/releases). 
 
-##Installation
+## Installation
 Just unzip the zip archive inside your processing libraries directory.
